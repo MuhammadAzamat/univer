@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { Button, Checkbox, Form, Input, InputNumber } from 'antd';
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router';
 import { loginAction } from './query';
@@ -8,6 +8,13 @@ import { loginAction } from './query';
 // import { isValidEmail } from "../../extrafunc";
 
 export default function Login() {
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
 
   const history = useHistory()
   
@@ -36,9 +43,65 @@ export default function Login() {
     } else { localStorage.removeItem('remember_me') }
   }
 
+
   return (
     <>
-      
+    <div className='login_parent'>
+      <div className='form_parent'>
+        <div>
+        </div>
+      <h1>Tizimga kirish</h1>
+       <Form
+      name="basic"
+      className='form'
+      labelCol={{
+        span: 8,
+      }}
+      wrapperCol={{
+        span: 16,
+      }}
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+    >
+      <Form.Item
+        className='username'
+        name="tel"
+        rules={[
+          {
+            required: true,
+            message: 'Incorrect number!',
+          },
+        ]}
+      >
+        <InputNumber  className='username_input'/>
+      </Form.Item>
+
+      <Form.Item
+        name="password"
+        className='password'
+        rules={[
+          {
+            required: true,
+            message: 'Please input your password!',
+          },
+        ]}
+      >
+        <Input.Password  className='password_input'/>
+      </Form.Item>
+
+
+
+   
+        <Button type='primary'  htmlType="submit" className='submit'>
+          Tizimga kirish
+        </Button>
+    </Form>
+    </div>
+    </div>
     </>
   ); 
 }
