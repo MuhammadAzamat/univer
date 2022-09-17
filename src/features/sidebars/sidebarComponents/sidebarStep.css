@@ -32,7 +32,7 @@
 .profil {
   /* padding-left: 20px; */
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
   align-items: center;
   height: 46px;
@@ -52,4 +52,9 @@
 
 p {
   margin-bottom: 0;
+}
+
+.divider {
+  padding-left: 20px;
+  width: 200px;
 }
