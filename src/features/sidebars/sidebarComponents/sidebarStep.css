@@ -22,7 +22,17 @@
 }
 
 .sidebarStep {
-  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.ant-steps-item-content {
+  display: flex;
+}
+
+.ant-steps {
+  margin-left: 20px;
 }
 
 .flex {
@@ -39,14 +49,17 @@
 }
 
 .bg {
+  display: flex;
+  justify-content: center;
   background-color: #f7f7fc;
-  width: 24px;
-  height: 24px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
 }
 
 .avatar-content {
   padding-left: 10px;
+  height: 48px;
   justify-content: center;
 }
 
@@ -54,7 +67,35 @@ p {
   margin-bottom: 0;
 }
 
+.stepTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  /* identical to box height, or 20px */
+}
+
 .divider {
   padding-left: 20px;
   width: 200px;
+}
+
+.ant-divider-horizontal {
+  margin: 0;
+}
+
+.bg svg {
+  margin-top: 10px;
+  width: 18px;
+  height: 20px;
+}
+
+.avatar-title {
+  margin-bottom: 0;
+}
+
+.ant-divider {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
