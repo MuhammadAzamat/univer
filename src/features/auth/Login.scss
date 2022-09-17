@@ -1,5 +1,61 @@
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .auth-login {
+}
+.login_parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../../assets/img/Background_login.png");
+  object-fit: cover;
+  background-size: cover;
+}
 
+.form_parent {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.username_input {
+  width: 400px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.password_input {
+  width: 400px;
+  border-radius: 10px;
+  height: 50px;
+}
+
+.submit{
+  width: 400px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.submit > span{
+    color: white;
+    font-size: 18px;
 }

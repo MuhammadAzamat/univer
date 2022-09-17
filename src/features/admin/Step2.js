@@ -1,19 +1,20 @@
 import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
+import Uploader from "./Uploader";
 
 const { Option } = Select;
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
-const xs = () => ({
-  span: 6,
-  offset: 1,
-});
-const lg = () => ({
-  span: 6,
-  offset: 1,
-});
+// const xs = () => ({
+//   span: 6,
+//   offset: 1,
+// });
+// const lg = () => ({
+//   span: 6,
+//   offset: 1,
+// });
 const Step2 = () => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -22,7 +23,7 @@ const Step2 = () => {
   return (
     <div className="step2_container">
       <Form name="validate_other" onFinish={onFinish}>
-        <h2>Pasport ma'lumotlari</h2>
+        <h3>Pasport ma'lumotlari</h3>
         <Row gutter={[24, 16]}>
           {/*Passport turi  */}
           <Col span={8}>
@@ -253,34 +254,65 @@ const Step2 = () => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
-          <Col span={24}>Passport yoki ID fotosurati</Col>
-          <Col span={6} style={{ border: "1px solid red" }}>
-            Old qisimi
-          </Col>
-          <Col span={6} style={{ border: "1px solid red" }}>
-            Orqa qismi
-          </Col>
-        </Row>
-        <Row>
-          <Col span={8} style={{ border: "1px solid red" }}></Col>
-          <Col span={8} style={{ border: "1px solid red" }}>
-            <Form.Item
-              wrapperCol={{
-                span: 12,
-                offset: 6,
-              }}
+        <h3>Passport yoki ID fotosurati</h3>
+        <div className="pasport-image">
+          <Form.Item name="image1">
+            <ImageUploadFront />
+          </Form.Item>
+
+          <Form.Item name="image2">
+            <ImageUploadBack />
+          </Form.Item>
+        </div>
+
+        <div className="pasport-btns">
+          <Form.Item
+            wrapperCol={{
+              span: 12,
+              offset: 6,
+            }}
+          >
+            <Button style={{ margin: "0 10px" }}>Orqaga</Button>
+            <Button
+              style={{ margin: "0 10px ", color: "white" }}
+              type="primary"
+              htmlType="submit"
             >
-              <Button>Orqaga</Button>
-              <Button type="primary" htmlType="submit">
-                Oldinga
-              </Button>
-            </Form.Item>
-          </Col>
-        </Row>
+              Oldinga
+            </Button>
+          </Form.Item>
+        </div>
       </Form>
     </div>
   );
 };
 
 export default Step2;
+const ImageUploadFront = ({ value = {}, onChange }) => {
+  return (
+    <div className="step-1-image-upload">
+      <Uploader
+        value={value}
+        beforeUpload={(file) => false}
+        uploadSide="Old qismini yuklang"
+        onChange={(e) => {
+          onChange({ ...value, image: e.file });
+        }}
+      />
+    </div>
+  );
+};
+const ImageUploadBack = ({ value = {}, onChange }) => {
+  return (
+    <div className="step-1-image-upload">
+      <Uploader
+        value={value}
+        beforeUpload={(file) => false}
+        uploadSide="Orqa qismini yuklang"
+        onChange={(e) => {
+          onChange({ ...value, image: e.file });
+        }}
+      />
+    </div>
+  );
+};

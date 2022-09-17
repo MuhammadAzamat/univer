@@ -1,0 +1,95 @@
+.Login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  form {
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 2rem;
+  }
+  
+  .Login_title {
+    display: block;
+  }
+  .input {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid #90a0b7;
+    outline: none;
+    font-size: 18px;
+    padding: 7px;
+  }
+  .submit {
+    width: 315px;
+    height: 45px;
+    border-radius: 7px;
+    background-color: #377dff;
+    font-size: 20px;
+    color: white;
+    border: none;
+  }
+  .submit:hover{
+      background-color: rgb(5, 69, 197);
+  }
+  .parent_checkbox {
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .checkbox {
+    width: 20px;
+    height: 20px;
+  }
+  .formInput {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* span {
+    font-size: 15px;
+    padding: 3px;
+    color: red;
+    text-align: left;
+    display: none;
+  } */
+  
+  input:invalid[focused="true"] ~ span {
+    display: block;
+  }
+  
+  .Parent_form {
+    height: auto;
+    border: 1px solid #377dff;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  .tizimga_kirish_btn {
+    width: 315px;
+    height: 45px;
+    border: 2px solid #377dff;
+    background-color: white;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #377dff;
+  }
+  .Parent_Register_btn {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tizimga_kirish_btn:hover {
+    background-color: #377dff;
+    color: white;
+  }
+  
