@@ -1,4 +1,4 @@
-import { Steps } from "antd";
+import { Steps, Divider } from "antd";
 import React from "react";
 import "./sidebarStep.css";
 import { UserOutlined } from "@ant-design/icons";
@@ -7,6 +7,9 @@ const { Step } = Steps;
 
 const SidebarStep = () => (
   <div>
+    <div className="divider">
+      <Divider />
+    </div>
     <div className="flex profil">
       <UserOutlined className="bg" />
       <div className="avatar-content">
@@ -21,6 +24,9 @@ const SidebarStep = () => (
       <Step title="Imtihon" description="" />
       <Step title="Natijalar" description="" />
     </Steps>
+    <div className="divider">
+      <Divider />
+    </div>
   </div>
 );
 
