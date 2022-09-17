@@ -14,7 +14,7 @@ export default function Dashboard() {
 
 const renderSwitch = (status, setstatus) => {
   switch (status) {
-    case 1:
+    case 'step_1':
       return <Step1 />
     default:
       return <ContentComp setstatus={setstatus}/>

@@ -16,7 +16,7 @@ const ContentComp = ({setstatus}) => {
             O'qishni ko'chirish
           </button>
           <button className="btn-content" type="button" onClick={()=>{
-            setstatus(1)
+            setstatus('step_1')
           }}>
             Ariza topshirish
           </button>
