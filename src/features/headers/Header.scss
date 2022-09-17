@@ -1,5 +1,37 @@
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .headers-header {
+}
+.search {
+  margin-left: 10px;
+  width: 265px;
+  display: flex;
+  align-items: center;
+}
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bg {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  background-color: #f9fafe;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.bg svg {
+  width: 18px;
+  height: 20px;
+  margin-top: 0;
+}
+
+.header-notify {
+  width: 230px;
+  display: flex;
+  justify-content: space-around;
 }
