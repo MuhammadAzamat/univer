@@ -7,12 +7,13 @@
     width: 100%;
 }
 .layout-container{
-    height: 100vh;
+    min-height: 100vh;
 }
 .site-layout-background{
     width: 70%;
-    background: rgb(255, 255, 255);
-    margin: 20px auto;
+    background: #fff;
+    margin: 10px auto;
+    padding:1.5rem 0;
     border-radius: 10px;    
 }
 .order-placed-img{
@@ -38,7 +39,7 @@
 .site-layout-wrapper p{
     font-size:14px;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 10px;
     letter-spacing: 1px;
     color: #666666;
 }
@@ -95,4 +96,24 @@
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+// step2 styling
+.step2_container{
+    width: 95%;
+    background: #fff;
+    margin: 10px auto;
+    padding:1.5rem;
+    border-radius: 10px;    
+}
+.step2_container h2{
+    font-size:18px;
+    font-weight: 600;
+    line-height: 23px;
+    letter-spacing: 0.75px;
+}
+.step2_container label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
 }
