@@ -1,10 +1,11 @@
 import React from 'react';
+import ContentComp from './content';
 // import PropTypes from 'prop-types';
 
 export default function Dashboard() {
   return (
     <div className="admin-dashboard">
-      Component content: admin/Dashboard
+      <ContentComp/>
     </div>
   );
 };

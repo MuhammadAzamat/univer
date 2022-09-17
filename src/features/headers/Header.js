@@ -1,11 +1,32 @@
-import React, { useEffect } from 'react';
+import { Layout as LayoutAnt } from 'antd';
+import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 
-export default function Header() {
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+
+export default function Header({ collapsed, setCollapsed }) {
+
   return (
-    <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
-      
-    </div>
+    <LayoutAnt.Header
+      style={{
+        padding: 0,
+        background: "red",
+      }}
+    >
+      {React.createElement(
+        collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+        {
+          className: "trigger",
+          onClick: () => setCollapsed(!collapsed),
+        }
+      )}
+    </LayoutAnt.Header>
   );
 };
 

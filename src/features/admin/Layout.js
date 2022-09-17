@@ -5,9 +5,14 @@ import { Header } from "../headers";
 import { AdminNavbar } from "../navbars";
 import { Sidebar } from "../sidebars";
 import route from "./route";
+
+import { Layout as LayoutAnt, Menu } from "antd";
+
 // import PropTypes from 'prop-types';
 
 export default function Layout({ history, children }) {
+
+  const [collapsed, setCollapsed] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("jwt") || null);
   const mainRef = useRef(null);
 
@@ -50,9 +55,10 @@ export default function Layout({ history, children }) {
   };
   return (
     (true && (
-      <>
+      <LayoutAnt className="layout-container">
         <Sidebar
           // {...this.props}
+          collapsed={collapsed}
           routes={routes}
           logo={{
             innerLink: "/dashboard/index",
@@ -62,14 +68,14 @@ export default function Layout({ history, children }) {
           orders={orders}
         />
         <div className="main-content" ref={(el) => (mainRef.current = el)}>
-          <AdminNavbar
+          {/* <AdminNavbar
             // {...this.props}
             brandText={getBrandText(history.location.pathname)}
-          />
-          <Header />
+          /> */}
+          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
           {children}
         </div>
-      </>
+      </LayoutAnt>
     )) || <Redirect from="/" to={"/auth/login"} />
   );
 }

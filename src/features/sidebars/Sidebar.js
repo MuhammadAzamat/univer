@@ -4,9 +4,12 @@ import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import SidebarStep from "./sidebarComponents/sidebarStep";
 import SidebarMenu from "./sidebarMenu/sidebarMenu";
+import { Layout as LayoutAnt} from "antd";
 
-const Sidebar = ({ bgColor, routes, logo, location, orders }) => {
+const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
   const [collapseOpen, setcollapseOpen] = useState(false);
+
+  const { Sider } = LayoutAnt;
 
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
@@ -43,11 +46,13 @@ const Sidebar = ({ bgColor, routes, logo, location, orders }) => {
     };
   }
   return (
-   <>
-   <h1>LOGO</h1>
-   <SidebarStep/>
-   <SidebarMenu/>
-   </>
+    <>
+      <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
+        <div className="logo" />
+        <SidebarStep />
+        <SidebarMenu />
+      </Sider>
+    </>
   );
 };
 
