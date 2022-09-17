@@ -28,6 +28,10 @@ const Uploader = () => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
 
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -55,15 +59,27 @@ const Uploader = () => {
       </div>
     </div>
   );
+
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
+  };
+
   return (
     <Upload
       name="avatar"
       listType="picture-card"
       className="avatar-uploader"
       showUploadList={false}
-      action={null}
+      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       beforeUpload={beforeUpload}
       onChange={handleChange}
+      onPreview={handlePreview}
     >
       {imageUrl ? (
         <img
