@@ -30,7 +30,7 @@ export default function Header({ collapsed, setCollapsed }) {
         </div>
         <div className="flex header-notify">
           <div>
-            <Select defaultValue="Uz" className="select-before">
+            <Select defaultValue="uz" className="select-before">
               <Option value="uz">uz</Option>
               <Option value="en">en</Option>
             </Select>
