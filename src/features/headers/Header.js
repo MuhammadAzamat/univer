@@ -19,13 +19,13 @@ export default function Header({ collapsed, setCollapsed }) {
         background: "red",
       }}
     >
-      {React.createElement(
+      {/* {React.createElement(
         collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
         {
           className: "trigger",
           onClick: () => setCollapsed(!collapsed),
         }
-      )}
+      )} */}
     </LayoutAnt.Header>
   );
 };

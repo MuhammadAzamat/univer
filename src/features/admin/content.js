@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 const { Content } = Layout;
-const ContentComp = () => {
+const ContentComp = ({setstatus}) => {
   return (
     <Content className="site-layout-background">
       <div className="site-layout-wrapper">
@@ -15,7 +15,9 @@ const ContentComp = () => {
           <button className="btn-content" type="button">
             O'qishni ko'chirish
           </button>
-          <button className="btn-content" type="button">
+          <button className="btn-content" type="button" onClick={()=>{
+            setstatus(1)
+          }}>
             Ariza topshirish
           </button>
         </div>

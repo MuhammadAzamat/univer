@@ -47,7 +47,8 @@ const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
   }
   return (
     <>
-      <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
+      <Sider theme="light" trigger={null} collapsible collapsed={collapsed}
+       width={253}>
         <div className="logo" />
         <SidebarStep />
         <SidebarMenu />

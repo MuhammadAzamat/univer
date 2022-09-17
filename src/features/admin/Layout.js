@@ -72,7 +72,7 @@ export default function Layout({ history, children }) {
             // {...this.props}
             brandText={getBrandText(history.location.pathname)}
           /> */}
-          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+          <Header collapsed={collapsed} setCollapsed={null} />
           {children}
         </div>
       </LayoutAnt>
