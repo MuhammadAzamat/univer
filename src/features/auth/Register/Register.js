@@ -101,7 +101,7 @@ const Register = () => {
 
           <div className="Parent_Register_btn">
             <button className="submit">Ro'yhatdan o'tish</button>
-            <p className="register">Allaqachon ro'yhatdan o'tganmisiz?</p>
+            <p className="register">Allaqachon ro'yhatdan o'tganmisiz ?</p>
             <button className="tizimga_kirish_btn">Tizimga kirish</button>
           </div>
         </form>
