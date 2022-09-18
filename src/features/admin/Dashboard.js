@@ -17,15 +17,15 @@ export default function Dashboard() {
 const renderSwitch = (status, setstatus) => {
   switch (status) {
     case 1:
-      return <Step1 />;
+      return <Step1 setstatus={setstatus} />;
     case 2:
-      return <Step2 />;
+      return <Step2 setstatus={setstatus} />;
     case 3:
-      return <Step3 />;
+      return <Step3 setstatus={setstatus} />;
     case 4:
-      return <Step4 />;
+      return <Step4 setstatus={setstatus} />;
     case 5:
-      return <Step5 />;
+      return <Step5 setstatus={setstatus}  />;
     default:
       return <Step0 setstatus={setstatus} />;
   }
