@@ -9,7 +9,7 @@ import Step5 from "./application/Step5";
 // import PropTypes from 'prop-types';
 
 export default function Dashboard() {
-  const [status, setstatus] = useState(2);
+  const [status, setstatus] = useState(5);
   return (
     <div className="admin-dashboard">{renderSwitch(status, setstatus)}</div>
   );
