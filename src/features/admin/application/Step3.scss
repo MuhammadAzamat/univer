@@ -1,0 +1,75 @@
+.step3_container {
+  width: 95%;
+  background: #fff;
+  margin: 10px auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+h3,
+.step3_container h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.75px;
+  text-align: left;
+}
+.step3_container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+.step3_btns {
+  margin: 0 10px;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+.prev-next-btns {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.prev-next-btns .ant-form-item-control-input-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.minus-btn {
+  width: 15%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b0b7c3;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.add-education,
+.add-sertification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.add-education span,
+.add-sertification span {
+  border: 1px solid #377dff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+.add-education p,
+.add-sertification p {
+  margin: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
