@@ -22,6 +22,40 @@
         /* black */
         color: #323B4B;
     }
+
+    label {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #323B4B;
+    }
+
+    label.isDisabled-title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .disabled-field {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            display: flex;
+            align-items: center;
+            color: #B0B7C3;
+        }
+    }
+
+
 }
 
 .step-title {
@@ -43,7 +77,10 @@
         width: auto;
     }
 
+
     .ant-upload.ant-upload-select-picture-card {
+        border: 3px dashed #D1D5DB;
+        border-radius: 6px;
         width: auto;
         height: auto;
         display: flex;
@@ -51,6 +88,10 @@
         justify-content: center;
         align-items: center;
         padding: 46px 5px;
+        background: #fff;
+        height: 165px;
+        width: 180px;
+
 
         h2 {
             font-family: 'Inter';
@@ -94,14 +135,17 @@
             margin-top: 8px;
         }
 
-        .ant-btn.ant-btn-default.btn-upload {
+        .btn-upload {
             background: rgba(55, 125, 255, 0.1);
             border-radius: 8px;
             margin-top: 16px;
-            display: inline-block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: #377DFF;
+            padding: 22px 42px;
 
-            img{
+            img {
                 margin-right: 5px;
             }
         }
@@ -109,11 +153,12 @@
         a:link {
             color: #377DFF;
         }
-        a:hover{
+
+        a:hover {
             color: #8db3fa;
         }
 
-        a:active{
+        a:active {
             color: #1967f8;
         }
     }
