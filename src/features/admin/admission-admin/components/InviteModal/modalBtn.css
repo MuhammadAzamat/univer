@@ -1,0 +1,83 @@
+.invite_modal_form {
+  display: flex;
+  width: 600px;
+  height: 320px;
+}
+.invite_title{
+    width: 600px;
+    text-align: center;
+}
+.invite_title > h1{
+    color: #111827;
+    font-weight: bold;
+}
+.invite_title > p{
+    font-weight: bold;
+    font-size: 17px;
+    color: #111827;    ;
+}
+
+.invite_modal_form_child {
+  width: 170px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+.invite_modal_form_child > h3{
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+.invite_modal_select {
+  width: 250px;
+  border: 0.5px solid  #bcd0df;;
+}
+.invite_information {
+  width: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.invite_time {
+  width: 200px;
+}
+.invite_btn{
+    width: 500px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.invite_btn_1{
+    width: 200px;
+    height: 45px;
+    background-color: white;
+    border: 1px solid #c7d1d9;
+    transition: 0.3s;
+    font-size: 17px;
+    border-radius: 7px;
+}
+.invite_btn_1:hover{
+    background-color: red;
+    transition: 0.3s;
+    color: white;
+}
+.invite_btn_2{
+    width: 200px;
+    height: 45px;
+    background-color: #4F46E5;
+    color: white;
+    border: none;
+    font-size: 17px;
+    border-radius: 7px;
+}
+.invite_btn_2:hover{
+    background-color: #3b35af;
+}
+.invite_parent_btn{
+    background-color: #4F46E5 !important;
+
+}
