@@ -1,4 +1,4 @@
-.Login {
+/* .Login {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,13 +54,13 @@
     flex-wrap: wrap;
   }
   
-  /* span {
+  span {
     font-size: 15px;
     padding: 3px;
     color: red;
     text-align: left;
     display: none;
-  } */
+  }
   
   input:invalid[focused="true"] ~ span {
     display: block;
@@ -92,4 +92,4 @@
     background-color: #377dff;
     color: white;
   }
-  
+   */

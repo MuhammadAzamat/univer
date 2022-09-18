@@ -1,7 +1,7 @@
 import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
-import Uploader from "./Uploader";
+import Uploader from "../Uploader";
 
 const { Option } = Select;
 const handleChange = (value) => {
@@ -254,7 +254,7 @@ const Step2 = () => {
             </Form.Item>
           </Col>
         </Row>
-        <h3>Passport yoki ID fotosurati</h3>
+        <h3 style={{ margin: "10px 0" }}>Passport yoki ID fotosurati</h3>
         <div className="pasport-image">
           <Form.Item name="image1">
             <ImageUploadFront />
@@ -264,20 +264,15 @@ const Step2 = () => {
             <ImageUploadBack />
           </Form.Item>
         </div>
-
-        <div className="pasport-btns">
+        <div className="prev-next-btns">
           <Form.Item
             wrapperCol={{
               span: 12,
               offset: 6,
             }}
           >
-            <Button style={{ margin: "0 10px" }}>Orqaga</Button>
-            <Button
-              style={{ margin: "0 10px ", color: "white" }}
-              type="primary"
-              htmlType="submit"
-            >
+            <Button className="step2_btns">Orqaga</Button>
+            <Button className="step2_btns" type="primary" htmlType="submit">
               Oldinga
             </Button>
           </Form.Item>
