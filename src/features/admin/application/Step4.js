@@ -23,9 +23,15 @@ const Step4 = () => {
     <div className="step4_container">
       <Form name="validate_other" onFinish={onFinish}>
         <h3>Ta’lim yo’nalishi</h3>
-        <Row gutter={[24, 16]}>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           {/*Ta’lim yo’nalishi  */}
-          <Col span={8}>
+          <div style={{ width: "30%" }}>
             <label htmlFor="talimYonalishi">Ta’lim yo’nalishi</label>
             <Form.Item
               style={{ margin: "5px 0" }}
@@ -45,9 +51,9 @@ const Step4 = () => {
                 <Option value="Yonalish2">Yonalish2</Option>
               </Select>
             </Form.Item>
-          </Col>
+          </div>
           {/*Ta’lim turi  */}
-          <Col span={8}>
+          <div style={{ width: "30%" }}>
             <label htmlFor="talimTuri">Ta’lim turi</label>
             <Form.Item
               style={{ margin: "5px 0" }}
@@ -67,9 +73,9 @@ const Step4 = () => {
                 <Option value="TalimTuri2">TalimTuri2</Option>
               </Select>
             </Form.Item>
-          </Col>
+          </div>
           {/*Ta’lim tili  */}
-          <Col span={8}>
+          <div style={{ width: "30%" }}>
             <label htmlFor="talimTili">Ta’lim tili</label>
             <Form.Item
               style={{ margin: "5px 0" }}
@@ -89,8 +95,8 @@ const Step4 = () => {
                 <Option value="TalimTili2">TalimTili2</Option>
               </Select>
             </Form.Item>
-          </Col>
-        </Row>
+          </div>
+        </div>
         <div className="prev-next-btns">
           <Form.Item
             wrapperCol={{

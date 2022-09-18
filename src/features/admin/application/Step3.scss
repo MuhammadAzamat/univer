@@ -5,8 +5,8 @@
   padding: 1.5rem;
   border-radius: 10px;
 }
-h3,
 .step3_container h3 {
+  width: 100%;
   font-size: 18px;
   font-weight: 600;
   line-height: 23px;
@@ -52,7 +52,7 @@ h3,
 .add-education,
 .add-sertification {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   cursor: pointer;
 }

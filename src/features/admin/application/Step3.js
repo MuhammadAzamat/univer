@@ -26,30 +26,26 @@ const Step3 = () => {
       <Form name="validate_other" onFinish={onFinish}>
         <Talim />
         <br />
-        <Row gutter={[24, 16]}>
-          <Col>
-            <div className="add-education">
-              <span>
-                <PlusCircleOutlined style={{ color: "#377DFF" }} />
-              </span>
-              <p>Ta’lim muassasasini qo’shish</p>
-            </div>
-          </Col>
-        </Row>
+        <div style={{ width: "100%" }}>
+          <div className="add-education">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Ta’lim muassasasini qo’shish</p>
+          </div>
+        </div>
         <br />
         <Sertifikatlar />
 
         <br />
-        <Row gutter={[24, 16]}>
-          <Col>
-            <div className="add-sertification">
-              <span>
-                <PlusCircleOutlined style={{ color: "#377DFF" }} />
-              </span>
-              <p>Sertifikat qo’shish</p>
-            </div>
-          </Col>
-        </Row>
+        <div style={{ width: "100%" }}>
+          <div className="add-sertification">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Sertifikat qo’shish</p>
+          </div>
+        </div>
         <br />
         <div className="prev-next-btns">
           <Form.Item
