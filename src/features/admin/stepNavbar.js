@@ -2,7 +2,7 @@ import { Steps } from "antd";
 const { Step } = Steps;
 
 const StepNavbar = () => (
-  <Steps current={1} size="small" labelPlacement="vertical">
+  <Steps current={0} size="small" labelPlacement="vertical">
     {/* <Step title="Finished" description="This is a description." /> */}
     <Step title="Umumiy ma’lumotlar" />
     <Step title="Pasport ma’lumotlari" />

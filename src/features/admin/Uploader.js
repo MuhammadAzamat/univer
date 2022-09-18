@@ -1,10 +1,14 @@
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
-import React, { useState } from 'react';
+import ImgCrop from 'antd-img-crop';
+import { object } from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
 const getBase64 = (img, callback) => {
+    if (img == null) return
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
+    console.log(img);
     reader.readAsDataURL(img);
 };
 
@@ -21,6 +25,8 @@ const beforeUpload = (file) => {
         message.error('Image must smaller than 2MB!');
     }
 
+    return false
+
     return isJpgOrPng && isLt2M;
 };
 
@@ -32,20 +38,31 @@ const Uploader = (props) => {
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
 
-    const handleChange = (info) => {
-        if (info.file.status === 'uploading') {
-            setLoading(true);
-            return;
-        }
+    useEffect(() => {
+        getBase64(props.value.file, (url) => {
+            setImageUrl(url);
+        });
+    }, [props])
 
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, (url) => {
-                setLoading(false);
-                setImageUrl(url);
-            });
-        }
+    const handleChange = (info) => {
+        console.log(info);
+        console.log(props.value);
         props.onChange(info)
+
+        // if (info.file.status === 'uploading') {
+        //     setLoading(true);
+        //     return;
+        // }
+
+        // if (info.file.status === 'done') {
+        // Get this url from response in real world.
+        console.log("after change", props.value);
+        getBase64(props.value.file, (url) => {
+            setLoading(false);
+            setImageUrl(url);
+        });
+        // }
+
     };
 
     const uploadButton = (
@@ -78,8 +95,7 @@ const Uploader = (props) => {
             listType="picture-card"
             className="avatar-uploader"
             showUploadList={false}
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-            beforeUpload={props.beforeUpload}
+            beforeUpload={beforeUpload}
             onChange={handleChange}
             onPreview={handlePreview}
         >
@@ -88,7 +104,8 @@ const Uploader = (props) => {
                     src={imageUrl}
                     alt="avatar"
                     style={{
-                        width: '100%',
+                        maxHeight: 165,
+                        maxWidth: 180,
                     }}
                 />
             ) : (

@@ -49,7 +49,9 @@ const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
     <>
       <Sider theme="light" trigger={null} collapsible collapsed={collapsed}
        width={253}>
-        <div className="logo" />
+        <div className="logo" >
+          <img src={require("../../assets/img/logo.png")} />
+        </div>
         <SidebarStep />
         <SidebarMenu />
       </Sider>
