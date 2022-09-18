@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Step0 from "./application/Step0";
-import ContentComp from "./application/Step0";
 import Step1 from "./application/Step1";
 import Step2 from "./application/Step2";
 import Step3 from "./application/Step3";
@@ -9,7 +8,7 @@ import Step5 from "./application/Step5";
 // import PropTypes from 'prop-types';
 
 export default function Dashboard() {
-  const [status, setstatus] = useState(5);
+  const [status, setstatus] = useState(0);
   return (
     <div className="admin-dashboard">{renderSwitch(status, setstatus)}</div>
   );
