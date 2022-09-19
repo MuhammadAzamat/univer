@@ -21,10 +21,10 @@ const Step4 = ({ onBackward }) => {
 
   const rules = [
     {
-      // required: true,
-      message: "Maydonni to'ldiring!"
+      required: true,
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step4_container">
@@ -33,11 +33,7 @@ const Step4 = ({ onBackward }) => {
         {/*Ta’lim yo’nalishi  */}
         <Col span={8}>
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="direction"
-          >
+          <Form.Item rules={rules} style={{ margin: "5px 0" }} name="direction">
             <Select
               id="direction"
               style={{ width: "100%" }}
@@ -45,8 +41,20 @@ const Step4 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="Yonalish1">Yonalish1</Option>
-              <Option value="Yonalish2">Yonalish2</Option>
+              <Option value="Filologiya va tillarni o‘qitish">
+                Filologiya va tillarni o‘qitish
+              </Option>
+              <Option value="Yonalish2">Boshlang‘ich ta’lim</Option>
+              <Option value="Yonalish3">Psixologiya</Option>
+              <Option value="Iqtisodiyot">Iqtisodiyot</Option>
+              <Option value="Yonalish5">
+                Moliya va moliyaviy texnologiyalar
+              </Option>
+              <Option value="Yonalish6">
+                Kompyuter ilmlari va dasturlash texnologiyalari
+              </Option>
+              <Option value="Yonalish7">Buxgalteriya hisobi va audit</Option>
+              <Option value="Yonalish8">Maktabgacha ta’lim</Option>
             </Select>
           </Form.Item>
         </Col>
@@ -65,8 +73,9 @@ const Step4 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="TalimTuri1">TalimTuri1</Option>
-              <Option value="TalimTuri2">TalimTuri2</Option>
+              <Option value="Sirtqi">Sirtqi</Option>
+              <Option value="Kunduzgi">Kunduzgi</Option>
+              <Option value="Kechgi">Kechgi</Option>
             </Select>
           </Form.Item>
         </Col>
