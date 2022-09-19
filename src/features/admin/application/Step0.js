@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 const { Content } = Layout;
-const Step0 = ({ setstatus }) => {
+const Step0 = ({ onForward }) => {
   return (
     <Content className="site-layout-background">
       <div className="site-layout-wrapper">
@@ -22,9 +22,7 @@ const Step0 = ({ setstatus }) => {
           <button
             className="btn-content"
             type="button"
-            onClick={() => {
-              setstatus(1);
-            }}
+            onClick={onForward}
           >
             Ariza topshirish
           </button>

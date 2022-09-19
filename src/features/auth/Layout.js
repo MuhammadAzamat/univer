@@ -9,9 +9,8 @@ const Layout = ({ children }) => {
     <>
       <div className="main-content">
         {/* <AuthNavbar /> */}
-        <Login />
-        <div className="header bg-gradient-info py-7 py-lg-8"></div>
         {/* Page content */}
+        {children}
       </div>
     </>
   );
