@@ -24,7 +24,11 @@ const Step3 = ({ onBackward, form }) => {
 
   const rules = [
     {
+<<<<<<< HEAD
       // required: true,
+=======
+      required: true,
+>>>>>>> ab6d526be76d5951559c0e90dae16f5364e850b4
       message: "Maydonni to'ldiring!",
     },
   ];
@@ -32,10 +36,38 @@ const Step3 = ({ onBackward, form }) => {
   return (
     <div className="step3_container">
       <Talim rules={rules} />
+<<<<<<< HEAD
 
       <br />
       <Sertifikatlar rules={rules} />
 
+=======
+      <br />
+      <Row gutter={[24, 16]}>
+        <Col>
+          <div className="add-education">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Ta’lim muassasasini qo’shish</p>
+          </div>
+        </Col>
+      </Row>
+      <br />
+      <Sertifikatlar rules={rules} />
+
+      <br />
+      <Row gutter={[24, 16]}>
+        <Col>
+          <div className="add-sertification">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Sertifikat qo’shish</p>
+          </div>
+        </Col>
+      </Row>
+>>>>>>> ab6d526be76d5951559c0e90dae16f5364e850b4
       <br />
       <Row>
         <Col span={14}></Col>

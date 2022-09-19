@@ -10,19 +10,13 @@ const Login = () => {
     form
       .validateFields()
       .then((values) => {
-        console.log("handleOk", values);
-        handleLogin(values).then((res) => {
-          window.location.pathname = "/";
-          localStorage.setItem("token", JSON.stringify(res.data.token));
-        });
+        const phone = values.phone.replace(/\s/g, "");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useLogin({ phone: phone, password: values.password });
       })
-      .catch((e) => {
-        console.log("Error:", e);
-      });
-
-    window.location.pathname = "/admin/index";
-    localStorage.setItem("token", JSON.stringify({user:123}));
+      .catch((e) => console.log("Error:", e));
   };
+  const redirect = () => (window.location.pathname = "/auth/register");
   return (
     <div className="login">
       <div className="login-page">
@@ -35,27 +29,41 @@ const Login = () => {
           className="login-wrap"
         >
           <Title level={3}>Tizimga kirish</Title>
-          <Form.Item name="phone">
-            <Input
-              autoComplete="off"
-              onPressEnter={handleOk}
-              placeholder="Telefon raqamingizni kiriting"
+          <Form.Item
+            name="phone"
+            rules={[
+              {
+                required: true,
+                message: "Iltimos, telefon raqamingizni kiriting",
+              },
+            ]}
+          >
+            <MaskedInput
+              allowClear
+              placeholder="+998"
+              mask="+998 00 000 00 00"
             />
           </Form.Item>
-          <Form.Item name="password">
-            <Input.Password
-              type="password"
-              onPressEnter={handleOk}
-              placeholder="Parolni kiriting"
-            />
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Iltimos, parolni kiriting",
+              },
+            ]}
+          >
+            <Input.Password type="password" placeholder="Parolni kiriting" />
           </Form.Item>
-          {/* <Form.Item name="remember">
+          <Form.Item name="remember">
             <Checkbox>Meni eslab qol</Checkbox>
-          </Form.Item> */}
+          </Form.Item>
           <Button
             block
             type="primary"
             htmlType="submit"
+            loading={loading}
+            onClick={handleOk}
             className="sign-in-button"
           >
             Tizimga kirish
@@ -68,6 +76,10 @@ const Login = () => {
               }}
               block
               type="default"
+<<<<<<< HEAD
+=======
+              onClick={redirect}
+>>>>>>> ab6d526be76d5951559c0e90dae16f5364e850b4
               className="register-button"
             >
               Ro’yxatdan o’tish
