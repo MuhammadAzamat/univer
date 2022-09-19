@@ -1,0 +1,85 @@
+.exam_date_container {
+  width: 50%;
+  background: #fff;
+  margin: 10px auto;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.exam-box,
+.exam_result {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.exam-box {
+  background-color: #377dff;
+}
+.exam_result {
+  background-color: #666666;
+}
+.anticon-calendar svg,
+.anticon-schedule svg {
+  font-size: 20px;
+  font-weight: 800;
+}
+.exam_date_container h3 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: #323b4b;
+  text-align: center;
+}
+.processing_container p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #666666;
+}
+.exam_date_container h5 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #323b4b;
+}
+.exam_details {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #b0b7c3;
+}
+.line_bottom {
+  width: 95%;
+  height: 1px;
+  opacity: 0.5;
+  background-color: #b0b7c3;
+  margin: 15px 0;
+}
+.exam_date_container button {
+  width: 50%;
+  height: 48px;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+.result_status {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #b0b7c3;
+  text-align: left;
+}
+.processing_container h5 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 4px 0;
+}
