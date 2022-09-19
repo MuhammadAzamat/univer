@@ -12,7 +12,7 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-const App = () => {
+const App = ({value, onChange}) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
@@ -76,7 +76,7 @@ const App = () => {
         onPreview={handlePreview}
         onChange={handleChange}
       >
-        {fileList.length >= 10 ? null : uploadButton}
+        {fileList.length >= 5 ? null : uploadButton}
       </Upload>
     </>
   );

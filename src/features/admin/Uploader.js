@@ -8,7 +8,7 @@ const getBase64 = (img, callback) => {
     if (img == null) return
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
-    console.log(img);
+    // console.log(img);
     reader.readAsDataURL(img);
 };
 
@@ -19,7 +19,7 @@ const beforeUpload = (file) => {
         message.error('You can only upload JPG/PNG file!');
     }
 
-    const isLt2M = file.size / 1024 / 1024 < 2;
+    const isLt2M = file.size / 1024 / 1024 < 10;
 
     if (!isLt2M) {
         message.error('Image must smaller than 2MB!');
@@ -45,8 +45,8 @@ const Uploader = (props) => {
     }, [props])
 
     const handleChange = (info) => {
-        console.log(info);
-        console.log(props.value);
+        // console.log(info);
+        // console.log(props.value);
         props.onChange(info)
 
         // if (info.file.status === 'uploading') {
@@ -56,7 +56,7 @@ const Uploader = (props) => {
 
         // if (info.file.status === 'done') {
         // Get this url from response in real world.
-        console.log("after change", props.value);
+        // console.log("after change", props.value);
         getBase64(props.value.file, (url) => {
             setLoading(false);
             setImageUrl(url);
@@ -73,7 +73,7 @@ const Uploader = (props) => {
                     marginTop: 8,
                 }}
             >
-                <h2>Fotosuratni yuklang</h2>
+                <h2>{props.title}</h2>
                 <h3>PNG, JPG, GIF up to 10MB</h3>
             </div>
         </div>
@@ -92,14 +92,16 @@ const Uploader = (props) => {
     return (
         <Upload
             name="avatar"
+            value={props.value}
+            fileList={props.value.fileList}
             listType="picture-card"
             className="avatar-uploader"
-            showUploadList={false}
+            showUploadList={props.showUploadList}
             beforeUpload={beforeUpload}
             onChange={handleChange}
             onPreview={handlePreview}
         >
-            {imageUrl ? (
+            {!props.showUploadList && imageUrl ? (
                 <img
                     src={imageUrl}
                     alt="avatar"

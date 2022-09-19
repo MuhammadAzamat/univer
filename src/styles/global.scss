@@ -10,7 +10,18 @@ body {
 
 @import '~antd/dist/antd.css';
 
-.ant-input {
+.ant-input-number{
+  border-radius: 8px;
+}
+
+.ant-picker{
+  border: none;
+  padding: 0;
+}
+
+.ant-input,
+.ant-input-number-input,
+.ant-picker-input {
   /* White/White 100 */
   background: #FFFFFF;
 
@@ -28,6 +39,7 @@ body {
   display: flex;
   align-items: center;
   padding: 12px 16px;
+  height: auto;
 }
 
 .header {
@@ -78,7 +90,7 @@ body {
 
 
 
-.nav-btns{
+.nav-btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,4 +101,14 @@ body {
     width: 200px;
     border-radius: 8px;
   }
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+}
+
+.ant-upload-list.ant-upload-list-picture-card{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

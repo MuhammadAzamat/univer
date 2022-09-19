@@ -19,7 +19,7 @@ export default function Login() {
   const history = useHistory()
   
   useEffect(() => {
-    document.title = 'Network - Signin';
+    document.title = 'Admission - Signin';
     localStorage.removeItem('jwt')
     localStorage.removeItem('user')
   }, [])

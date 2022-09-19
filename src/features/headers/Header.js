@@ -32,7 +32,7 @@ export default function Header({ collapsed, setCollapsed }) {
           <div>
             <Select defaultValue="uz" className="select-before">
               <Option value="uz"><img style={{ marginRight: 10 }} src={require("../../assets/img/flags.png")} alt="uz" />uz</Option>
-              <Option value="en"><img style={{ marginRight: 10 }} src={require("../../assets/img/flags.png")} alt="en" />en</Option>
+              {/* <Option value="en"><img style={{ marginRight: 10 }} src={require("../../assets/img/flags.png")} alt="en" />en</Option> */}
             </Select>
           </div>
           <div className="bg">

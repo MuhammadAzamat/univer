@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col, Row } from "antd";
-const Step5 = () => {
+const Step5 = ({onBackward}) => {
   return (
     <section className="section_app-info">
       <div className="wrapper">
@@ -256,10 +256,10 @@ const Step5 = () => {
         </div>
       </div>
       <div className="app_info-section-btn">
-        <Button className="btn btn-left" shape="">
+        <Button className="btn btn-left" shape="" onClick={onBackward}>
           Orqaga
         </Button>
-        <Button className="btn btn-right" shape="">
+        <Button className="btn btn-right" shape="" htmlType="submit">
           Ariza yuborish
         </Button>
       </div>

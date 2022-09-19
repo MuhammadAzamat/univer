@@ -3,6 +3,7 @@ import React from "react";
 import { Col, Row } from "antd";
 import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import ImgUploader from "./ImgUploader";
+import Uploader from "../Uploader";
 
 const { Option } = Select;
 const handleChange = (value) => {
@@ -16,82 +17,98 @@ const handleChange = (value) => {
 //   span: 6,
 //   offset: 1,
 // });
-const Step3 = () => {
+const Step3 = ({ onBackward }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
 
+  const rules = [
+    {
+      required: true,
+      message: "Maydonni to'ldiring!"
+    },
+  ]
+
   return (
     <div className="step3_container">
-      <Form name="validate_other" onFinish={onFinish}>
-        <Talim />
-        <br />
-        <Row gutter={[24, 16]}>
-          <Col>
-            <div className="add-education">
-              <span>
-                <PlusCircleOutlined style={{ color: "#377DFF" }} />
-              </span>
-              <p>Ta’lim muassasasini qo’shish</p>
-            </div>
-          </Col>
-        </Row>
-        <br />
-        <Sertifikatlar />
+      <Talim rules={rules} />
+      <br />
+      <Row gutter={[24, 16]}>
+        <Col>
+          <div className="add-education">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Ta’lim muassasasini qo’shish</p>
+          </div>
+        </Col>
+      </Row>
+      <br />
+      <Sertifikatlar rules={rules} />
 
-        <br />
-        <Row gutter={[24, 16]}>
-          <Col>
-            <div className="add-sertification">
-              <span>
-                <PlusCircleOutlined style={{ color: "#377DFF" }} />
-              </span>
-              <p>Sertifikat qo’shish</p>
-            </div>
-          </Col>
-        </Row>
-        <br />
-        <div className="prev-next-btns">
-          <Form.Item
-            wrapperCol={{
-              span: 12,
-              offset: 6,
-            }}
-          >
-            <Button className="step3_btns">Orqaga</Button>
-            <Button className="step3_btns" type="primary" htmlType="submit">
-              Oldinga
-            </Button>
-          </Form.Item>
-        </div>
-      </Form>
+      <br />
+      <Row gutter={[24, 16]}>
+        <Col>
+          <div className="add-sertification">
+            <span>
+              <PlusCircleOutlined style={{ color: "#377DFF" }} />
+            </span>
+            <p>Sertifikat qo’shish</p>
+          </div>
+        </Col>
+      </Row>
+      <br />
+      <Row>
+        <Col span={14}></Col>
+        <Col span={10}>
+          <div className="nav-btns">
+            <Form.Item
+              wrapperCol={{
+                offset: 0,
+                span: 8,
+              }}
+            >
+              <Button type="default" onClick={onBackward}>
+                Orqaga
+              </Button>
+            </Form.Item>
+            <Form.Item
+              wrapperCol={{
+                offset: 0,
+                span: 8,
+              }}
+            >
+              <Button type="primary" htmlType="submit">
+                Oldinga
+              </Button>
+            </Form.Item>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
 
 export default Step3;
 
-const Talim = () => {
+const Talim = ({ rules }) => {
   return (
     <>
       <h3>Ta'lim</h3>
       <Row gutter={[24, 16]}>
         {/*Maktab turi  */}
         <Col span={8}>
-          <label htmlFor="talimturi">Ta'lim turi</label>
+          <label htmlFor="education_type">Ta'lim turi</label>
           <Form.Item
+            name="education_type"
             style={{ margin: "5px 0" }}
-            rules={[
-              { required: true, message: "Ta'lim turini" },
-              { type: "string", min: 6 },
-            ]}
+            rules={rules}
           >
             <Select
-              id="talimturi"
+              id="education_type"
               style={{ width: "100%" }}
               placeholder="Ta'lim turini tanlang!"
               allowClear
-              onChange={handleChange}
             >
               <Option value="Kundizgi">Kundizgi</Option>
               <Option value="Kechki">Kechki</Option>
@@ -100,18 +117,14 @@ const Talim = () => {
         </Col>
         {/* Muassasa  */}
         <Col span={8}>
-          <label htmlFor="muassasa">Muassasa</label>
+          <label htmlFor="education_name">Muassasa</label>
           <Form.Item
             style={{ margin: "5px 0" }}
-            rules={[
-              {
-                required: true,
-                message: "Maktabingizni kiriting !",
-              },
-            ]}
+            rules={rules}
+            name="education_name"
           >
             <Input
-              id="muassasa"
+              id="education_name"
               style={{ width: "100%" }}
               placeholder="Maktabingizni kiriting"
             />
@@ -132,19 +145,15 @@ const Talim = () => {
         </Col>
         {/* Diplom raqam  */}
         <Col span={8}>
-          <label htmlFor="diplomraqami">Diplom/Attestatsiya raqami</label>
+          <label htmlFor="diploma_number">Diplom/Attestatsiya raqami</label>
           <Form.Item
+            name="diploma_number"
             style={{ margin: "5px 0" }}
-            rules={[
-              {
-                required: true,
-                message: "Diplom/attestatsiya raqaminin kiriting !",
-              },
-            ]}
+            rules={rules}
           >
             <InputNumber
               style={{ width: "100%" }}
-              id="diplomraqami"
+              id="diploma_number"
               placeholder="Diplom/attestatsiya raqamini kiriting"
             />
           </Form.Item>
@@ -152,10 +161,13 @@ const Talim = () => {
 
         {/* Tugatgan vaqti */}
         <Col span={8}>
-          <label htmlFor="tugatganyil">Tugatgan yil</label>
-          <Form.Item>
+          <label htmlFor="graduation_year">Tugatgan yil</label>
+          <Form.Item
+            rules={rules}
+            name="graduation_year"
+          >
             <DatePicker
-              id="tugatganyil"
+              id="graduation_year"
               style={{ margin: "5px 0", width: "100%" }}
               placeholder="kk/oo/yyyy"
             />
@@ -166,7 +178,12 @@ const Talim = () => {
           <h3>Diplom/Attestat nusxasi</h3>
         </Col>
         <Col span={24}>
-          <ImgUploader />
+          <Form.Item
+            rules={rules}
+            name="diploma_file"
+          >
+            <DiplomUploader />
+          </Form.Item>
         </Col>
       </Row>
       <br />
@@ -175,27 +192,24 @@ const Talim = () => {
   );
 };
 
-const Sertifikatlar = () => {
+const Sertifikatlar = ({ rules }) => {
   return (
     <>
       <h3>Sertifikatlar</h3>
       <Row gutter={[24, 16]}>
         {/*Sertifikat turi  */}
         <Col span={8}>
-          <label htmlFor="sertifikatTuri">Sertifikat turi</label>
+          <label htmlFor="certificate_type">Sertifikat turi</label>
           <Form.Item
+            name="certificate_type"
             style={{ margin: "5px 0" }}
-            rules={[
-              { required: true, message: "Sertifikat turini tanlang !" },
-              { type: "string", min: 6 },
-            ]}
+            rules={rules}
           >
             <Select
-              id="sertifikatTuri"
+              id="certificate_type"
               style={{ width: "100%" }}
               placeholder="Sertifikat turini tanlang!"
               allowClear
-              onChange={handleChange}
             >
               <Option value="Sertifikat1">Sertifikat1</Option>
               <Option value="Sertifikat2">Sertifika2</Option>
@@ -204,18 +218,14 @@ const Sertifikatlar = () => {
         </Col>
         {/* Sertifikat raqami  */}
         <Col span={8}>
-          <label htmlFor="sertifikatRaqam">Sertifikat raqami</label>
+          <label htmlFor="certificate_number">Sertifikat raqami</label>
           <Form.Item
             style={{ margin: "5px 0" }}
-            rules={[
-              {
-                required: true,
-                message: "Sertifikat raqami kiriting !",
-              },
-            ]}
+            rules={rules}
+            name="certificate_number"
           >
             <Input
-              id="sertifikatRaqam"
+              id="certificate_number"
               style={{ width: "100%" }}
               placeholder="Sertifikat raqami kiriting"
             />
@@ -236,19 +246,15 @@ const Sertifikatlar = () => {
         </Col>
         {/* To’plangan ball  */}
         <Col span={8}>
-          <label htmlFor="toplaganBall">To’plangan ball</label>
+          <label htmlFor="certificate_score">To’plangan ball</label>
           <Form.Item
             style={{ margin: "5px 0" }}
-            rules={[
-              {
-                required: true,
-                message: "To’plangan ball kiriting !",
-              },
-            ]}
+            rules={rules}
+            name="certificate_score"
           >
             <InputNumber
               style={{ width: "100%" }}
-              id="toplaganBall"
+              id="certificate_score"
               placeholder="To’plangan ball kiriting"
             />
           </Form.Item>
@@ -259,7 +265,13 @@ const Sertifikatlar = () => {
           <h3>Sertifikatlar nusxasi</h3>
         </Col>
         <Col span={24}>
-          <ImgUploader />
+          <Form.Item
+            style={{ margin: "5px 0" }}
+            rules={rules}
+            name="certificate_file"
+          >
+            <CertUploader />
+          </Form.Item>
         </Col>
       </Row>
       <br />
@@ -267,3 +279,30 @@ const Sertifikatlar = () => {
     </>
   );
 };
+
+
+const DiplomUploader = ({ value = {}, onChange }) => {
+  return (
+    <div className="step-1-image-upload">
+      <Uploader
+        showUploadList={true}
+        title={"Diplom/Attestat yuklang"}
+        value={value}
+        beforeUpload={(file) => false}
+        onChange={(info) => onChange(info)} />
+    </div>
+  )
+}
+
+const CertUploader = ({ value = {}, onChange }) => {
+  return (
+    <div className="step-1-image-upload">
+      <Uploader
+        showUploadList={true}
+        title={"Sertifikatni yuklang"}
+        value={value}
+        beforeUpload={(file) => false}
+        onChange={(info) => onChange(info)} />
+    </div>
+  )
+}
