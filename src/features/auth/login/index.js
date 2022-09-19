@@ -10,9 +10,9 @@ const Login = () => {
     setLoading(true);
     login(data)
       .then((res) => {
+        // console.log("response", res);
         if (res.status === 200) {
           setLoading(false);
-          message.info("Successfully signed!");
           window.location.pathname = "/admin/index";
           localStorage.setItem(
             "Authorization",

@@ -1,7 +1,5 @@
 @import "../../styles/mixins";
 
-.headers-header {
-}
 .search {
   margin-left: 10px;
   width: 265px;
@@ -11,7 +9,7 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .bg {

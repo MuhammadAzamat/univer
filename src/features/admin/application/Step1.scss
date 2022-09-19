@@ -121,11 +121,14 @@
     }
 
     .ant-btn.ant-btn-default.btn-upload {
-      background: rgba(55, 125, 255, 0.1);
+      color: #377dff;
       border-radius: 8px;
       margin-top: 16px;
-      display: inline-block;
-      color: #377dff;
+      padding: 20px 32px;
+      display: inline-flex;
+      border: none;
+      align-items: center;
+      background: rgba(55, 125, 255, 0.1);
 
       img {
         margin-right: 5px;

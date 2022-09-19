@@ -37,7 +37,7 @@ const Step2 = ({ onBackward }) => {
       // required: true,
       // message: "Maydonni to'ldiring!"
     },
-  ]
+  ];
 
   return (
     <div className="step2_container">
@@ -97,9 +97,7 @@ const Step2 = ({ onBackward }) => {
         {/* Berilgan vaqti */}
         <Col span={8}>
           <label htmlFor="passport_issue_date">Berilgan vaqti</label>
-          <Form.Item
-            rules={rules}
-            name="passport_issue_date">
+          <Form.Item rules={rules} name="passport_issue_date">
             <DatePicker
               id="passport_issue_date"
               style={{ margin: "5px 0", width: "100%" }}
@@ -110,9 +108,7 @@ const Step2 = ({ onBackward }) => {
         {/* Amal qilish muddatai  */}
         <Col span={8}>
           <label htmlFor="passport_expire_date">Amal qilish muddati</label>
-          <Form.Item
-            rules={rules}
-            name="passport_expire_date">
+          <Form.Item rules={rules} name="passport_expire_date">
             <DatePicker
               id="passport_expire_date"
               style={{ margin: "5px  0", width: "100%" }}
@@ -123,11 +119,7 @@ const Step2 = ({ onBackward }) => {
         {/* Kim tominidan berilgan  */}
         <Col span={8}>
           <label htmlFor="issued_by">Kim tomonidan berilgan</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            name="issued_by"
-            rules={rules}
-          >
+          <Form.Item style={{ margin: "5px 0" }} name="issued_by" rules={rules}>
             <Input
               id="issued_by"
               style={{ width: "100%" }}
@@ -138,10 +130,7 @@ const Step2 = ({ onBackward }) => {
         {/* Tugilgan sana  */}
         <Col span={8}>
           <label htmlFor="birth_date">Tug’ilgan sana</label>
-          <Form.Item
-            name="birth_date"
-            rules={rules}
-          >
+          <Form.Item name="birth_date" rules={rules}>
             <DatePicker
               style={{ margin: "5px 0", width: "100%" }}
               id="birth_date"
@@ -152,11 +141,7 @@ const Step2 = ({ onBackward }) => {
         {/* Jinsni kiriting  */}
         <Col span={8}>
           <label htmlFor="gender">Jinsini kiriting</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="gender"
-          >
+          <Form.Item rules={rules} name="gender">
             <Select
               id="gender"
               style={{ width: "100%" }}
@@ -172,11 +157,7 @@ const Step2 = ({ onBackward }) => {
         {/* Millat  */}
         <Col span={8}>
           <label htmlFor="nation">Millati</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="nation"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="nation">
             <Select
               id="nation"
               placeholder="O'zbek"
@@ -192,11 +173,7 @@ const Step2 = ({ onBackward }) => {
         {/* Mamlakat  */}
         <Col span={8}>
           <label htmlFor="country">Mamlakat</label>
-          <Form.Item
-            name="country"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="country" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="country"
               placeholder="Davlat"
@@ -212,11 +189,7 @@ const Step2 = ({ onBackward }) => {
         {/* Viloyat */}
         <Col span={8}>
           <label htmlFor="region">Viloyat</label>
-          <Form.Item
-            name="region"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="region" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="region"
               placeholder="Shahar/Viloyat"
@@ -232,11 +205,7 @@ const Step2 = ({ onBackward }) => {
         {/* Tuman  */}
         <Col span={8}>
           <label htmlFor="district">Tuman</label>
-          <Form.Item
-            name="district"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="district" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="district"
               style={{ width: "100%" }}
@@ -252,11 +221,7 @@ const Step2 = ({ onBackward }) => {
         {/* Manzil */}
         <Col span={8}>
           <label htmlFor="address">Manzil</label>
-          <Form.Item
-            name="address"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="address" style={{ margin: "5px 0" }} rules={rules}>
             <Input
               id="address"
               style={{ width: "100%" }}
