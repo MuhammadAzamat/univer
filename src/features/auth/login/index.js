@@ -1,8 +1,11 @@
 import { handleLogin } from "./services";
 import { Button, Typography, Form, Input } from "antd";
+import { useHistory } from "react-router-dom";
 const { Title } = Typography;
 const Login = () => {
   const [form] = Form.useForm();
+
+  const history = useHistory()
   const handleOk = () => {
     form
       .validateFields()
@@ -21,6 +24,7 @@ const Login = () => {
     <div className="login">
       <div className="login-page">
         <Form
+          onFinish={handleOk}
           form={form}
           size="large"
           layout="vertical"
@@ -56,9 +60,9 @@ const Login = () => {
           <div className="login-footer">
             <p className="auth-confirm-text">Sizda akkaunt mavjud emasmi?</p>
             <Button
+              onClick={()=>{history.push('/auth/register')}}
               block
               type="default"
-              htmlType="submit"
               className="register-button"
             >
               Ro’yxatdan o’tish
