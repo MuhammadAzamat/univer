@@ -34,8 +34,8 @@ const Step2 = ({ onBackward }) => {
 
   const rules = [
     {
-      // required: true,
-      // message: "Maydonni to'ldiring!"
+      required: true,
+      message: "Maydonni to'ldiring!"
     },
   ]
 

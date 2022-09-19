@@ -27,7 +27,7 @@ function Step1({ onBackward }) {
 
   const rules = [
     {
-      // required: true,
+      required: true,
       message: 'Iltimos maydonni to\'ldiring',
     }
   ]
