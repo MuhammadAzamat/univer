@@ -25,9 +25,9 @@ const Step3 = ({ onBackward }) => {
   const rules = [
     {
       required: true,
-      message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step3_container">
@@ -41,7 +41,6 @@ const Step3 = ({ onBackward }) => {
             </span>
             <p>Ta’lim muassasasini qo’shish</p>
           </div>
-<<<<<<< HEAD
         </Col>
       </Row>
       <br />
@@ -50,21 +49,12 @@ const Step3 = ({ onBackward }) => {
       <br />
       <Row gutter={[24, 16]}>
         <Col>
-=======
-        </div>
-        <br />
-        <Sertifikatlar />
-
-        <br />
-        <div style={{ width: "100%" }}>
->>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
           <div className="add-sertification">
             <span>
               <PlusCircleOutlined style={{ color: "#377DFF" }} />
             </span>
             <p>Sertifikat qo’shish</p>
           </div>
-<<<<<<< HEAD
         </Col>
       </Row>
       <br />
@@ -95,24 +85,6 @@ const Step3 = ({ onBackward }) => {
           </div>
         </Col>
       </Row>
-=======
-        </div>
-        <br />
-        <div className="prev-next-btns">
-          <Form.Item
-            wrapperCol={{
-              span: 12,
-              offset: 6,
-            }}
-          >
-            <Button className="step3_btns">Orqaga</Button>
-            <Button className="step3_btns" type="primary" htmlType="submit">
-              Oldinga
-            </Button>
-          </Form.Item>
-        </div>
-      </Form>
->>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
     </div>
   );
 };
@@ -190,10 +162,7 @@ const Talim = ({ rules }) => {
         {/* Tugatgan vaqti */}
         <Col span={8}>
           <label htmlFor="graduation_year">Tugatgan yil</label>
-          <Form.Item
-            rules={rules}
-            name="graduation_year"
-          >
+          <Form.Item rules={rules} name="graduation_year">
             <DatePicker
               id="graduation_year"
               style={{ margin: "5px 0", width: "100%" }}
@@ -206,10 +175,7 @@ const Talim = ({ rules }) => {
           <h3>Diplom/Attestat nusxasi</h3>
         </Col>
         <Col span={24}>
-          <Form.Item
-            rules={rules}
-            name="diploma_file"
-          >
+          <Form.Item rules={rules} name="diploma_file">
             <DiplomUploader />
           </Form.Item>
         </Col>
@@ -308,7 +274,6 @@ const Sertifikatlar = ({ rules }) => {
   );
 };
 
-
 const DiplomUploader = ({ value = {}, onChange }) => {
   return (
     <div className="step-1-image-upload">
@@ -317,10 +282,11 @@ const DiplomUploader = ({ value = {}, onChange }) => {
         title={"Diplom/Attestat yuklang"}
         value={value}
         beforeUpload={(file) => false}
-        onChange={(info) => onChange(info)} />
+        onChange={(info) => onChange(info)}
+      />
     </div>
-  )
-}
+  );
+};
 
 const CertUploader = ({ value = {}, onChange }) => {
   return (
@@ -330,7 +296,8 @@ const CertUploader = ({ value = {}, onChange }) => {
         title={"Sertifikatni yuklang"}
         value={value}
         beforeUpload={(file) => false}
-        onChange={(info) => onChange(info)} />
+        onChange={(info) => onChange(info)}
+      />
     </div>
-  )
-}
+  );
+};
