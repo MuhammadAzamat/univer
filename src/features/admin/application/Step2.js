@@ -1,12 +1,10 @@
 import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "antd";
 import Uploader from "../Uploader";
 
 const { Option } = Select;
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
+
 /******
  * 
  * {
@@ -28,6 +26,18 @@ const handleChange = (value) => {
  * 
  * ******/
 const Step2 = ({ onBackward }) => {
+  const [check, setCheck] = useState(true);
+  const checker = (value) => {
+    handleChange(value);
+    if (value === "uzbkistan") {
+      setCheck(false);
+    } else {
+      setCheck(true);
+    }
+  };
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -35,9 +45,9 @@ const Step2 = ({ onBackward }) => {
   const rules = [
     {
       required: true,
-      message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step2_container">
@@ -66,15 +76,19 @@ const Step2 = ({ onBackward }) => {
         {/* Passport seria  */}
         <Col span={8}>
           <label htmlFor="passport_series">Pasport seria raqami</label>
-          <Form.Item
-            name="passport_series"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="passport_series" style={{ margin: "5px 0" }}>
             <Input
+              rules={[
+                {
+                  required: true,
+                  type: "regexp",
+                  pattern: new RegExp(/^[A-Za-z]{2}[0-9]{7}$/),
+                  message: "Wrong format!",
+                },
+              ]}
               id="passport_series"
               style={{ width: "100%" }}
-              placeholder="AA3214323"
+              placeholder="AA1234567"
             />
           </Form.Item>
         </Col>
@@ -86,7 +100,8 @@ const Step2 = ({ onBackward }) => {
             rules={rules}
             name="identification_number"
           >
-            <InputNumber
+            <Input
+              type="number"
               style={{ width: "100%" }}
               id="identification_number"
               placeholder="1234567890123"
@@ -97,9 +112,7 @@ const Step2 = ({ onBackward }) => {
         {/* Berilgan vaqti */}
         <Col span={8}>
           <label htmlFor="passport_issue_date">Berilgan vaqti</label>
-          <Form.Item
-            rules={rules}
-            name="passport_issue_date">
+          <Form.Item rules={rules} name="passport_issue_date">
             <DatePicker
               id="passport_issue_date"
               style={{ margin: "5px 0", width: "100%" }}
@@ -110,9 +123,7 @@ const Step2 = ({ onBackward }) => {
         {/* Amal qilish muddatai  */}
         <Col span={8}>
           <label htmlFor="passport_expire_date">Amal qilish muddati</label>
-          <Form.Item
-            rules={rules}
-            name="passport_expire_date">
+          <Form.Item rules={rules} name="passport_expire_date">
             <DatePicker
               id="passport_expire_date"
               style={{ margin: "5px  0", width: "100%" }}
@@ -123,11 +134,7 @@ const Step2 = ({ onBackward }) => {
         {/* Kim tominidan berilgan  */}
         <Col span={8}>
           <label htmlFor="issued_by">Kim tomonidan berilgan</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            name="issued_by"
-            rules={rules}
-          >
+          <Form.Item style={{ margin: "5px 0" }} name="issued_by" rules={rules}>
             <Input
               id="issued_by"
               style={{ width: "100%" }}
@@ -138,10 +145,7 @@ const Step2 = ({ onBackward }) => {
         {/* Tugilgan sana  */}
         <Col span={8}>
           <label htmlFor="birth_date">Tug’ilgan sana</label>
-          <Form.Item
-            name="birth_date"
-            rules={rules}
-          >
+          <Form.Item name="birth_date" rules={rules}>
             <DatePicker
               style={{ margin: "5px 0", width: "100%" }}
               id="birth_date"
@@ -152,11 +156,7 @@ const Step2 = ({ onBackward }) => {
         {/* Jinsni kiriting  */}
         <Col span={8}>
           <label htmlFor="gender">Jinsini kiriting</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="gender"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="gender">
             <Select
               id="gender"
               style={{ width: "100%" }}
@@ -172,11 +172,7 @@ const Step2 = ({ onBackward }) => {
         {/* Millat  */}
         <Col span={8}>
           <label htmlFor="nation">Millati</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="nation"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="nation">
             <Select
               id="nation"
               placeholder="O'zbek"
@@ -186,77 +182,71 @@ const Step2 = ({ onBackward }) => {
             >
               <Option value="uzbek">O'zbek</Option>
               <Option value="rus">Rus</Option>
+              <Option value="qozoq">Qozoq</Option>
+              <Option value="tojik">Tojik</Option>
+              <Option value="qirgiz">Qirg'iz</Option>
+              <Option value="uygur">Uyg'ur</Option>
             </Select>
           </Form.Item>
         </Col>
         {/* Mamlakat  */}
         <Col span={8}>
           <label htmlFor="country">Mamlakat</label>
-          <Form.Item
-            name="country"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="country" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="country"
               placeholder="Davlat"
               style={{ width: "100%" }}
               allowClear
-              onChange={handleChange}
+              onChange={checker}
             >
               <Option value="uzbkistan">O'zbekiston</Option>
               <Option value="rossiya">Rossiya</Option>
+              <Option value="tojikiston">Tojikiston</Option>
+              <Option value="qozogiston">Qozog'iston</Option>
+              <Option value="qirgiziston">Qirg'iziston</Option>
             </Select>
           </Form.Item>
         </Col>
         {/* Viloyat */}
         <Col span={8}>
           <label htmlFor="region">Viloyat</label>
-          <Form.Item
-            name="region"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="region" style={{ margin: "5px 0" }} rules={rules}>
             <Select
+              disabled={check}
               id="region"
               placeholder="Shahar/Viloyat"
               style={{ width: "100%" }}
               allowClear
               onChange={handleChange}
             >
-              <Option value="viloyat1">Viloyat1</Option>
-              <Option value="viloyat2">Viloyat2</Option>
+              <Option value="Andijon">Andijon viloyati</Option>
+              <Option value="Buxoro">Buxoro viloyati</Option>
+              <Option value="Jizzax">Jizzax viloyati</Option>
+              <Option value="Qashqadaryo">Qashqadaryo viloyati</Option>
+              <Option value="Navoiy">Navoiy viloyati</Option>
+              <Option value="Namangan">Namangan viloyati</Option>
+              <Option value="Samarqand">Samarqand viloyati</Option>
+              <Option value="Surxondaryo">Surxondaryo viloyati</Option>
+              <Option value="Sirdaryo">Sirdaryo viloyati</Option>
+              <Option value="Xorazm">Xorazm viloyati</Option>
+              <Option value="Farg'ona">Farg'ona viloyati</Option>
+              <Option value="Toshkent viloyati">Toshkent viloyati</Option>
+              <Option value="Toshkent shahri">Toshkent shahri</Option>
             </Select>
           </Form.Item>
         </Col>
         {/* Tuman  */}
         <Col span={8}>
           <label htmlFor="district">Tuman</label>
-          <Form.Item
-            name="district"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
-            <Select
-              id="district"
-              style={{ width: "100%" }}
-              placeholder="Tuman"
-              allowClear
-              onChange={handleChange}
-            >
-              <Option value="tuman1">Tuman1</Option>
-              <Option value="tuman2">Tuman2</Option>
-            </Select>
+          <Form.Item name="district" style={{ margin: "5px 0" }} rules={rules}>
+            <Input placeholder="Tuman" />
           </Form.Item>
         </Col>
         {/* Manzil */}
         <Col span={8}>
           <label htmlFor="address">Manzil</label>
-          <Form.Item
-            name="address"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="address" style={{ margin: "5px 0" }} rules={rules}>
             <Input
               id="address"
               style={{ width: "100%" }}
