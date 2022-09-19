@@ -1,0 +1,114 @@
+@import "../../../styles/mixins.scss";
+
+.section-swap {
+  padding: 0;
+  .header-text {
+    padding: 25px 0 0 20px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+  }
+  .steps-bar {
+    padding: 0 20px;
+    .steps-bar-text {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      color: #323b4b;
+    }
+  }
+
+  .form-swap {
+    padding: 0 20px;
+  }
+  .ant-steps-label-vertical .ant-steps-item-content {
+    width: 145px !important;
+  }
+  .ant-steps-item-process
+    > .ant-steps-item-container
+    > .ant-steps-item-tail::after {
+    background-color: #e0e4e8;
+  }
+  .ant-steps-item-wait
+    > .ant-steps-item-container
+    > .ant-steps-item-tail::after {
+    background-color: #e0e4e8;
+  }
+
+  .step2_container {
+    width: 95%;
+    background: #fff;
+    margin: 10px auto;
+    padding: 1.5rem;
+    border-radius: 10px;
+    form {
+      width: auto;
+      justify-content: normal;
+    }
+  }
+  .ant-row {
+    width: 100%;
+  }
+}
+
+.step2_wrapper {
+  padding: 23px;
+  background: #f9fafe;
+  min-height: 100vh;
+}
+.step2_container h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.75px;
+  text-align: left;
+}
+.step2_container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.step2_btns {
+  margin: 0 10px;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.pasport-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.prev-next-btns {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.prev-next-btns .ant-form-item-control-input-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-select-selection-item {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ant-select.ant-select-in-form-item {
+  padding: 0 !important;
+  border-radius: 4px !important;
+}

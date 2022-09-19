@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col, Row } from "antd";
-const Step5 = ({onBackward}) => {
+const Step5 = ({ onBackward }) => {
   return (
     <section className="section_app-info">
       <div className="wrapper">
@@ -60,7 +60,7 @@ const Step5 = ({onBackward}) => {
               <img
                 style={{ width: "150px" }}
                 src="/person-photo.png"
-                alt="person photo"
+                alt="person"
               />
             </Col>
           </Row>
@@ -146,12 +146,12 @@ const Step5 = ({onBackward}) => {
                     marginBottom: "12px",
                   }}
                   src="/password1.png"
-                  alt="person photo"
+                  alt="person"
                 />
                 <img
                   style={{ width: "200px", display: "block" }}
                   src="/password2.png"
-                  alt="person photo"
+                  alt="person"
                 />
               </div>
             </Col>
@@ -194,7 +194,7 @@ const Step5 = ({onBackward}) => {
                 <img
                   style={{ width: "200px", display: "block" }}
                   src="/diplom.png"
-                  alt="person photo"
+                  alt="person"
                 />
                 <span className="">
                   Yana <br />
@@ -228,7 +228,7 @@ const Step5 = ({onBackward}) => {
               <img
                 style={{ width: "200px" }}
                 src="/sertifikat.png"
-                alt="person photo"
+                alt="person"
               />
             </Col>
           </Row>

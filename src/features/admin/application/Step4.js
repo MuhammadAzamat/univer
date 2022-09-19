@@ -44,17 +44,19 @@ const Step4 = ({ onBackward }) => {
               <Option value="Filologiya va tillarni o‘qitish">
                 Filologiya va tillarni o‘qitish
               </Option>
-              <Option value="Yonalish2">Boshlang‘ich ta’lim</Option>
-              <Option value="Yonalish3">Psixologiya</Option>
+              <Option value="Boshlang‘ich ta’lim">Boshlang‘ich ta’lim</Option>
+              <Option value="Psixologiya">Psixologiya</Option>
               <Option value="Iqtisodiyot">Iqtisodiyot</Option>
-              <Option value="Yonalish5">
+              <Option value="Moliya va moliyaviy texnologiyalar">
                 Moliya va moliyaviy texnologiyalar
               </Option>
-              <Option value="Yonalish6">
+              <Option value="Kompyuter ilmlari va dasturlash texnologiyalari">
                 Kompyuter ilmlari va dasturlash texnologiyalari
               </Option>
-              <Option value="Yonalish7">Buxgalteriya hisobi va audit</Option>
-              <Option value="Yonalish8">Maktabgacha ta’lim</Option>
+              <Option value="Buxgalteriya hisobi va audit">
+                Buxgalteriya hisobi va audit
+              </Option>
+              <Option value="Maktabgacha ta’lim">Maktabgacha ta’lim</Option>
             </Select>
           </Form.Item>
         </Col>

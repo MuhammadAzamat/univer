@@ -1,10 +1,13 @@
 @import "../../styles/mixins";
 @import "./Layout";
 @import "./Dashboard";
-@import "./step-5/style.scss";
 @import "./application/Step0";
 @import "./application/Step1";
 @import "./application/Step2";
 @import "./application/Step3";
 @import "./application/Step4";
 @import "./application/Step5";
+@import "./applicationProcess/ApplicationProcess";
+@import "./exam/Exam";
+@import "./transfer/Transfer";
+@import "./settings/Settings";
