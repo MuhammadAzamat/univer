@@ -206,6 +206,7 @@ const Sertifikatlar = ({ rules }) => {
               <Option value="IELTS">IELTS</Option>
               <Option value="TOEFL">TOEFL</Option>
               <Option value="SAT">SAT</Option>
+              <Option value="DTM">DTM</Option>
             </Select>
           </Form.Item>
         </Col>
