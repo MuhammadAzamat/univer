@@ -17,7 +17,7 @@ const handleChange = (value) => {
 //   span: 6,
 //   offset: 1,
 // });
-const Step3 = ({ onBackward }) => {
+const Step3 = ({ onBackward, form }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -57,7 +57,7 @@ const Step3 = ({ onBackward }) => {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={() => form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>
@@ -93,8 +93,10 @@ const Talim = ({ rules }) => {
                       placeholder="Ta'lim turini tanlang!"
                       allowClear
                     >
-                      <Option value="Kundizgi">Kundizgi</Option>
-                      <Option value="Kechki">Kechki</Option>
+                      <Option value="Maktab">Maktab</Option>
+                      <Option value="Litsey">Litsey</Option>
+                      <Option value="Kollej">Kollej</Option>
+                      <Option value="Texnikum">Texnikum</Option>
                     </Select>
                   </Form.Item>
                 </Col>
@@ -123,7 +125,10 @@ const Talim = ({ rules }) => {
                   span={8}
                 >
                   <div className="minus-btn">
-                    <MinusCircleOutlined onClick={() => remove(name)} style={{ color: "#B0B7C3" }} />
+                    <MinusCircleOutlined
+                      onClick={() => remove(name)}
+                      style={{ color: "#B0B7C3" }}
+                    />
                   </div>
                 </Col>
                 {/* Diplom raqam  */}
@@ -136,7 +141,7 @@ const Talim = ({ rules }) => {
                     style={{ margin: "5px 0" }}
                     rules={rules}
                   >
-                    <InputNumber
+                    <Input
                       style={{ width: "100%" }}
                       id="diploma_number"
                       placeholder="Diplom/attestatsiya raqamini kiriting"
@@ -210,8 +215,13 @@ const Sertifikatlar = ({ rules }) => {
                       placeholder="Sertifikat turini tanlang!"
                       allowClear
                     >
-                      <Option value="Sertifikat1">Sertifikat1</Option>
-                      <Option value="Sertifikat2">Sertifika2</Option>
+                      {["IELTS", "CEFR", "TOEFL", "DTM"].map((item, key) => {
+                        return (
+                          <Option value={item} key={key}>
+                            {item}
+                          </Option>
+                        );
+                      })}
                     </Select>
                   </Form.Item>
                 </Col>

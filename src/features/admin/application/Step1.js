@@ -16,16 +16,11 @@ import Uploader from "../Uploader";
 }
  * ***/
 
-function Step1({ onBackward, form }) {
+function Step1({ onBackward, onForward, form }) {
 
   const isDisabledValue = Form.useWatch('is_disabled', form);
 
   const { Option } = Select;
-
-  const onFinish = (values) => {
-    console.log('Success:', values);
-
-  };
 
   const rules = [
     {
@@ -91,7 +86,7 @@ function Step1({ onBackward, form }) {
           <label htmlFor="email">Email</label>
           <Form.Item
             name="email"
-            rules={rules}>
+            rules={null}>
             <Input id="email" type={'email'} />
           </Form.Item>
         </Col>
@@ -137,7 +132,7 @@ function Step1({ onBackward, form }) {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={()=>form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>

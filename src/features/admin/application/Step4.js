@@ -1,6 +1,7 @@
 import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
+import { faculties } from "../../../axios/data";
 
 const { Option } = Select;
 const handleChange = (value) => {
@@ -14,7 +15,7 @@ const handleChange = (value) => {
 //   span: 6,
 //   offset: 1,
 // });
-const Step4 = ({ onBackward }) => {
+const Step4 = ({ onBackward, form }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -41,8 +42,13 @@ const Step4 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="Yonalish1">Yonalish1</Option>
-              <Option value="Yonalish2">Yonalish2</Option>
+              {faculties.map((item, key) => {
+                return (
+                  <Option key={key} value={item.id}>
+                    {item.name}
+                  </Option>
+                );
+              })}
             </Select>
           </Form.Item>
         </Col>
@@ -105,7 +111,7 @@ const Step4 = ({ onBackward }) => {
             span: 8,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" onClick={() => form.submit()}>
             Oldinga
           </Button>
         </Form.Item>

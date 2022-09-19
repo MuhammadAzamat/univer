@@ -13,8 +13,8 @@ import StepNavbar from "./stepNavbar";
 export default function Dashboard() {
   const [status, setstatus] = useState(0);
   const [form] = Form.useForm();
-  const stepValue = Form.useWatch('step', form);
-  
+  const stepValue = Form.useWatch("step", form);
+
   const onFinish = (values) => {
     console.log("Success:", values);
     if (form.getFieldValue("step") < 5) {
@@ -106,17 +106,16 @@ export default function Dashboard() {
             {/* {JSON.stringify(form.getFieldsValue())} */}
             <StepNavbar value={stepValue} />
           </Form.Item>
-          <Form.Item name="step" style={{ padding: 0, margin: 0 }}>
-            <RenderSwitch
-              form={form}
-              onForward={() => {
-                handleForward();
-              }}
-              onBackward={() => {
-                handleBackward();
-              }}
-            />
-          </Form.Item>
+          <RenderSwitch
+            value={stepValue}
+            form={form}
+            onForward={() => {
+              handleForward();
+            }}
+            onBackward={() => {
+              handleBackward();
+            }}
+          />
         </Form>
       </div>
     </div>
@@ -128,13 +127,13 @@ const RenderSwitch = ({ value, onForward, onBackward, form }) => {
     case 1:
       return <Step1 onBackward={onBackward} form={form} />;
     case 2:
-      return <Step2 onBackward={onBackward} />;
+      return <Step2 onBackward={onBackward} form={form}/>;
     case 3:
-      return <Step3 onBackward={onBackward} />;
+      return <Step3 onBackward={onBackward} form={form}/>;
     case 4:
-      return <Step4 onBackward={onBackward} />;
+      return <Step4 onBackward={onBackward} form={form}/>;
     case 5:
-      return <Step5 onBackward={onBackward} />;
+      return <Step5 onBackward={onBackward} form={form}/>;
     default:
       return <Step0 onForward={onForward} />;
   }

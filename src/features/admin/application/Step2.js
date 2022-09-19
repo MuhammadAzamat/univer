@@ -2,42 +2,23 @@ import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
 import Uploader from "../Uploader";
+import { countries, districts, regions } from "../../../axios/data";
 
 const { Option } = Select;
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
-/******
- * 
- * {
-  "passport_type": true,
-  "passport_series": "string",
-  "identification_number": "string",
-  "passport_issue_date": "2022-09-18T21:32:01.250Z",
-  "passport_expire_date": "2022-09-18T21:32:01.250Z",
-  "issued_by": "string",
-  "birth_date": "2022-09-18T21:32:01.250Z",
-  "gender": 0,
-  "nation": "string",
-  "country": "string",
-  "region": "string",
-  "district": "string",
-  "address": "string",
-  "passport_file": "string"
-}
- * 
- * ******/
-const Step2 = ({ onBackward }) => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+
+const Step2 = ({ onBackward, form }) => {
+  const countryValue = Form.useWatch("country", form);
+  const regionValue = Form.useWatch("region", form);
 
   const rules = [
     {
       // required: true,
-      message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step2_container">
@@ -74,7 +55,7 @@ const Step2 = ({ onBackward }) => {
             <Input
               id="passport_series"
               style={{ width: "100%" }}
-              placeholder="AA3214323"
+              placeholder="AA"
             />
           </Form.Item>
         </Col>
@@ -97,9 +78,7 @@ const Step2 = ({ onBackward }) => {
         {/* Berilgan vaqti */}
         <Col span={8}>
           <label htmlFor="passport_issue_date">Berilgan vaqti</label>
-          <Form.Item
-            rules={rules}
-            name="passport_issue_date">
+          <Form.Item rules={rules} name="passport_issue_date">
             <DatePicker
               id="passport_issue_date"
               style={{ margin: "5px 0", width: "100%" }}
@@ -110,9 +89,7 @@ const Step2 = ({ onBackward }) => {
         {/* Amal qilish muddatai  */}
         <Col span={8}>
           <label htmlFor="passport_expire_date">Amal qilish muddati</label>
-          <Form.Item
-            rules={rules}
-            name="passport_expire_date">
+          <Form.Item rules={rules} name="passport_expire_date">
             <DatePicker
               id="passport_expire_date"
               style={{ margin: "5px  0", width: "100%" }}
@@ -123,11 +100,7 @@ const Step2 = ({ onBackward }) => {
         {/* Kim tominidan berilgan  */}
         <Col span={8}>
           <label htmlFor="issued_by">Kim tomonidan berilgan</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            name="issued_by"
-            rules={rules}
-          >
+          <Form.Item style={{ margin: "5px 0" }} name="issued_by" rules={rules}>
             <Input
               id="issued_by"
               style={{ width: "100%" }}
@@ -138,10 +111,7 @@ const Step2 = ({ onBackward }) => {
         {/* Tugilgan sana  */}
         <Col span={8}>
           <label htmlFor="birth_date">Tug’ilgan sana</label>
-          <Form.Item
-            name="birth_date"
-            rules={rules}
-          >
+          <Form.Item name="birth_date" rules={rules}>
             <DatePicker
               style={{ margin: "5px 0", width: "100%" }}
               id="birth_date"
@@ -152,11 +122,7 @@ const Step2 = ({ onBackward }) => {
         {/* Jinsni kiriting  */}
         <Col span={8}>
           <label htmlFor="gender">Jinsini kiriting</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="gender"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="gender">
             <Select
               id="gender"
               style={{ width: "100%" }}
@@ -172,11 +138,7 @@ const Step2 = ({ onBackward }) => {
         {/* Millat  */}
         <Col span={8}>
           <label htmlFor="nation">Millati</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="nation"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="nation">
             <Select
               id="nation"
               placeholder="O'zbek"
@@ -185,6 +147,8 @@ const Step2 = ({ onBackward }) => {
               onChange={handleChange}
             >
               <Option value="uzbek">O'zbek</Option>
+              <Option value="tojik">Tojik</Option>
+              <Option value="uygur">Uyg'ur</Option>
               <Option value="rus">Rus</Option>
             </Select>
           </Form.Item>
@@ -192,11 +156,7 @@ const Step2 = ({ onBackward }) => {
         {/* Mamlakat  */}
         <Col span={8}>
           <label htmlFor="country">Mamlakat</label>
-          <Form.Item
-            name="country"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="country" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="country"
               placeholder="Davlat"
@@ -204,19 +164,16 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="uzbkistan">O'zbekiston</Option>
-              <Option value="rossiya">Rossiya</Option>
+              {countries.map((item, key) => {
+                return <Option value={item.id}>{item.name}</Option>;
+              })}
             </Select>
           </Form.Item>
         </Col>
         {/* Viloyat */}
         <Col span={8}>
           <label htmlFor="region">Viloyat</label>
-          <Form.Item
-            name="region"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="region" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="region"
               placeholder="Shahar/Viloyat"
@@ -224,19 +181,18 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="viloyat1">Viloyat1</Option>
-              <Option value="viloyat2">Viloyat2</Option>
+              {regions
+                .filter((item) => item.country_id == countryValue)
+                .map((item, key) => {
+                  return <Option value={item.id}>{item.name_uz}</Option>;
+                })}
             </Select>
           </Form.Item>
         </Col>
         {/* Tuman  */}
         <Col span={8}>
           <label htmlFor="district">Tuman</label>
-          <Form.Item
-            name="district"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="district" style={{ margin: "5px 0" }} rules={rules}>
             <Select
               id="district"
               style={{ width: "100%" }}
@@ -244,19 +200,18 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="tuman1">Tuman1</Option>
-              <Option value="tuman2">Tuman2</Option>
+              {districts
+                .filter((item) => item.region_id == regionValue)
+                .map((item, key) => {
+                  return <Option value={item.id}>{item.name_uz}</Option>;
+                })}
             </Select>
           </Form.Item>
         </Col>
         {/* Manzil */}
         <Col span={8}>
           <label htmlFor="address">Manzil</label>
-          <Form.Item
-            name="address"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
+          <Form.Item name="address" style={{ margin: "5px 0" }} rules={rules}>
             <Input
               id="address"
               style={{ width: "100%" }}
@@ -295,7 +250,7 @@ const Step2 = ({ onBackward }) => {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={() => form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>
