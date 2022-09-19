@@ -1,6 +1,7 @@
-import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
+import { Button, Form, Select } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
+import { faculties } from "../../../axios/data";
 
 const { Option } = Select;
 const handleChange = (value) => {
@@ -14,7 +15,7 @@ const handleChange = (value) => {
 //   span: 6,
 //   offset: 1,
 // });
-const Step4 = ({ onBackward }) => {
+const Step4 = ({ onBackward, form }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -22,9 +23,9 @@ const Step4 = ({ onBackward }) => {
   const rules = [
     {
       // required: true,
-      message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step4_container">
@@ -33,11 +34,7 @@ const Step4 = ({ onBackward }) => {
         {/*Ta’lim yo’nalishi  */}
         <Col span={8}>
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="direction"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="direction">
             <Select
               id="direction"
               style={{ width: "100%" }}
@@ -45,8 +42,13 @@ const Step4 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="Yonalish1">Yonalish1</Option>
-              <Option value="Yonalish2">Yonalish2</Option>
+              {faculties.map((item, key) => {
+                return (
+                  <Option key={key} value={item.id}>
+                    {item.name}
+                  </Option>
+                );
+              })}
             </Select>
           </Form.Item>
         </Col>
@@ -92,33 +94,28 @@ const Step4 = ({ onBackward }) => {
           </Form.Item>
         </Col>
       </Row>
-      <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
-          <div className="nav-btns">
-            <Form.Item
-              wrapperCol={{
-                offset: 0,
-                span: 8,
-              }}
-            >
-              <Button type="default" onClick={onBackward}>
-                Bekor qilish
-              </Button>
-            </Form.Item>
-            <Form.Item
-              wrapperCol={{
-                offset: 0,
-                span: 8,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Oldinga
-              </Button>
-            </Form.Item>
-          </div>
-        </Col>
-      </Row>
+      <div className="nav-btns">
+        <Form.Item
+          wrapperCol={{
+            offset: 0,
+            span: 8,
+          }}
+        >
+          <Button type="default" onClick={onBackward}>
+            Bekor qilish
+          </Button>
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 0,
+            span: 8,
+          }}
+        >
+          <Button type="primary" onClick={() => form.submit()}>
+            Oldinga
+          </Button>
+        </Form.Item>
+      </div>
     </div>
   );
 };

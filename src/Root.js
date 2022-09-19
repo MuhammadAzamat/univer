@@ -55,11 +55,11 @@ function renderRouteConfigV3(routes, contextPath) {
 function Root() {
   const children = renderRouteConfigV3(routeConfig, "/");
   return (
-    <BrowserRouter forceRefresh={true}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <ConnectedRouter history={history}>{children}</ConnectedRouter>
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

@@ -2,40 +2,21 @@ import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
 import React from "react";
 import { Col, Row } from "antd";
 import Uploader from "../Uploader";
+import { countries, districts, regions } from "../../../axios/data";
 
 const { Option } = Select;
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
-/******
- * 
- * {
-  "passport_type": true,
-  "passport_series": "string",
-  "identification_number": "string",
-  "passport_issue_date": "2022-09-18T21:32:01.250Z",
-  "passport_expire_date": "2022-09-18T21:32:01.250Z",
-  "issued_by": "string",
-  "birth_date": "2022-09-18T21:32:01.250Z",
-  "gender": 0,
-  "nation": "string",
-  "country": "string",
-  "region": "string",
-  "district": "string",
-  "address": "string",
-  "passport_file": "string"
-}
- * 
- * ******/
-const Step2 = ({ onBackward }) => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+
+const Step2 = ({ onBackward, form }) => {
+  const countryValue = Form.useWatch("country", form);
+  const regionValue = Form.useWatch("region", form);
 
   const rules = [
     {
       // required: true,
-      // message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
   ];
 
@@ -74,18 +55,14 @@ const Step2 = ({ onBackward }) => {
             <Input
               id="passport_series"
               style={{ width: "100%" }}
-              placeholder="AA3214323"
+              placeholder="AA"
             />
           </Form.Item>
         </Col>
         {/* Identification raqam  */}
         <Col span={8}>
           <label htmlFor="identification_number">Identifikatsiya raqami</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="identification_number"
-          >
+          <Form.Item rules={rules} name="identification_number">
             <InputNumber
               style={{ width: "100%" }}
               id="identification_number"
@@ -140,24 +117,23 @@ const Step2 = ({ onBackward }) => {
         </Col>
         {/* Jinsni kiriting  */}
         <Col span={8}>
-          <label htmlFor="gender">Jinsini kiriting</label>
+          <label htmlFor="gender">Jinsi</label>
           <Form.Item rules={rules} name="gender">
             <Select
               id="gender"
-              style={{ width: "100%" }}
-              placeholder="Jinsi"
               allowClear
               onChange={handleChange}
+              style={{ width: "100%" }}
+              placeholder="Jinsini tanlang"
             >
               <Option value="erkak">Erkak</Option>
               <Option value="ayol">Ayol</Option>
             </Select>
           </Form.Item>
         </Col>
-        {/* Millat  */}
         <Col span={8}>
           <label htmlFor="nation">Millati</label>
-          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="nation">
+          <Form.Item rules={rules} name="nation">
             <Select
               id="nation"
               placeholder="O'zbek"
@@ -166,6 +142,8 @@ const Step2 = ({ onBackward }) => {
               onChange={handleChange}
             >
               <Option value="uzbek">O'zbek</Option>
+              <Option value="tojik">Tojik</Option>
+              <Option value="uygur">Uyg'ur</Option>
               <Option value="rus">Rus</Option>
             </Select>
           </Form.Item>
@@ -181,8 +159,9 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="uzbkistan">O'zbekiston</Option>
-              <Option value="rossiya">Rossiya</Option>
+              {countries.map((item, key) => {
+                return <Option value={item.id}>{item.name}</Option>;
+              })}
             </Select>
           </Form.Item>
         </Col>
@@ -197,8 +176,11 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="viloyat1">Viloyat1</Option>
-              <Option value="viloyat2">Viloyat2</Option>
+              {regions
+                .filter((item) => item.country_id == countryValue)
+                .map((item, key) => {
+                  return <Option value={item.id}>{item.name_uz}</Option>;
+                })}
             </Select>
           </Form.Item>
         </Col>
@@ -213,8 +195,11 @@ const Step2 = ({ onBackward }) => {
               allowClear
               onChange={handleChange}
             >
-              <Option value="tuman1">Tuman1</Option>
-              <Option value="tuman2">Tuman2</Option>
+              {districts
+                .filter((item) => item.region_id == regionValue)
+                .map((item, key) => {
+                  return <Option value={item.id}>{item.name_uz}</Option>;
+                })}
             </Select>
           </Form.Item>
         </Col>
@@ -260,7 +245,7 @@ const Step2 = ({ onBackward }) => {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={() => form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>
@@ -289,7 +274,7 @@ const ImageUploadBack = ({ value = {}, onChange }) => {
   return (
     <div className="step-1-image-upload">
       <Uploader
-        showUploadList={true}
+        showUploadList={false}
         title={"Orqa qismini yuklang"}
         value={value}
         beforeUpload={(file) => false}

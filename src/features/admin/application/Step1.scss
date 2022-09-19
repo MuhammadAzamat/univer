@@ -1,23 +1,11 @@
 
 
 .step-1-content {
-    background: #FFFFFF;
-    box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
-    border-radius: 10px;
-    padding: 24px;
-    margin-top: 24px;
-
-    &-title {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 130%;
-        letter-spacing: 0.75px;
-
-        /* black */
-        color: #323B4B;
-    }
+  background: #FFFFFF;
+  box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 24px;
 
     label {
         font-style: normal;
@@ -27,10 +15,9 @@
         color: #323B4B;
     }
 
-    label.isDisabled-title {
-        font-size: 16px;
-        line-height: 24px;
-    }
+      /* black */
+      color: #323B4B;
+  }
 
     .disabled-field {
 
@@ -50,15 +37,13 @@
     }
 
 
-}
-
 .step-title {
   margin-top: 24px;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 34px;
-  color: #323b4b;
+  color: #323B4B;
 }
 
 .step-1-image-upload {
@@ -67,7 +52,7 @@
   align-items: center;
 
   .ant-upload-picture-card-wrapper {
-    width: auto;
+      width: auto;
   }
 
   .ant-upload.ant-upload-select-picture-card {
@@ -99,41 +84,55 @@
     }
   }
 
-  &-right {
-    margin-left: 16px;
+  
 
-    h2 {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      color: #374151;
-    }
 
-    h3 {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
-      color: #b0b7c3;
-      margin-top: 8px;
-    }
-
-    .ant-btn.ant-btn-default.btn-upload {
-      color: #377dff;
-      border-radius: 8px;
-      margin-top: 16px;
-      padding: 20px 32px;
-      display: inline-flex;
-      border: none;
+  .ant-upload.ant-upload-select-picture-card {
+      border: 3px dashed #D1D5DB;
+      border-radius: 6px;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      background: rgba(55, 125, 255, 0.1);
+      padding: 46px 5px;
+      background: #fff;
+      height: 165px;
+      width: 180px;
 
-      img {
-        margin-right: 5px;
+
+      h2 {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 20px;
+          color: #4F46E5;
       }
-    }
+
+      h3 {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #6B7280;
+      }
+  }
+
+  &-right {
+      margin-left: 16px;
+
+      h2 {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 20px;
+          color: #374151;
+      }
 
 
     .ant-upload.ant-upload-select-picture-card {
@@ -192,20 +191,17 @@
             margin-top: 8px;
         }
 
-        .btn-upload {
-            background: rgba(55, 125, 255, 0.1);
-            border-radius: 8px;
+        .ant-btn .ant-btn-default .btn-upload {
+            color: #377dff;
             margin-top: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #377DFF;
-            padding: 22px 42px;
-
-            img {
-                margin-right: 5px;
+            border-radius: 8px;
+            display: inline-block;
+            background-color: rgba(55, 125, 255, 0.1);
+            
+            & > img {
+              margin-right: 5px;
             }
-        }
+          }
 
         a:link {
             color: #377DFF;
@@ -220,10 +216,4 @@
         }
     }
   }
-}
-.ant-form-item {
-  width: 100%;
-}
-.ant-row {
-  width: 100%;
 }

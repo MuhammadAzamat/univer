@@ -1,23 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useQuery } from "react-query";
-import { Redirect } from "react-router-dom";
-import { Header } from "../headers";
-import { AdminNavbar } from "../navbars";
-import { Sidebar } from "../sidebars";
 import route from "./route";
-
-import { Layout as LayoutAnt, Menu } from "antd";
+import { Header } from "../headers";
+import { Sidebar } from "../sidebars";
+import { useQuery } from "react-query";
+import { Layout as LayoutAnt } from "antd";
+import { Redirect } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 
 // import PropTypes from 'prop-types';
 
 export default function Layout({ history, children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("jwt") || null);
-  const mainRef = useRef(null);
-
+  const [token, _] = useState(localStorage.getItem("Authorization") || null);
   const routes = route;
-  // routes.push(orerroute.childRoutes.map(item => (orerroute.path + "/" + item.path)))
-
+  const mainRef = useRef(null);
   const orders_data = useQuery("orders", null);
 
   const [orders, setorders] = useState([]);
@@ -53,7 +48,7 @@ export default function Layout({ history, children }) {
     return "Brand";
   };
   return (
-    (true && (
+    (token && (
       <LayoutAnt className="layout-container">
         <Sidebar
           // {...this.props}
@@ -75,7 +70,7 @@ export default function Layout({ history, children }) {
           {children}
         </div>
       </LayoutAnt>
-    )) || <Redirect from="/" to={"/auth/login"} />
+    )) || <Redirect from="/" to={"/admin/index"} />
   );
 }
 Layout.propTypes = {};
