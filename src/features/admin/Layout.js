@@ -53,7 +53,7 @@ export default function Layout({ history, children }) {
     return "Brand";
   };
   return (
-    (token && (
+    (true && (
       <LayoutAnt className="layout-container">
         <Sidebar
           // {...this.props}
