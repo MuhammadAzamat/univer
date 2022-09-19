@@ -55,24 +55,88 @@
 }
 
 .step-title {
-    margin-top: 24px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 34px;
-    color: #323B4B;
+  margin-top: 24px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+  color: #323b4b;
 }
 
 .step-1-image-upload {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
-    .ant-upload-picture-card-wrapper {
-        width: auto;
+  .ant-upload-picture-card-wrapper {
+    width: auto;
+  }
+
+  .ant-upload.ant-upload-select-picture-card {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 46px 5px;
+
+    h2 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4f46e5;
     }
 
+    h3 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #6b7280;
+    }
+  }
+
+  &-right {
+    margin-left: 16px;
+
+    h2 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #374151;
+    }
+
+    h3 {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: #b0b7c3;
+      margin-top: 8px;
+    }
+
+    .ant-btn.ant-btn-default.btn-upload {
+      background: rgba(55, 125, 255, 0.1);
+      border-radius: 8px;
+      margin-top: 16px;
+      display: inline-block;
+      color: #377dff;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+
+<<<<<<< HEAD
 
     .ant-upload.ant-upload-select-picture-card {
         border: 3px dashed #D1D5DB;
@@ -157,5 +221,23 @@
         a:active {
             color: #1967f8;
         }
+=======
+    a:link {
+      color: #377dff;
     }
+    a:hover {
+      color: #8db3fa;
+    }
+
+    a:active {
+      color: #1967f8;
+>>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
+    }
+  }
+}
+.ant-form-item {
+  width: 100%;
+}
+.ant-row {
+  width: 100%;
 }

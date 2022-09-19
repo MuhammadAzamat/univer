@@ -41,6 +41,7 @@ const Step3 = ({ onBackward }) => {
             </span>
             <p>Ta’lim muassasasini qo’shish</p>
           </div>
+<<<<<<< HEAD
         </Col>
       </Row>
       <br />
@@ -49,12 +50,21 @@ const Step3 = ({ onBackward }) => {
       <br />
       <Row gutter={[24, 16]}>
         <Col>
+=======
+        </div>
+        <br />
+        <Sertifikatlar />
+
+        <br />
+        <div style={{ width: "100%" }}>
+>>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
           <div className="add-sertification">
             <span>
               <PlusCircleOutlined style={{ color: "#377DFF" }} />
             </span>
             <p>Sertifikat qo’shish</p>
           </div>
+<<<<<<< HEAD
         </Col>
       </Row>
       <br />
@@ -85,6 +95,24 @@ const Step3 = ({ onBackward }) => {
           </div>
         </Col>
       </Row>
+=======
+        </div>
+        <br />
+        <div className="prev-next-btns">
+          <Form.Item
+            wrapperCol={{
+              span: 12,
+              offset: 6,
+            }}
+          >
+            <Button className="step3_btns">Orqaga</Button>
+            <Button className="step3_btns" type="primary" htmlType="submit">
+              Oldinga
+            </Button>
+          </Form.Item>
+        </div>
+      </Form>
+>>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
     </div>
   );
 };
