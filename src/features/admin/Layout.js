@@ -11,7 +11,6 @@ import { Layout as LayoutAnt, Menu } from "antd";
 // import PropTypes from 'prop-types';
 
 export default function Layout({ history, children }) {
-
   const [collapsed, setCollapsed] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("jwt") || null);
   const mainRef = useRef(null);
@@ -27,8 +26,8 @@ export default function Layout({ history, children }) {
     if (cancel) {
       if (orders_data.data && orders_data.data.orders) {
         setorders(orders_data.data.orders);
-      }else{
-        setorders([])
+      } else {
+        setorders([]);
       }
       cancel = false;
     }

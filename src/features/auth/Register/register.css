@@ -16,7 +16,7 @@
     border: none;
   }
 
-  form {
+  .Login>form {
     width: 900px;
     display: flex;
     flex-wrap: wrap;

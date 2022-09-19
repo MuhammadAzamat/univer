@@ -1,0 +1,52 @@
+.step2_wrapper {
+  padding: 23px;
+  background: #f9fafe;
+  min-height: 100vh;
+}
+.step2_container {
+  background: #fff;
+  margin: 10px auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.step2_container h3 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.75px;
+  text-align: left;
+}
+.step2_container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.step2_btns {
+  margin: 0 10px;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.pasport-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.prev-next-btns {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.prev-next-btns .ant-form-item-control-input-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
