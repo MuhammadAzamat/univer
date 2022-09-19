@@ -34,7 +34,7 @@ const Step2 = ({ onBackward }) => {
 
   const rules = [
     {
-      required: true,
+      // required: true,
       message: "Maydonni to'ldiring!"
     },
   ]
@@ -324,7 +324,7 @@ const ImageUploadBack = ({ value = {}, onChange }) => {
   return (
     <div className="step-1-image-upload">
       <Uploader
-        showUploadList={true}
+        showUploadList={false}
         title={"Orqa qismini yuklang"}
         value={value}
         beforeUpload={(file) => false}

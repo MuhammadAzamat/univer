@@ -22,9 +22,9 @@ const Step4 = ({ onBackward }) => {
   const rules = [
     {
       // required: true,
-      message: "Maydonni to'ldiring!"
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step4_container">
@@ -33,11 +33,7 @@ const Step4 = ({ onBackward }) => {
         {/*Ta’lim yo’nalishi  */}
         <Col span={8}>
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="direction"
-          >
+          <Form.Item style={{ margin: "5px 0" }} rules={rules} name="direction">
             <Select
               id="direction"
               style={{ width: "100%" }}
@@ -92,33 +88,28 @@ const Step4 = ({ onBackward }) => {
           </Form.Item>
         </Col>
       </Row>
-      <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
-          <div className="nav-btns">
-            <Form.Item
-              wrapperCol={{
-                offset: 0,
-                span: 8,
-              }}
-            >
-              <Button type="default" onClick={onBackward}>
-                Bekor qilish
-              </Button>
-            </Form.Item>
-            <Form.Item
-              wrapperCol={{
-                offset: 0,
-                span: 8,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Oldinga
-              </Button>
-            </Form.Item>
-          </div>
-        </Col>
-      </Row>
+      <div className="nav-btns">
+        <Form.Item
+          wrapperCol={{
+            offset: 0,
+            span: 8,
+          }}
+        >
+          <Button type="default" onClick={onBackward}>
+            Bekor qilish
+          </Button>
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 0,
+            span: 8,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Oldinga
+          </Button>
+        </Form.Item>
+      </div>
     </div>
   );
 };

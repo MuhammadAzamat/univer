@@ -1,3 +1,38 @@
+export const faculties = [
+  {
+    id : 1,
+    name : "Filologiya va tillarni o‘qitish"
+  } ,
+  {
+    id : 2,
+    name : "Boshlang‘ich ta’lim"
+  } ,
+  {
+    id : 3,
+    name : "Psixologiya"
+  } ,
+  {
+    id : 4,
+    name : "Iqtisodiyot"
+  } ,
+  {
+    id : 5,
+    name : "Moliya va moliyaviy texnologiyalar"
+  } ,
+  {
+    id : 6,
+    name : "Kompyuter ilmlari va dasturlash texnologiyalari"
+  } ,
+  {
+    id : 7,
+    name : "Buxgalteriya hisobi va audit"
+  } ,
+  {
+    id : 8,
+    name : "Maktabgacha ta’lim"
+  } 
+]
+
 export const districts = [
     {
       id: 1,

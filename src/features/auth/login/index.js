@@ -5,7 +5,7 @@ const { Title } = Typography;
 const Login = () => {
   const [form] = Form.useForm();
 
-  const history = useHistory()
+  const history = useHistory();
   const handleOk = () => {
     form
       .validateFields()
@@ -19,6 +19,9 @@ const Login = () => {
       .catch((e) => {
         console.log("Error:", e);
       });
+
+    window.location.pathname = "/admin/index";
+    localStorage.setItem("token", JSON.stringify({user:123}));
   };
   return (
     <div className="login">
@@ -60,7 +63,9 @@ const Login = () => {
           <div className="login-footer">
             <p className="auth-confirm-text">Sizda akkaunt mavjud emasmi?</p>
             <Button
-              onClick={()=>{history.push('/auth/register')}}
+              onClick={() => {
+                history.push("/auth/register");
+              }}
               block
               type="default"
               className="register-button"

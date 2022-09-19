@@ -3,6 +3,14 @@
   margin: 10px auto;
   padding: 1.5rem;
   border-radius: 10px;
+  position: relative;
+  min-height: 55vh;
+
+  .nav-btns{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 }
 h3,
 .step4_container h3 {

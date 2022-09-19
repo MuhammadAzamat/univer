@@ -16,7 +16,9 @@ import Uploader from "../Uploader";
 }
  * ***/
 
-function Step1({ onBackward }) {
+function Step1({ onBackward, form }) {
+
+  const isDisabledValue = Form.useWatch('is_disabled', form);
 
   const { Option } = Select;
 
@@ -27,7 +29,7 @@ function Step1({ onBackward }) {
 
   const rules = [
     {
-      required: true,
+      // required: true,
       message: 'Iltimos maydonni to\'ldiring',
     }
   ]
@@ -90,23 +92,23 @@ function Step1({ onBackward }) {
           <Form.Item
             name="email"
             rules={rules}>
-            <Input id="email" />
+            <Input id="email" type={'email'} />
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={8}>
-          <label htmlFor="is_disabled" className="isDisabled-title">Nogironlik holati</label>
+          <label htmlFor="is_disabled" className="isDisabled-title">Imkoniyati cheklangan</label>
           <Form.Item
             name="is_disabled">
             <SwitchInput />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="disable_type">Nogironlik turi</label>
+          <label htmlFor="disable_type">Imkoniyati cheklanganlik turi</label>
           <Form.Item
             name="disable_type">
-            <Select className="select-before">
+            <Select className="select-before" disabled={!isDisabledValue}>
               <Option value=""></Option>
               <Option value="1">Birinchi guruh nogironi</Option>
               <Option value="2">Ikkinchi guruh nogironi</Option>
@@ -117,8 +119,7 @@ function Step1({ onBackward }) {
       </Row>
 
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col span={24}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{
@@ -159,8 +160,8 @@ const ImageUpload = ({ value = {}, onChange }) => {
         beforeUpload={(file) => false}
         onChange={(info) => onChange(info)} />
       <div className="step-1-image-upload-right">
-        <h2>Fotasurat ni yuklang</h2>
-        <h3>You can upload  .JPEG, .JPG, or .PNG photes not over 1 MB.</h3>
+        <h2>Fotasuratni yuklang</h2>
+        <h3>Yuklash mumkin bo'lgan fayl turlaru  .JPEG, .JPG, or .PNG 10 MB gacha.</h3>
         <Upload
           showUploadList={false}
           beforeUpload={(file) => false}
@@ -168,7 +169,7 @@ const ImageUpload = ({ value = {}, onChange }) => {
           <Button
             className="btn-upload"
             icon={<img src={require("../../../assets/img/Icon-left.png")} />}>
-            Upload photo
+            Fotasuratni yuklash
           </Button>
         </Upload>
       </div>
@@ -179,7 +180,7 @@ const ImageUpload = ({ value = {}, onChange }) => {
 
 const SwitchInput = ({ value, onChange }) => (
   <div className="disabled-field">
-    <label htmlFor="is_disabled" ><h3>Nogironli holati bo’lsa qaysi turda ekanligini ko’rsating</h3></label>
+    <label htmlFor="is_disabled" ><h3>Imkoniyati cheklangan bo’lsa qaysi turda ekanligini ko’rsating</h3></label>
     <Switch id="is_disabled" checked={value} onChange={(checked) => {
       onChange(checked)
     }} />

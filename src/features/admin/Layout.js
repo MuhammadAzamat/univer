@@ -12,7 +12,7 @@ import { Layout as LayoutAnt, Menu } from "antd";
 
 export default function Layout({ history, children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("jwt") || null);
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
   const mainRef = useRef(null);
 
   const routes = route;
@@ -53,7 +53,7 @@ export default function Layout({ history, children }) {
     return "Brand";
   };
   return (
-    (true && (
+    (token && (
       <LayoutAnt className="layout-container">
         <Sidebar
           // {...this.props}
