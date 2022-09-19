@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 // reactstrap components
-import AuthNavbar from '../navbars/AuthNavbar'
-import Login from './Login';
-import Register from './Register/Register';
+import Login from "./login";
+import AuthNavbar from "../navbars/AuthNavbar";
+import Register from "./Register/Register";
 
 const Layout = ({ children }) => {
   return (
@@ -10,14 +10,11 @@ const Layout = ({ children }) => {
       <div className="main-content">
         {/* <AuthNavbar /> */}
         <Login />
-        <div className="header bg-gradient-info py-7 py-lg-8">
-          
-          
-        </div>
+        <div className="header bg-gradient-info py-7 py-lg-8"></div>
         {/* Page content */}
       </div>
     </>
   );
-}
+};
 
-export default Layout
+export default Layout;

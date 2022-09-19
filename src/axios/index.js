@@ -1,8 +1,3 @@
-
-import Axios from 'axios';
-
-export const apiUrl = 'http://localhost'
-
-export const serverPort = 80
-
-export const myAxios = Axios.create({ baseURL: apiUrl });
+import axios from "axios";
+const baseURL = process.env.REACT_APP_BASE_URL;
+export const http = axios.create({ baseURL });
