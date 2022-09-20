@@ -4,9 +4,15 @@ import { Link, useHistory, useLocation, withRouter } from "react-router-dom";
 export default function WelcomePage({ children }) {
   const history = useHistory();
   useEffect(() => {
-    window.location.pathname = JSON.parse(localStorage.getItem("Authorization"))
-      ? "/admin/index"
-      : "/auth/login";
+    const token = localStorage.getItem("Authorization") || "";
+    if (token) {
+      window.location.pathname = "/admin/index";
+    } else {
+      window.location.pathname = "/auth/login";
+    }
+    // window.location = JSON.parse(localStorage.getItem("Authorization"))
+    //   ? "/admin/index"
+    //   : "/auth/login";
   }, []);
   return (
     <div className="home-welcome-page jumbotron">

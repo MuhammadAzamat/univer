@@ -1,83 +1,129 @@
 /* eslint-disable jsx-a11y/alt-text */
 import Uploader from "../Uploader";
-import { MaskedInput } from "antd-mask-input";
 import { Button, Col, Form, Input, Row, Select, Switch, Upload } from "antd";
+const { Option } = Select;
 
-/***
- * {
-  "personal_photo": "string",
-  "first_name": "string",
-  "last_name": "string",
-  "middle_name": "string",
-  "phone": "string",
-  "extra_phone": "string",
-  "email": "string",
-  "is_disabled": true,
-  "disabled_type": "string"
-}
- * ***/
-
-function Step1({ onBackward, onForward, form }) {
+function Step1({ onBackward, form }) {
   const isDisabledValue = Form.useWatch("is_disabled", form);
-
-  const { Option } = Select;
-
   const rules = [
     {
       // required: true,
       message: "Iltimos maydonni to'ldiring",
     },
   ];
+  const formItemLayout = {
+    labelCol: {
+      span: 24,
+    },
+  };
 
   return (
     <div className="step-1-content">
       <h1 className="step-1-content-title">Umumiy ma’lumotlar</h1>
-      <Form.Item name="image">
+      <Form.Item
+        rules={[
+          {
+            required: true,
+            message: "Rasmni yuklang",
+          },
+        ]}
+        name="image"
+      >
         <ImageUpload />
       </Form.Item>
-
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={8}>
-          <label htmlFor="first_name">Ism</label>
-          <Form.Item name="first_name" rules={rules}>
-            <Input placeholder="Ismni kiriting" id="first_name" />
+          <Form.Item
+            label="Ism"
+            rules={[
+              {
+                required: true,
+                message: "Majburiy maydon",
+              },
+            ]}
+            name="first_name"
+            {...formItemLayout}
+          >
+            <Input size="large" placeholder="Ismni kiriting" id="first_name" />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="last_name">Familiya</label>
-          <Form.Item name="last_name" rules={rules}>
-            <Input placeholder="Familiyani kiriting" id="last_name" />
+          <label htmlFor="last_name"></label>
+          <Form.Item
+            rules={[
+              {
+                required: true,
+                message: "Majburiy maydon",
+              },
+            ]}
+            name="last_name"
+            label="Familiya"
+            {...formItemLayout}
+          >
+            <Input
+              size="large"
+              id="last_name"
+              placeholder="Familiyani kiriting"
+            />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="middle_name">Otasining ismi</label>
-          <Form.Item name="middle_name" rules={rules}>
-            <Input placeholder="Otasining ismini kiriting" id="middle_name" />
+          <Form.Item
+            rules={rules}
+            name="middle_name"
+            {...formItemLayout}
+            label="Otasining ismi"
+          >
+            <Input
+              size="large"
+              id="middle_name"
+              placeholder="Otasining ismini kiriting"
+            />
           </Form.Item>
         </Col>
       </Row>
-
       <h1 className="step-1-content-title">Kontakt ma’lumotlar</h1>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={8}>
-          <label htmlFor="phone">Telefon raqami*</label>
-          <Form.Item name="phone" rules={rules}>
-            <Input id="phone" allowClear placeholder="+998991201122" />
+          <Form.Item
+            name="phone"
+            {...formItemLayout}
+            label="Telefon raqami"
+            rules={[{ required: true, message: "Telefon raqam majburiy" }]}
+          >
+            <Input size="large" allowClear placeholder="+998991201122" />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="extra_phone">Qo’shimcha telefon raqami</label>
-          <Form.Item name="extra_phone" rules={rules}>
-            <Input allowClear id="extra_phone" placeholder="+998991201122" />
+          <Form.Item
+            rules={rules}
+            name="extra_phone"
+            {...formItemLayout}
+            label="Qo’shimcha telefon raqami"
+          >
+            <Input
+              allowClear
+              size="large"
+              id="extra_phone"
+              placeholder="+998991201122"
+            />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="email">Email</label>
           <Form.Item
             name="email"
-            rules={[{ type: "email", message: "Email haqiqiy emas!" }]}
+            label="Email"
+            {...formItemLayout}
+            rules={[
+              { type: "email", required: true, message: "Email haqiqiy emas!" },
+            ]}
           >
-            <Input placeholder="user@gmail.com" id="email" type={"email"} />
+            <Input
+              id="email"
+              size="large"
+              type="email"
+              placeholder="user@gmail.com"
+            />
           </Form.Item>
         </Col>
       </Row>
@@ -91,9 +137,17 @@ function Step1({ onBackward, onForward, form }) {
           </Form.Item>
         </Col>
         <Col span={8}>
-          <label htmlFor="disable_type">Imkoniyati cheklanganlik turi</label>
-          <Form.Item name="disable_type">
-            <Select className="select-before" disabled={!isDisabledValue}>
+          <Form.Item
+            name="disable_type"
+            {...formItemLayout}
+            label="Imkoniyati cheklanganlik turi"
+          >
+            <Select
+              size="large"
+              placeholder="Tanlang..."
+              className="select-before"
+              disabled={!isDisabledValue}
+            >
               <Option value=""></Option>
               <Option value="1">Birinchi guruh nogironi</Option>
               <Option value="2">Ikkinchi guruh nogironi</Option>
@@ -134,7 +188,26 @@ function Step1({ onBackward, onForward, form }) {
 }
 
 export default Step1;
+const uploadAvatar = (image) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  var formdata = new FormData();
+  formdata.append("tag", "avatar");
+  formdata.append("files", image);
+  var requestOptions = {
+    method: "POST",
+    body: formdata,
+    redirect: "follow",
+  };
 
+  return (
+    fetch(`https://iiiu.spprt.uz/api/v1/${user.id}/medias`, requestOptions)
+      // .then((response) => response.text())
+      .then((result) => {
+        return result;
+      })
+      .catch((error) => console.log("error", error))
+  );
+};
 const ImageUpload = ({ value = {}, onChange }) => {
   return (
     <div className="step-1-image-upload">
@@ -146,21 +219,18 @@ const ImageUpload = ({ value = {}, onChange }) => {
         onChange={(info) => onChange(info)}
       />
       <div className="step-1-image-upload-right">
-        <h2>Fotasuratni yuklang</h2>
-        <h3>
-          Yuklash mumkin bo'lgan fayl turlari .JPEG, .JPG, or .PNG 10 MB gacha.
-        </h3>
+        <h2>Fotasurat ni yuklang</h2>
+        <h3>You can upload .JPEG, .JPG, or .PNG photes not over 1 MB.</h3>
         <Upload
           showUploadList={false}
           beforeUpload={(file) => false}
           onChange={(info) => onChange(info)}
         >
           <Button
-            type="default"
             className="btn-upload"
-            // icon={<img src={require("../../../assets/img/Icon-left.png")} />}
+            icon={<img src={require("../../../assets/img/Icon-left.png")} />}
           >
-            Fotosuratni yuklash
+            Upload photo
           </Button>
         </Upload>
       </div>

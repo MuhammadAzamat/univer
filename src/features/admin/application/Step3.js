@@ -24,7 +24,7 @@ const Step3 = ({ onBackward, form }) => {
 
   const rules = [
     {
-      required: true,
+      // required: true,
       message: "Maydonni to'ldiring!",
     },
   ];
@@ -78,7 +78,7 @@ const Talim = ({ rules }) => {
         {(fields, { add, remove }) => (
           <>
             {fields.map(({ key, name, ...restField }) => (
-              <Row gutter={[24, 16]}>
+              <Row key={key} gutter={[24, 16]}>
                 {/*Maktab turi  */}
                 <Col span={8}>
                   <label htmlFor="education_type">Ta'lim turi</label>
@@ -200,7 +200,7 @@ const Sertifikatlar = ({ rules }) => {
         {(fields, { add, remove }) => (
           <>
             {fields.map(({ key, name, ...restField }) => (
-              <Row gutter={[24, 16]}>
+              <Row key={key} gutter={[24, 16]}>
                 {/*Sertifikat turi  */}
                 <Col span={8}>
                   <label htmlFor="certificate_type">Sertifikat turi</label>
@@ -215,13 +215,11 @@ const Sertifikatlar = ({ rules }) => {
                       placeholder="Sertifikat turini tanlang!"
                       allowClear
                     >
-                      {["IELTS", "CEFR", "TOEFL", "DTM"].map((item, key) => {
-                        return (
-                          <Option value={item} key={key}>
-                            {item}
-                          </Option>
-                        );
-                      })}
+                      {["IELTS", "CEFR", "TOEFL", "DTM"].map((item, key) => (
+                        <Option value={item} key={key}>
+                          {item}
+                        </Option>
+                      ))}
                     </Select>
                   </Form.Item>
                 </Col>
@@ -292,9 +290,7 @@ const Sertifikatlar = ({ rules }) => {
             <Row gutter={[24, 16]}>
               <Col>
                 <div className="add-sertification" onClick={() => add()}>
-                  <span>
-                    <PlusCircleOutlined style={{ color: "#377DFF" }} />
-                  </span>
+                  <PlusCircleOutlined style={{ color: "#377DFF" }} />
                   <p>Sertifikat qo’shish</p>
                 </div>
               </Col>

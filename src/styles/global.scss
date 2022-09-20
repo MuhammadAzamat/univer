@@ -14,32 +14,35 @@ body {
   border-radius: 8px;
 }
 
-.ant-picker{
-  border: none;
-  padding: 0;
+// .ant-picker{
+//   border: none;
+//   padding: 0;
+// }
+.ant-form-item-label {
+  padding: 0 !important;
 }
-
 .ant-input,
 .ant-input-password,
 .ant-input-number-input,
 .ant-input-affix-wrapper,
-.ant-picker-input {
-  /* White/White 100 */
-  background: #FFFFFF;
-
-  /* Border 1 */
-  border: 1px solid #D9DDE1;
+.ant-picker {
   border-radius: 6px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  /* White/White 100 */
+  // background: #FFFFFF;
 
-  /* identical to box height, or 150% */
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  height: auto;
+  // /* Border 1 */
+  // border: 1px solid #D9DDE1;
+  // border-radius: 6px;
+  // font-style: normal;
+  // font-weight: 400;
+  // font-size: 16px;
+  // line-height: 24px;
+
+  // /* identical to box height, or 150% */
+  // display: flex;
+  // align-items: center;
+  // padding: 10px;
+  // height: auto;
 }
 
 .header {
@@ -59,32 +62,33 @@ body {
 
 .ant-select.ant-select-in-form-item {
   /* White/White 100 */
-  background: #FFFFFF;
+  // background: #FFFFFF;
 
-  /* Border 1 */
-  border: 1px solid #D9DDE1;
-  border-radius: 8px;
+  // /* Border 1 */
+  // border: 1px solid #D9DDE1;
+  // border-radius: 8px;
 
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  // font-style: normal;
+  // font-weight: 400;
+  // font-size: 16px;
+  // line-height: 24px;
 
-  /* identical to box height, or 150% */
-  display: flex;
-  align-items: center;
-  padding: 8px;
+  // /* identical to box height, or 150% */
+  // display: flex;
+  // align-items: center;
+  // padding: 8px;
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   /* White/White 100 */
-  border: none;
+  // border: none;
+  border-radius: 6px;
 }
 
 .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border: none;
-  box-shadow: none;
-  outline: 0;
+  // border: none;
+  // box-shadow: none;
+  // outline: 0;
 }
 
 

@@ -10,7 +10,9 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function Layout({ history, children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [token, _] = useState(localStorage.getItem("Authorization") || null);
+  const [token, setToken] = useState(
+    localStorage.getItem("Authorization") || null
+  );
   const routes = route;
   const mainRef = useRef(null);
   const orders_data = useQuery("orders", null);

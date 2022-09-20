@@ -8,6 +8,8 @@
 .order-placed-img {
   width: 336px;
   height: 336px;
+  object-fit: cover;
+  display: block;
 }
 .site-layout-wrapper {
   height: 100%;
@@ -35,8 +37,9 @@
 .site-layout-buttons {
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-top: 24px;
 }
 .site-layout-buttons button {
   border: none;
