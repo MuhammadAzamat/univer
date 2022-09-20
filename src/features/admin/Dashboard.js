@@ -175,13 +175,9 @@ export default function Dashboard() {
           form={form}
           onFinish={onFinish}
           initialValues={{
-            step: 0,
+            step: 3,
             certs: [{}],
             edus: [{}],
-            first_name: "Falonchi",
-            last_name: "Falonchiyev",
-            phone: "+998993249477",
-            email: "user@gmail.com",
             // ...data,
           }}
         >

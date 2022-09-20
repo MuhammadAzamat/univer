@@ -1,13 +1,4 @@
-import {
-  Button,
-  Form,
-  Select,
-  Col,
-  Row,
-  Input,
-  DatePicker,
-  InputNumber,
-} from "antd";
+import { Button, Form, Select, Col, Row, Input, DatePicker } from "antd";
 import React from "react";
 import Uploader from "../Uploader";
 import { countries, districts, regions } from "../../../axios/data";
@@ -20,7 +11,12 @@ const Step2 = ({ onBackward, form }) => {
   const countryValue = Form.useWatch("country", form);
   const regionValue = Form.useWatch("region", form);
 
-  const rules = null;
+  const rules = [
+    {
+      required: true,
+      message: "Majburiy maydon",
+    },
+  ];
   const formItemLayout = {
     labelCol: {
       span: 24,
@@ -105,9 +101,10 @@ const Step2 = ({ onBackward, form }) => {
           >
             <DatePicker
               size="large"
+              format="DD.MM.YYYY"
+              placeholder="DD.MM.YYYY"
               id="passport_issue_date"
               style={{ width: "100%" }}
-              placeholder="kk/oo/yyyy"
             />
           </Form.Item>
         </Col>
@@ -121,7 +118,8 @@ const Step2 = ({ onBackward, form }) => {
             <DatePicker
               size="large"
               id="passport_expire_date"
-              placeholder="kk/oo/yyyy"
+              format="DD.MM.YYYY"
+              placeholder="DD.MM.YYYY"
               style={{ width: "100%" }}
             />
           </Form.Item>
@@ -154,7 +152,8 @@ const Step2 = ({ onBackward, form }) => {
           >
             <DatePicker
               size="large"
-              placeholder="kk/oo/yyyy"
+              format="DD.MM.YYYY"
+              placeholder="DD.MM.YYYY"
               style={{ width: "100%" }}
             />
           </Form.Item>
@@ -193,10 +192,10 @@ const Step2 = ({ onBackward, form }) => {
               onChange={handleChange}
               style={{ width: "100%" }}
             >
-              <Option value="uzbek">O'zbek</Option>
-              <Option value="tojik">Tojik</Option>
-              <Option value="uygur">Uyg'ur</Option>
-              <Option value="rus">Rus</Option>
+              <Option value="O'zbek">O'zbek</Option>
+              <Option value="Tojik">Tojik</Option>
+              <Option value="Uyg'ur">Uyg'ur</Option>
+              <Option value="Rus">Rus</Option>
             </Select>
           </Form.Item>
         </Col>
@@ -289,10 +288,16 @@ const Step2 = ({ onBackward, form }) => {
       </Row>
       <h3 style={{ margin: "10px 0" }}>Passport yoki ID fotosurati</h3>
       <div className="pasport-image">
-        <Form.Item name="passport_file_1">
+        <Form.Item
+          rules={[{ required: true, message: "Majburiy maydon" }]}
+          name="passport_file_1"
+        >
           <ImageUploadFront />
         </Form.Item>
-        <Form.Item name="passport_file_2">
+        <Form.Item
+          rules={[{ required: true, message: "Majburiy maydon" }]}
+          name="passport_file_2"
+        >
           <ImageUploadBack />
         </Form.Item>
       </div>

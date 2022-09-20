@@ -1,7 +1,5 @@
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { LoadingOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
-import ImgCrop from "antd-img-crop";
-import { object } from "prop-types";
 import React, { useEffect, useState } from "react";
 
 const getBase64 = (img, callback) => {

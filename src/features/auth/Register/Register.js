@@ -44,7 +44,18 @@ const Register = () => {
   const handleOk = () => {
     form
       .validateFields()
-      .then((values) => useRegister(values))
+      .then((values) => {
+        const phone = values.phone.replace(/\s/g, "");
+        const obj = {
+          birth_date: values.birth_date,
+          first_name: values.first_name,
+          last_name: values.last_name,
+          middle_name: values.middle_name,
+          password: values.password,
+        };
+        console.log("phone reg", phone);
+        useRegister({ phone: phone, ...obj });
+      })
       .catch((e) => console.log("Error:", e));
   };
   return (
@@ -52,6 +63,12 @@ const Register = () => {
       <div className="left-section" />
       <div className="right-section">
         <div className="content">
+          <div className="register-logo">
+            <img
+              width={200}
+              src={require("../../../assets/img/univerlogo.png")}
+            />
+          </div>
           <h1 className="title">Ro'yhatdan o'tish</h1>
           <Form layout="vertical" form={form} autoComplete="off">
             <Row>
@@ -67,7 +84,7 @@ const Register = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Ismingizni kiriting" />
+                  <Input size="large" placeholder="Ismingizni kiriting" />
                 </Form.Item>
               </Col>
               <Col span="12">
@@ -82,7 +99,7 @@ const Register = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Familiyangizni kiriting" />
+                  <Input size="large" placeholder="Familiyangizni kiriting" />
                 </Form.Item>
               </Col>
             </Row>
@@ -99,7 +116,7 @@ const Register = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Sharifingizni kiriting" />
+                  <Input size="large" placeholder="Sharifingizni kiriting" />
                 </Form.Item>
               </Col>
               <Col span="12">
@@ -115,6 +132,7 @@ const Register = () => {
                   ]}
                 >
                   <MaskedInput
+                    size="large"
                     allowClear
                     placeholder="+998"
                     mask="+998 00 000 00 00"
@@ -136,6 +154,7 @@ const Register = () => {
                   ]}
                 >
                   <DatePicker
+                    size="large"
                     format="DD.MM.YYYY"
                     style={{ width: "100%" }}
                     placeholder="Tug'ilgan sanani tanlang"
@@ -154,7 +173,7 @@ const Register = () => {
                     },
                   ]}
                 >
-                  <Input.Password placeholder="Parolni kiriting" />
+                  <Input.Password size="large" placeholder="Parolni kiriting" />
                 </Form.Item>
               </Col>
             </Row>
@@ -183,14 +202,17 @@ const Register = () => {
                     }),
                   ]}
                 >
-                  <Input.Password placeholder="Parolni tasdiqlang" />
+                  <Input.Password
+                    size="large"
+                    placeholder="Parolni tasdiqlang"
+                  />
                 </Form.Item>
               </Col>
               <Col span="12">
                 <Form.Item
                   name="check"
                   {...formItemLayout}
-                  style={{ marginTop: "36px" }}
+                  style={{ marginTop: "24px" }}
                 >
                   <Checkbox>Saytdan foydalanish shartlariga roziman</Checkbox>
                 </Form.Item>

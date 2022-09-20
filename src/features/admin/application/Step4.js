@@ -22,7 +22,7 @@ const Step4 = ({ onBackward, form }) => {
 
   const rules = [
     {
-      // required: true,
+      required: false,
       message: "Maydonni to'ldiring!",
     },
   ];
@@ -36,7 +36,7 @@ const Step4 = ({ onBackward, form }) => {
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
           <Form.Item style={{ margin: "5px 0" }} rules={rules} name="direction">
             <Select
-              id="direction"
+              size="large"
               style={{ width: "100%" }}
               placeholder="Ta’lim yo’nalishini tanlang"
               allowClear
@@ -61,14 +61,15 @@ const Step4 = ({ onBackward, form }) => {
             name="education_type"
           >
             <Select
-              id="education_type"
+              allowClear
+              size="large"
+              onChange={handleChange}
               style={{ width: "100%" }}
               placeholder="Ta’lim turini tanlang"
-              allowClear
-              onChange={handleChange}
             >
-              <Option value="TalimTuri1">TalimTuri1</Option>
-              <Option value="TalimTuri2">TalimTuri2</Option>
+              <Option value="sirtqi">Sirtqi</Option>
+              <Option value="kunduzgi">Kunduzgi</Option>
+              <Option value="kechki">Kechki</Option>
             </Select>
           </Form.Item>
         </Col>
@@ -81,7 +82,7 @@ const Step4 = ({ onBackward, form }) => {
             name="education_language"
           >
             <Select
-              id="education_language"
+              size="large"
               style={{ width: "100%" }}
               placeholder="Ta’lim tilini tanlang"
               allowClear

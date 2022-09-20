@@ -6,6 +6,11 @@ import ImgUploader from "./ImgUploader";
 import Uploader from "../Uploader";
 
 const { Option } = Select;
+const formItemLayout = {
+  labelCol: {
+    span: 24,
+  },
+};
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
@@ -70,7 +75,12 @@ const Step3 = ({ onBackward, form }) => {
 
 export default Step3;
 
-const Talim = ({ rules }) => {
+const Talim = (
+  {
+    /* rules */
+  }
+) => {
+  const rules = null;
   return (
     <>
       <h3>Ta'lim</h3>
@@ -81,17 +91,17 @@ const Talim = ({ rules }) => {
               <Row key={key} gutter={[24, 16]}>
                 {/*Maktab turi  */}
                 <Col span={8}>
-                  <label htmlFor="education_type">Ta'lim turi</label>
                   <Form.Item
-                    name={[name, "education_type"]}
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    label="Ta'lim turi"
+                    {...formItemLayout}
+                    name={[name, "education_type"]}
                   >
                     <Select
-                      id="education_type"
+                      allowClear
+                      size="large"
                       style={{ width: "100%" }}
                       placeholder="Ta'lim turini tanlang!"
-                      allowClear
                     >
                       <Option value="Maktab">Maktab</Option>
                       <Option value="Litsey">Litsey</Option>
@@ -102,13 +112,14 @@ const Talim = ({ rules }) => {
                 </Col>
                 {/* Muassasa  */}
                 <Col span={8}>
-                  <label htmlFor="education_name">Muassasa</label>
                   <Form.Item
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    label="Muassasa"
+                    {...formItemLayout}
                     name={[name, "education_name"]}
                   >
                     <Input
+                      size="large"
                       id="education_name"
                       style={{ width: "100%" }}
                       placeholder="Maktabingizni kiriting"
@@ -133,42 +144,44 @@ const Talim = ({ rules }) => {
                 </Col>
                 {/* Diplom raqam  */}
                 <Col span={8}>
-                  <label htmlFor="diploma_number">
-                    Diplom/Attestatsiya raqami
-                  </label>
                   <Form.Item
-                    name={[name, "diploma_number"]}
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    {...formItemLayout}
+                    name={[name, "diploma_number"]}
+                    label="Diplom/Attestatsiya raqami"
                   >
                     <Input
-                      style={{ width: "100%" }}
+                      size="large"
                       id="diploma_number"
+                      style={{ width: "100%" }}
                       placeholder="Diplom/attestatsiya raqamini kiriting"
                     />
                   </Form.Item>
                 </Col>
-
-                {/* Tugatgan vaqti */}
                 <Col span={8}>
-                  <label htmlFor="graduation_year">Tugatgan yil</label>
-                  <Form.Item rules={rules} name={[name, "graduation_year"]}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    label="Tugatgan yil"
+                    name={[name, "graduation_year"]}
+                  >
                     <DatePicker
-                      id="graduation_year"
-                      style={{ margin: "5px 0", width: "100%" }}
-                      placeholder="kk/oo/yyyy"
+                      size="large"
+                      format="DD.MM.YYYY"
+                      placeholder="DD.MM.YYYY"
+                      style={{ width: "100%" }}
                     />
                   </Form.Item>
                 </Col>
                 {/*Diplom nusxasi  */}
-                <Col span={24}>
+                {/* <Col span={24}>
                   <h3>Diplom/Attestat nusxasi</h3>
                 </Col>
                 <Col span={24}>
                   <Form.Item rules={rules} name={[name, "diploma_file"]}>
                     <DiplomUploader />
                   </Form.Item>
-                </Col>
+                </Col> */}
               </Row>
             ))}
             <br />
@@ -177,9 +190,7 @@ const Talim = ({ rules }) => {
             <Row gutter={[24, 16]}>
               <Col>
                 <div className="add-education" onClick={() => add()}>
-                  <span>
-                    <PlusCircleOutlined style={{ color: "#377DFF" }} />
-                  </span>
+                  <PlusCircleOutlined style={{ color: "#377DFF" }} />
                   <p>Ta’lim muassasasini qo’shish</p>
                 </div>
               </Col>
@@ -192,7 +203,12 @@ const Talim = ({ rules }) => {
   );
 };
 
-const Sertifikatlar = ({ rules }) => {
+const Sertifikatlar = (
+  {
+    /* rules */
+  }
+) => {
+  const rules = null;
   return (
     <>
       <h3>Sertifikatlar</h3>
@@ -201,19 +217,18 @@ const Sertifikatlar = ({ rules }) => {
           <>
             {fields.map(({ key, name, ...restField }) => (
               <Row key={key} gutter={[24, 16]}>
-                {/*Sertifikat turi  */}
                 <Col span={8}>
-                  <label htmlFor="certificate_type">Sertifikat turi</label>
                   <Form.Item
-                    name={[name, "certificate_type"]}
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    {...formItemLayout}
+                    label="Sertifikat turi"
+                    name={[name, "certificate_type"]}
                   >
                     <Select
-                      id="certificate_type"
+                      allowClear
+                      size="large"
                       style={{ width: "100%" }}
                       placeholder="Sertifikat turini tanlang!"
-                      allowClear
                     >
                       {["IELTS", "CEFR", "TOEFL", "DTM"].map((item, key) => (
                         <Option value={item} key={key}>
@@ -225,14 +240,14 @@ const Sertifikatlar = ({ rules }) => {
                 </Col>
                 {/* Sertifikat raqami  */}
                 <Col span={8}>
-                  <label htmlFor="certificate_number">Sertifikat raqami</label>
                   <Form.Item
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    {...formItemLayout}
+                    label="Sertifikat raqami"
                     name={[name, "certificate_number"]}
                   >
                     <Input
-                      id="certificate_number"
+                      size="large"
                       style={{ width: "100%" }}
                       placeholder="Sertifikat raqami kiriting"
                     />
@@ -254,17 +269,16 @@ const Sertifikatlar = ({ rules }) => {
                     />
                   </div>
                 </Col>
-                {/* To’plangan ball  */}
                 <Col span={8}>
-                  <label htmlFor="certificate_score">To’plangan ball</label>
                   <Form.Item
-                    style={{ margin: "5px 0" }}
                     rules={rules}
+                    {...formItemLayout}
+                    label="To’plangan ball"
                     name={[name, "certificate_score"]}
                   >
                     <InputNumber
+                      size="large"
                       style={{ width: "100%" }}
-                      id="certificate_score"
                       placeholder="To’plangan ball kiriting"
                     />
                   </Form.Item>

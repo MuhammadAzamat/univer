@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import moment from "moment";
 import { Button, Col, Row } from "antd";
-const Step5 = ({onBackward}) => {
+const Step5 = ({ onBackward }) => {
+  const [mode, setMode] = useState(false);
+  // const user = JSON.parse(localStorage.getItem("data")) || null;
+  const redirect = () => {
+    setMode(true);
+  };
   return (
     <section className="section_app-info">
       <div className="wrapper">
-        <div className="app_info">
-          <h1 className="app_info-title">Applicant Information</h1>
+        {/* <div className="app_info">
+          <h1 className="app_info-title">Abiturient ma'lumoti</h1>
           <Button className="app_info-btn" shape="round">
             Yangi ariza
           </Button>
@@ -17,29 +23,31 @@ const Step5 = ({onBackward}) => {
               <Row>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Ismi</p>
-                  <h3 className="person_info-desc">Umarov</h3>
+                  <h3 className="person_info-desc">{user?.first_name}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
-                  <p className="person_info-title">Familiyasi </p>
-                  <h3 className="person_info-desc">Jamshid</h3>
+                  <p className="person_info-title">Familiyasi</p>
+                  <h3 className="person_info-desc">{user?.last_name}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Sha’rifi</p>
-                  <h3 className="person_info-desc">Azizjon o’g’li</h3>
+                  <h3 className="person_info-desc">
+                    {user.middle_name ? user.middle_name : "-"}
+                  </h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Telefon raqami</p>
-                  <h3 className="person_info-desc">+998 97 777 77 77</h3>
+                  <h3 className="person_info-desc">{user?.phone}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Qo’shimcha telefon raqami</p>
-                  <h3 className="person_info-desc">+998 99 999 99 99</h3>
+                  <h3 className="person_info-desc">{user?.extra_phone}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Elektron manzili</p>
-                  <h3 className="person_info-desc">example@mail.com</h3>
+                  <h3 className="person_info-desc">{user?.email}</h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
@@ -49,7 +57,7 @@ const Step5 = ({onBackward}) => {
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">
-                    Nogironlik boyicha eslatma
+                    Nogironlik bo'yicha eslatma
                   </p>
                   <h3 className="person_info-desc">-</h3>
                 </Col>
@@ -72,49 +80,63 @@ const Step5 = ({onBackward}) => {
               <Row>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Passport turi</p>
-                  <h3 className="person_info-desc">ID card</h3>
+                  <h3 className="person_info-desc">
+                    {user.passport_type ? "ID Card" : "Passport"}
+                  </h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Passport seria raqami </p>
-                  <h3 className="person_info-desc">AA1234567</h3>
+                  <h3 className="person_info-desc">{user?.passport_series}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Identification pin</p>
-                  <h3 className="person_info-desc">1234567899898</h3>
+                  <h3 className="person_info-desc">
+                    {user?.identification_number}
+                  </h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Passport berilgan sana</p>
-                  <h3 className="person_info-desc">25.11.2010</h3>
+                  <h3 className="person_info-desc">
+                    {moment(user?.passport_issue_date).format("DD.MM.YYYY")}
+                  </h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Amal qilish muddati</p>
-                  <h3 className="person_info-desc">24.11.2035</h3>
+                  <h3 className="person_info-desc">
+                    {moment(user?.passport_expire_date).format("DD.MM.YYYY")}
+                  </h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Kim tomindan berilgan</p>
-                  <h3 className="person_info-desc">Toshkent shahar IIB</h3>
+                  <h3 className="person_info-desc">
+                    {user?.issued_by ? user?.issued_by : "-"}
+                  </h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Tug’ilgan sanasi</p>
-                  <h3 className="person_info-desc">10.09.1999</h3>
+                  <h3 className="person_info-desc">
+                    {moment(user?.birth_date).format("DD.MM.YYYY")}
+                  </h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Jinsi</p>
-                  <h3 className="person_info-desc">Erkak</h3>
+                  <h3 className="person_info-desc">
+                    {user?.gender ? "Erkak" : "Ayol"}
+                  </h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Millati</p>
-                  <h3 className="person_info-desc">O'zbek</h3>
+                  <h3 className="person_info-desc">{user?.nation}</h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Fuqaroligi</p>
-                  <h3 className="person_info-desc">O'zbek</h3>
+                  <h3 className="person_info-desc">O'zbekiston</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Mamlakat</p>
@@ -156,8 +178,8 @@ const Step5 = ({onBackward}) => {
               </div>
             </Col>
           </Row>
-        </div>
-        <div className="person_info">
+        </div> */}
+        {/* <div className="person_info">
           <h2>Oldingi o’quv joyi</h2>
           <Row>
             <Col className="person_info-block" span={18}>
@@ -203,8 +225,8 @@ const Step5 = ({onBackward}) => {
               </div>
             </Col>
           </Row>
-        </div>
-        <div className="person_info">
+        </div> */}
+        {/* <div className="person_info">
           <h2>Sertifikatlari</h2>
           <Row>
             <Col span={18} className="person_info-block">
@@ -232,8 +254,8 @@ const Step5 = ({onBackward}) => {
               />
             </Col>
           </Row>
-        </div>
-        <div style={{ border: 0 }} className="person_info">
+        </div> */}
+        {/* <div style={{ border: 0 }} className="person_info">
           <h2>Tanlangan yo’nalish</h2>
           <Row>
             <Col span={18} className="person_info-block">
@@ -253,16 +275,25 @@ const Step5 = ({onBackward}) => {
               </Row>
             </Col>
           </Row>
+        </div> */}
+      </div>
+      <div className="all-info">
+        <h2>
+          {!mode
+            ? "Sizning arizangiz ko'rib chiqish uchun yuborishga tayyor!"
+            : "Sizning arizangiz ko'rib chiqish uchun yuborildi!"}
+        </h2>
+      </div>
+      {!mode && (
+        <div className="app_info-section-btn">
+          <Button className="btn btn-left" shape="" onClick={onBackward}>
+            Orqaga
+          </Button>
+          <Button className="btn btn-right" onClick={redirect}>
+            Ariza yuborish
+          </Button>
         </div>
-      </div>
-      <div className="app_info-section-btn">
-        <Button className="btn btn-left" shape="" onClick={onBackward}>
-          Orqaga
-        </Button>
-        <Button className="btn btn-right" shape="" htmlType="submit">
-          Ariza yuborish
-        </Button>
-      </div>
+      )}
     </section>
   );
 };

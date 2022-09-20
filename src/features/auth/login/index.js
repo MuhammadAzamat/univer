@@ -39,67 +39,80 @@ const Login = () => {
   };
   const redirect = () => (window.location.pathname = "/auth/register");
   return (
-    <div className="login">
-      <div className="login-page">
-        <Form
-          form={form}
-          size="large"
-          layout="vertical"
-          autoComplete="off"
-          className="login-wrap"
-        >
-          <Title level={3}>Tizimga kirish</Title>
-          <Form.Item
-            name="phone"
-            rules={[
-              {
-                required: true,
-                message: "Iltimos, telefon raqamingizni kiriting",
-              },
-            ]}
+    <div className="login-top">
+      <div className="login">
+        <div className="login-logo">
+          <img
+            width={200}
+            src={require("../../../assets/img/univerlogo.png")}
+          />
+        </div>
+        <div className="login-page">
+          <Form
+            form={form}
+            size="large"
+            layout="vertical"
+            autoComplete="off"
+            className="login-wrap"
           >
-            <MaskedInput
-              allowClear
-              placeholder="+998"
-              mask="+998 00 000 00 00"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Iltimos, parolni kiriting",
-              },
-            ]}
-          >
-            <Input.Password type="password" placeholder="Parolni kiriting" />
-          </Form.Item>
-          <Form.Item name="remember">
-            <Checkbox>Meni eslab qol</Checkbox>
-          </Form.Item>
-          <Button
-            block
-            type="primary"
-            htmlType="submit"
-            loading={loading}
-            onClick={handleOk}
-            className="sign-in-button"
-          >
-            Tizimga kirish
-          </Button>
-          <div className="login-footer">
-            <p className="auth-confirm-text">Sizda akkaunt mavjud emasmi?</p>
+            <Title level={3}>Tizimga kirish</Title>
+            <Form.Item
+              name="phone"
+              rules={[
+                {
+                  required: true,
+                  message: "Iltimos, telefon raqamingizni kiriting",
+                },
+              ]}
+            >
+              <MaskedInput
+                allowClear
+                size="large"
+                placeholder="+998"
+                mask="+998 00 000 00 00"
+              />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: "Iltimos, parolni kiriting",
+                },
+              ]}
+            >
+              <Input.Password
+                size="large"
+                type="password"
+                placeholder="Parolni kiriting"
+              />
+            </Form.Item>
+            <Form.Item name="remember">
+              <Checkbox>Meni eslab qol</Checkbox>
+            </Form.Item>
             <Button
               block
-              type="default"
-              onClick={redirect}
-              className="register-button"
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+              onClick={handleOk}
+              className="sign-in-button"
             >
-              Ro’yxatdan o’tish
+              Tizimga kirish
             </Button>
-          </div>
-        </Form>
+            <div className="login-footer">
+              <p className="auth-confirm-text">Sizda akkaunt mavjud emasmi?</p>
+              <Button
+                block
+                type="default"
+                onClick={redirect}
+                className="register-button"
+              >
+                Ro’yxatdan o’tish
+              </Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );

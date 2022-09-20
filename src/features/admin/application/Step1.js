@@ -69,7 +69,12 @@ function Step1({ onBackward, form }) {
         </Col>
         <Col span={8}>
           <Form.Item
-            rules={rules}
+            rules={[
+              {
+                required: true,
+                message: "Majburoy maydon",
+              },
+            ]}
             name="middle_name"
             {...formItemLayout}
             label="Otasining ismi"
@@ -219,18 +224,18 @@ const ImageUpload = ({ value = {}, onChange }) => {
         onChange={(info) => onChange(info)}
       />
       <div className="step-1-image-upload-right">
-        <h2>Fotasurat ni yuklang</h2>
-        <h3>You can upload .JPEG, .JPG, or .PNG photes not over 1 MB.</h3>
+        <h2>Fotosuratni yuklang</h2>
+        <p>
+          Ushbu turdagi fayl turlarini yuklashingiz mumkin va fayl hajmi 1 mb
+          .JPEG, .JPG, or .PNG
+        </p>
         <Upload
           showUploadList={false}
           beforeUpload={(file) => false}
           onChange={(info) => onChange(info)}
         >
-          <Button
-            className="btn-upload"
-            icon={<img src={require("../../../assets/img/Icon-left.png")} />}
-          >
-            Upload photo
+          <Button size="large" className="btn-upload">
+            Fotosuratni yuklash
           </Button>
         </Upload>
       </div>

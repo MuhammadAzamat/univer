@@ -48,5 +48,19 @@
 }
 .login-footer {
   width: 100%;
+  margin-top: 24px;
 }
-
+.login-logo {
+  position: relative;
+  bottom: -100px;
+  text-align: center;
+  background-color: transparent;
+}
+@media screen and (max-width: 600px) {
+  .login-logo {
+    position: relative;
+    bottom: -170px;
+    text-align: center;
+    background-color: transparent;
+  }
+}
