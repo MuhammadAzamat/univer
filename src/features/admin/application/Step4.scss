@@ -5,12 +5,10 @@
   border-radius: 10px;
   position: relative;
   min-height: 55vh;
-
-  .nav-btns{
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
+}
+.nav-btns {
+  width: 100%;
+  margin: 15px 0;
 }
 h3,
 .step4_container h3 {
@@ -46,4 +44,16 @@ h3,
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 391px) {
+  .nav-btns {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .ant-btn {
+    padding: 12px 24px;
+    width: 100% !important;
+  }
 }

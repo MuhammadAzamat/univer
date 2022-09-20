@@ -166,6 +166,11 @@ export default function Dashboard() {
     });
   };
 
+  // const closeSideBar = () => {
+  //   const sideBar = document.querySelector("aside");
+  //   sideBar.style.display = "none";
+  // };s
+
   const data = JSON.parse(localStorage.getItem("data"));
   console.log("data", data);
   return (

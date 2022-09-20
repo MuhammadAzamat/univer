@@ -1,4 +1,10 @@
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .home-app {
+  min-height: 100vh;
+}
+@media (max-width: 391px) {
+  .ant-col {
+    width: 100%;
+  }
 }

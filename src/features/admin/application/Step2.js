@@ -27,7 +27,7 @@ const Step2 = ({ onBackward, form }) => {
       <h3>Pasport ma'lumotlari</h3>
       <Row gutter={[24, 16]}>
         {/*Passport turi  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             {...formItemLayout}
@@ -47,7 +47,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={[
               {
@@ -68,7 +68,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={[
               {
@@ -92,7 +92,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             {...formItemLayout}
@@ -108,7 +108,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             {...formItemLayout}
@@ -124,7 +124,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             name="issued_by"
@@ -138,7 +138,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={[
               {
@@ -158,7 +158,7 @@ const Step2 = ({ onBackward, form }) => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             label="Jinsi"
             rules={rules}
@@ -177,7 +177,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             name="nation"
@@ -199,7 +199,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="country"
             rules={rules}
@@ -221,7 +221,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="region"
             rules={rules}
@@ -247,7 +247,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             label="Tuman"
             rules={rules}
@@ -271,7 +271,7 @@ const Step2 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             name="address"
@@ -302,8 +302,8 @@ const Step2 = ({ onBackward, form }) => {
         </Form.Item>
       </div>
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{

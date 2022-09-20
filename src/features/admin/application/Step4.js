@@ -32,7 +32,7 @@ const Step4 = ({ onBackward, form }) => {
       <h3>Ta’lim yo’nalishi</h3>
       <Row gutter={[24, 16]}>
         {/*Ta’lim yo’nalishi  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
           <Form.Item style={{ margin: "5px 0" }} rules={rules} name="direction">
             <Select
@@ -52,13 +52,13 @@ const Step4 = ({ onBackward, form }) => {
             </Select>
           </Form.Item>
         </Col>
-        {/*Ta’lim turi  */}
-        <Col span={8}>
-          <label htmlFor="education_type">Ta’lim turi</label>
+        {/*Ta’lim shakli  */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="education_type_time">Ta’lim shakli</label>
           <Form.Item
             style={{ margin: "5px 0" }}
             rules={rules}
-            name="education_type"
+            name="education_type_time"
           >
             <Select
               allowClear
@@ -74,7 +74,7 @@ const Step4 = ({ onBackward, form }) => {
           </Form.Item>
         </Col>
         {/*Ta’lim tili  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="education_language">Ta’lim tili</label>
           <Form.Item
             style={{ margin: "5px 0" }}
@@ -95,27 +95,22 @@ const Step4 = ({ onBackward, form }) => {
           </Form.Item>
         </Col>
       </Row>
+
       <div className="nav-btns">
-        <Form.Item
-          wrapperCol={{
-            offset: 0,
-            span: 8,
-          }}
-        >
-          <Button type="default" onClick={onBackward}>
-            Bekor qilish
-          </Button>
-        </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 0,
-            span: 8,
-          }}
-        >
-          <Button type="primary" onClick={() => form.submit()}>
-            Oldinga
-          </Button>
-        </Form.Item>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item>
+            <Button type="default" onClick={onBackward}>
+              Bekor qilish
+            </Button>
+          </Form.Item>
+        </Col>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item>
+            <Button type="primary" onClick={() => form.submit()}>
+              Oldinga
+            </Button>
+          </Form.Item>
+        </Col>
       </div>
     </div>
   );
