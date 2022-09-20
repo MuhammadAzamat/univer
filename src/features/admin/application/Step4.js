@@ -65,10 +65,10 @@ const Step4 = ({ onBackward, form }) => {
               size="large"
               onChange={handleChange}
               style={{ width: "100%" }}
-              placeholder="Ta’lim turini tanlang"
+              placeholder="Ta’lim shaklini tanlang"
             >
-              <Option value="sirtqi">Sirtqi</Option>
               <Option value="kunduzgi">Kunduzgi</Option>
+              <Option value="sirtqi">Sirtqi</Option>
               <Option value="kechki">Kechki</Option>
             </Select>
           </Form.Item>
@@ -90,7 +90,6 @@ const Step4 = ({ onBackward, form }) => {
             >
               <Option value="uz">O'zbek</Option>
               <Option value="ru">Rus</Option>
-              <Option value="en">Ingliz</Option>
             </Select>
           </Form.Item>
         </Col>
