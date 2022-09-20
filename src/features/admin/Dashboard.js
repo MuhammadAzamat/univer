@@ -175,7 +175,7 @@ export default function Dashboard() {
           form={form}
           onFinish={onFinish}
           initialValues={{
-            step: 3,
+            step: 1,
             certs: [{}],
             edus: [{}],
             // ...data,
