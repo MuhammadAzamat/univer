@@ -1,7 +1,19 @@
-import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
+import {
+  Button,
+  Form,
+  Select,
+  Input,
+  DatePicker,
+  InputNumber,
+  Space,
+} from "antd";
 import React from "react";
 import { Col, Row } from "antd";
-import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import {
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import ImgUploader from "./ImgUploader";
 import Uploader from "../Uploader";
 
@@ -35,12 +47,13 @@ const Step3 = ({ onBackward }) => {
       <br />
       <Row gutter={[24, 16]}>
         <Col>
-          <div className="add-education">
+          {/* <div className="add-education">
             <span>
               <PlusCircleOutlined style={{ color: "#377DFF" }} />
             </span>
             <p>Ta’lim muassasasini qo’shish</p>
-          </div>
+          </div> */}
+          <AddEducation />
         </Col>
       </Row>
       <br />
@@ -49,12 +62,13 @@ const Step3 = ({ onBackward }) => {
       <br />
       <Row gutter={[24, 16]}>
         <Col>
-          <div className="add-sertification">
+          {/* <div className="add-sertification">
             <span>
               <PlusCircleOutlined style={{ color: "#377DFF" }} />
             </span>
             <p>Sertifikat qo’shish</p>
-          </div>
+          </div> */}
+          <AddSertificate />
         </Col>
       </Row>
       <br />
@@ -141,9 +155,9 @@ const Talim = ({ rules }) => {
           }}
           span={8}
         >
-          <div className="minus-btn">
+          {/* <div className="minus-btn">
             <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
-          </div>
+          </div> */}
         </Col>
         {/* Diplom raqam  */}
         <Col span={8}>
@@ -230,9 +244,9 @@ const Sertifikatlar = ({ rules }) => {
           }}
           span={8}
         >
-          <div className="minus-btn">
+          {/* <div className="minus-btn">
             <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
-          </div>
+          </div> */}
         </Col>
         {/* To’plangan ball  */}
         <Col span={8}>
@@ -287,5 +301,144 @@ const CertUploader = ({ value = {}, onChange }) => {
         onChange={(info) => onChange(info)}
       />
     </div>
+  );
+};
+
+const AddEducation = ({ rules }) => {
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Talim rules={rules} />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                  }}
+                  span={8}
+                >
+                  {/* <div className="minus-btn">
+            <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
+          </div> */}
+                  <MinusCircleOutlined onClick={() => remove(name)} />
+                </div>
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Ta’lim muassasasini qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
+  );
+};
+const AddSertificate = ({ rules }) => {
+  // const onFinish = (values) => {
+  //   console.log("Received values of form:", values);
+  // };
+
+  // return (
+  //   <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+  //     <Form.List name="users">
+  //       {(fields, { add, remove }) => (
+  //         <>
+  //           {fields.map(({ key, name, ...restField }) => (
+  //             <Space
+  //               key={key}
+  //               style={{
+  //                 display: "flex",
+  //                 marginBottom: 8,
+  //               }}
+  //               align="baseline"
+  //             >
+  //               <Sertifikatlar rules={rules} />
+  //             </Space>
+  //           ))}
+  //           <Form.Item style={{ width: "250px" }}>
+  //             <Button
+  //               type="dashed"
+  //               onClick={() => add()}
+  //               block
+  //               icon={<PlusOutlined />}
+  //             >
+  //               Sertifikat qo’shish
+  //             </Button>
+  //           </Form.Item>
+  //         </>
+  //       )}
+  //     </Form.List>
+  //   </Form>
+  // );
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Sertifikatlar rules={rules} />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                  }}
+                  span={8}
+                >
+                  {/* <div className="minus-btn">
+            <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
+          </div> */}
+                  <MinusCircleOutlined onClick={() => remove(name)} />
+                </div>
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Sertifikat qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
   );
 };

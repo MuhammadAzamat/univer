@@ -103,6 +103,7 @@ const Step4 = ({ onBackward }) => {
           </Form.Item>
         </Col>
       </Row>
+      <br />
       <Row>
         <Col span={14}></Col>
         <Col span={10}>
