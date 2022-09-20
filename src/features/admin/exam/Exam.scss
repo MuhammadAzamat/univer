@@ -83,3 +83,23 @@
   line-height: 20px;
   margin: 4px 0;
 }
+@media (max-width: 391px) {
+  .exam_date_container {
+    width: 100%;
+    padding: 1rem;
+  }
+  .exam_date_container h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .processing_container p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .exam_date_container button {
+    width: 90%;
+  }
+  .ant-row {
+    width: 100%;
+  }
+}

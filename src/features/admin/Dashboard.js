@@ -88,6 +88,11 @@ export default function Dashboard() {
     });
   };
 
+  // const closeSideBar = () => {
+  //   const sideBar = document.querySelector("aside");
+  //   sideBar.style.display = "none";
+  // };
+
   return (
     <div className="admin-dashboard">
       <div className="dashboard-container">

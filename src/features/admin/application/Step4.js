@@ -31,7 +31,7 @@ const Step4 = ({ onBackward }) => {
       <h3>Ta’lim yo’nalishi</h3>
       <Row gutter={[24, 16]}>
         {/*Ta’lim yo’nalishi  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="direction">Ta’lim yo’nalishi</label>
           <Form.Item rules={rules} style={{ margin: "5px 0" }} name="direction">
             <Select
@@ -61,15 +61,15 @@ const Step4 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/*Ta’lim turi  */}
-        <Col span={8}>
-          <label htmlFor="education_type">Ta’lim turi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="education_type_time">Ta’lim turi</label>
           <Form.Item
             style={{ margin: "5px 0" }}
             rules={rules}
-            name="education_type"
+            name="education_type_time"
           >
             <Select
-              id="education_type"
+              id="education_type_time"
               style={{ width: "100%" }}
               placeholder="Ta’lim turini tanlang"
               allowClear
@@ -82,7 +82,7 @@ const Step4 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/*Ta’lim tili  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="education_language">Ta’lim tili</label>
           <Form.Item
             style={{ margin: "5px 0" }}
@@ -105,8 +105,8 @@ const Step4 = ({ onBackward }) => {
       </Row>
       <br />
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{

@@ -52,3 +52,20 @@
   font-size: 20px;
   font-weight: 800;
 }
+@media (max-width: 391px) {
+  .processing_container {
+    width: 100%;
+    padding: 1rem;
+  }
+  .processing_container h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .processing_container p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .processing_container button {
+    width: 90%;
+  }
+}

@@ -22,15 +22,15 @@ const ExamDate = () => {
           <p className="exam_details">Vaqti</p>
           <h5>09:00</h5>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <p className="exam_details">Imtihon uchun to’lov</p>
           <h5>100 000 so’m</h5>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <p className="exam_details">Imtihon olinadigan til</p>
           <h5>O’zbek</h5>
         </Col>
-        <Col span={16}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <p className="exam_details">Manzil</p>
           <h5>Toshkent shahar Chilonzor tumani YEOJU Universiteti</h5>
         </Col>

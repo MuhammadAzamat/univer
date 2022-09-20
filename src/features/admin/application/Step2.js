@@ -52,9 +52,9 @@ const Step2 = ({ onBackward }) => {
   return (
     <div className="step2_container">
       <h3>Pasport ma'lumotlari</h3>
-      <Row gutter={[24, 16]}>
+      <Row gutter={{ xs: 8, sm: 8, md: 24, lg: 16 }}>
         {/*Passport turi  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="passport_type">Passport turi</label>
           <Form.Item
             style={{ margin: "5px 0" }}
@@ -74,7 +74,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Passport seria  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="passport_series">Pasport seria raqami</label>
           <Form.Item name="passport_series" style={{ margin: "5px 0" }}>
             <Input
@@ -93,7 +93,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Identification raqam  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="identification_number">Identifikatsiya raqami</label>
           <Form.Item
             style={{ margin: "5px 0" }}
@@ -110,7 +110,7 @@ const Step2 = ({ onBackward }) => {
         </Col>
 
         {/* Berilgan vaqti */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="passport_issue_date">Berilgan vaqti</label>
           <Form.Item rules={rules} name="passport_issue_date">
             <DatePicker
@@ -121,7 +121,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Amal qilish muddatai  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="passport_expire_date">Amal qilish muddati</label>
           <Form.Item rules={rules} name="passport_expire_date">
             <DatePicker
@@ -132,7 +132,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Kim tominidan berilgan  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="issued_by">Kim tomonidan berilgan</label>
           <Form.Item style={{ margin: "5px 0" }} name="issued_by" rules={rules}>
             <Input
@@ -143,7 +143,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Tugilgan sana  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="birth_date">Tug’ilgan sana</label>
           <Form.Item name="birth_date" rules={rules}>
             <DatePicker
@@ -154,7 +154,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Jinsni kiriting  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="gender">Jinsini kiriting</label>
           <Form.Item style={{ margin: "5px 0" }} rules={rules} name="gender">
             <Select
@@ -170,7 +170,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Millat  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="nation">Millati</label>
           <Form.Item style={{ margin: "5px 0" }} rules={rules} name="nation">
             <Select
@@ -190,7 +190,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Mamlakat  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="country">Mamlakat</label>
           <Form.Item name="country" style={{ margin: "5px 0" }} rules={rules}>
             <Select
@@ -209,7 +209,7 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Viloyat */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="region">Viloyat</label>
           <Form.Item name="region" style={{ margin: "5px 0" }} rules={rules}>
             <Select
@@ -237,14 +237,14 @@ const Step2 = ({ onBackward }) => {
           </Form.Item>
         </Col>
         {/* Tuman  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="district">Tuman</label>
           <Form.Item name="district" style={{ margin: "5px 0" }} rules={rules}>
             <Input placeholder="Tuman" />
           </Form.Item>
         </Col>
         {/* Manzil */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="address">Manzil</label>
           <Form.Item name="address" style={{ margin: "5px 0" }} rules={rules}>
             <Input
@@ -266,8 +266,8 @@ const Step2 = ({ onBackward }) => {
         </Form.Item>
       </div>
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{

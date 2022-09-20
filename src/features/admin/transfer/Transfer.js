@@ -49,7 +49,7 @@ const Transfer = () => {
           <h3>Oldingi ta’lim yo’nalishi</h3>
           <Row gutter={[24, 16]}>
             {/*Ta’lim muassasasi*/}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="direction">Ta’lim muassasasi</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -77,7 +77,7 @@ const Transfer = () => {
               </Form.Item>
             </Col>
             {/* Ta’lim yo’nalishi */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="specification">Ta’lim yo’nalishi</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -100,7 +100,7 @@ const Transfer = () => {
               </Form.Item>
             </Col>
             {/* Ta’lim turini */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="type">Ta’lim turini</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -122,7 +122,7 @@ const Transfer = () => {
             </Col>
 
             {/* Ta’lim tili */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="language">Ta’lim tili</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -143,7 +143,7 @@ const Transfer = () => {
               </Form.Item>
             </Col>
             {/* Ta’lim bosqichi */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="stage">Ta’lim bosqichi</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -171,7 +171,7 @@ const Transfer = () => {
           <h3>Ta’lim yo’nalishi</h3>
           <Row gutter={[24, 16]}>
             {/*Ta’lim yo’nalishi*/}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="direction2">Ta’lim yo’nalishi</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -194,7 +194,7 @@ const Transfer = () => {
               </Form.Item>
             </Col>
             {/* Ta’lim turini */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="type2">Ta’lim turini</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -215,7 +215,7 @@ const Transfer = () => {
               </Form.Item>
             </Col>
             {/* Ta’lim tili */}
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="language2">Ta’lim tili</label>
               <Form.Item
                 style={{ margin: "5px 0" }}
@@ -238,12 +238,7 @@ const Transfer = () => {
             </Col>
           </Row>
           <div className="prev-next-btns">
-            <Form.Item
-              wrapperCol={{
-                span: 12,
-                offset: 6,
-              }}
-            >
+            <Form.Item>
               <Button className="step2_btns">Orqaga</Button>
               <Button className="step2_btns" type="primary" htmlType="submit">
                 Oldinga

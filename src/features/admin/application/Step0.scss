@@ -85,3 +85,33 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+@media (max-width: 391px) {
+  .site-layout-background {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+  .order-placed-img {
+    width: 226px;
+    height: 226px;
+  }
+  .site-layout-wrapper {
+    padding: 1rem;
+  }
+  .site-layout-wrapper h2 {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+  }
+  .site-layout-wrapper p {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 1px;
+  }
+  .site-layout-buttons {
+    display: block;
+  }
+  .site-layout-buttons button {
+    width: 90%;
+    margin: 10px;
+  }
+}

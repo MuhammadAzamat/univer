@@ -10,11 +10,11 @@ const ExamResult = () => {
       </div>
       <h3>Sizning imtixon natijangiz</h3>
       <Row gutter={[16, 16]}>
-        <Col span={8}>
+        <Col xs={12} sm={12} md={8} lg={8}>
           <span className="result_status">Natija</span>
           <h5>120</h5>
         </Col>
-        <Col span={16}>
+        <Col xs={12} sm={12} md={16} lg={16}>
           <span className="result_status">Holati</span>
           {/* statusga qarab rang qoshiladi  */}
           <h5>Status Habar</h5>

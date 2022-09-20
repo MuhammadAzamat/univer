@@ -45,20 +45,20 @@ function Step1({ onBackward }) {
         <ImageUpload />
       </Form.Item>
 
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+      <Row gutter={{ xs: 8, sm: 8, md: 16, lg: 24 }}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="first_name">Ismi</label>
           <Form.Item name="first_name" rules={rules}>
             <Input id="first_name" placeholder="Anvar" />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="last_name">Familiyasi</label>
           <Form.Item name="last_name" rules={rules}>
             <Input id="last_name" placeholder="Anvarov" />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="middle_name">Otasining ismi</label>
           <Form.Item name="middle_name" rules={rules}>
             <Input id="middle_name" placeholder="Anvar o’g’li" />
@@ -67,20 +67,24 @@ function Step1({ onBackward }) {
       </Row>
 
       <h1 className="step-1-content-title">Kontakt ma’lumotlar</h1>
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+      <Row gutter={{ xs: 8, sm: 8, md: 24, lg: 32 }}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="phone">Telefon raqami*</label>
           <Form.Item name="phone" rules={rules}>
-            <Input id="phone" placeholder="+998 90 123 45 67" />
+            <Input type="tel" id="phone" placeholder="+998 90 123 45 67" />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="extra_phone">Qo’shimcha telefon raqami</label>
           <Form.Item name="extra_phone" rules={rules}>
-            <Input id="extra_phone" placeholder="+998 90 123 45 67" />
+            <Input
+              type="tel"
+              id="extra_phone"
+              placeholder="+998 90 123 45 67"
+            />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="email">Email</label>
           <Form.Item
             name="email"
@@ -95,8 +99,8 @@ function Step1({ onBackward }) {
           </Form.Item>
         </Col>
       </Row>
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+      <Row gutter={{ xs: 8, sm: 8, md: 24, lg: 32 }}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="is_disabled" className="isDisabled-title">
             Imkoniyati cheklangan
           </label>
@@ -104,7 +108,7 @@ function Step1({ onBackward }) {
             <SwitchInput onChange={toggle} />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="disable_type">Imkoniyati cheklangan turi</label>
           <Form.Item name="disable_type">
             <Select
@@ -128,8 +132,8 @@ function Step1({ onBackward }) {
       </Row>
 
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{

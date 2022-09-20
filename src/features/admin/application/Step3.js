@@ -73,8 +73,8 @@ const Step3 = ({ onBackward }) => {
       </Row>
       <br />
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{
@@ -111,8 +111,8 @@ const Talim = ({ rules }) => {
       <h3>Ta'lim</h3>
       <Row gutter={[24, 16]}>
         {/*Maktab turi  */}
-        <Col span={8}>
-          <label htmlFor="education_type">Ta'lim turi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="education_type">Tamomlagan muassasangiz</label>
           <Form.Item
             name="education_type"
             style={{ margin: "5px 0" }}
@@ -121,7 +121,7 @@ const Talim = ({ rules }) => {
             <Select
               id="education_type"
               style={{ width: "100%" }}
-              placeholder="Ta'lim turini tanlang!"
+              placeholder="Tamomlagan muassasa"
               allowClear
             >
               <Option value="Maktab">Maktab</Option>
@@ -132,8 +132,8 @@ const Talim = ({ rules }) => {
           </Form.Item>
         </Col>
         {/* Muassasa  */}
-        <Col span={8}>
-          <label htmlFor="education_name">Muassasa</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="education_name">Muassasa nomi</label>
           <Form.Item
             style={{ margin: "5px 0" }}
             rules={rules}
@@ -142,7 +142,7 @@ const Talim = ({ rules }) => {
             <Input
               id="education_name"
               style={{ width: "100%" }}
-              placeholder="Maktabingizni kiriting"
+              placeholder="Muassasa nomini kiriting"
             />
           </Form.Item>
         </Col>
@@ -153,14 +153,17 @@ const Talim = ({ rules }) => {
             justifyContent: "end",
             alignItems: "center",
           }}
-          span={8}
+          xs={24}
+          sm={24}
+          md={8}
+          lg={8}
         >
           {/* <div className="minus-btn">
             <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
           </div> */}
         </Col>
         {/* Diplom raqam  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="diploma_number">Diplom/Attestatsiya raqami</label>
           <Form.Item
             name="diploma_number"
@@ -176,7 +179,7 @@ const Talim = ({ rules }) => {
         </Col>
 
         {/* Tugatgan vaqti */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="graduation_year">Tugatgan yil</label>
           <Form.Item rules={rules} name="graduation_year">
             <DatePicker
@@ -208,7 +211,7 @@ const Sertifikatlar = ({ rules }) => {
       <h3>Sertifikatlar</h3>
       <Row gutter={[24, 16]}>
         {/*Sertifikat turi  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="certificate_type">Sertifikat turi</label>
           <Form.Item name="certificate_type" style={{ margin: "5px 0" }}>
             <Select
@@ -225,7 +228,7 @@ const Sertifikatlar = ({ rules }) => {
           </Form.Item>
         </Col>
         {/* Sertifikat raqami  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="certificate_number">Sertifikat raqami</label>
           <Form.Item style={{ margin: "5px 0" }} name="certificate_number">
             <Input
@@ -242,14 +245,17 @@ const Sertifikatlar = ({ rules }) => {
             justifyContent: "end",
             alignItems: "center",
           }}
-          span={8}
+          xs={24}
+          sm={24}
+          md={8}
+          lg={8}
         >
           {/* <div className="minus-btn">
             <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
           </div> */}
         </Col>
         {/* To’plangan ball  */}
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="certificate_score">To’plangan ball</label>
           <Form.Item style={{ margin: "5px 0" }} name="certificate_score">
             <InputNumber
@@ -356,42 +362,6 @@ const AddEducation = ({ rules }) => {
   );
 };
 const AddSertificate = ({ rules }) => {
-  // const onFinish = (values) => {
-  //   console.log("Received values of form:", values);
-  // };
-
-  // return (
-  //   <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
-  //     <Form.List name="users">
-  //       {(fields, { add, remove }) => (
-  //         <>
-  //           {fields.map(({ key, name, ...restField }) => (
-  //             <Space
-  //               key={key}
-  //               style={{
-  //                 display: "flex",
-  //                 marginBottom: 8,
-  //               }}
-  //               align="baseline"
-  //             >
-  //               <Sertifikatlar rules={rules} />
-  //             </Space>
-  //           ))}
-  //           <Form.Item style={{ width: "250px" }}>
-  //             <Button
-  //               type="dashed"
-  //               onClick={() => add()}
-  //               block
-  //               icon={<PlusOutlined />}
-  //             >
-  //               Sertifikat qo’shish
-  //             </Button>
-  //           </Form.Item>
-  //         </>
-  //       )}
-  //     </Form.List>
-  //   </Form>
-  // );
   const onFinish = (values) => {
     console.log("Received values of form:", values);
   };

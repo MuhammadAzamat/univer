@@ -40,19 +40,19 @@ function Settings({ onBackward }) {
         <h3>Profilni o'zgartirish</h3>
         <Form form={form} onFinish={onFinish}>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="first_name">Ismi</label>
               <Form.Item name="first_name" rules={rules}>
                 <Input id="first_name" />
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="last_name">Familiyasi</label>
               <Form.Item name="last_name" rules={rules}>
                 <Input id="last_name" />
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="middle_name">Otasining ismi</label>
               <Form.Item name="middle_name" rules={rules}>
                 <Input id="middle_name" />
@@ -61,13 +61,13 @@ function Settings({ onBackward }) {
           </Row>
 
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <label htmlFor="phone">Telefon raqami*</label>
               <Form.Item name="phone" rules={rules}>
                 <Input id="phone" />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <Form.Item name="date">
                 <div>
                   <label>Tug'ilgan sana</label>
@@ -75,8 +75,7 @@ function Settings({ onBackward }) {
                     id="date"
                     onChange={onChange}
                     style={{
-                      width: 370,
-                      height: 50,
+                      width: "100%",
                       borderRadius: 7,
                     }}
                   />
@@ -87,7 +86,7 @@ function Settings({ onBackward }) {
 
           <h3>Parolni yangilash</h3>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <Form.Item name="current_password" rules={rules}>
                 <Input.Password
                   placeholder="Hozirgi parol"
@@ -98,7 +97,7 @@ function Settings({ onBackward }) {
                 />
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <Form.Item name="new_password" rules={rules}>
                 <Input.Password
                   placeholder="Yangi parol"
@@ -109,7 +108,7 @@ function Settings({ onBackward }) {
                 />
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={24} md={8} lg={8}>
               <Form.Item name="confirm_new_password" rules={rules}>
                 <Input.Password
                   placeholder="Yangi parolni tasdiqlang"
@@ -123,8 +122,8 @@ function Settings({ onBackward }) {
           </Row>
 
           <Row style={{ marginTop: "20px" }}>
-            <Col span={14}></Col>
-            <Col span={10}>
+            <Col xs={24} sm={24} md={14} lg={14}></Col>
+            <Col xs={24} sm={24} md={10} lg={10}>
               <div className="nav-btns">
                 <Form.Item
                   wrapperCol={{
