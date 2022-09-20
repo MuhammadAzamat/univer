@@ -60,7 +60,7 @@ const Register = () => {
   };
   return (
     <div className="register">
-      <div className="left-section" />
+      {/* <div className="left-section" /> */}
       <div className="right-section">
         <div className="content">
           <div className="register-logo">
@@ -72,7 +72,7 @@ const Register = () => {
           <h1 className="title">Ro'yhatdan o'tish</h1>
           <Form layout="vertical" form={form} autoComplete="off">
             <Row>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   label="Ism"
                   name="first_name"
@@ -87,7 +87,7 @@ const Register = () => {
                   <Input size="large" placeholder="Ismingizni kiriting" />
                 </Form.Item>
               </Col>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="last_name"
                   label="Familiya"
@@ -104,7 +104,7 @@ const Register = () => {
               </Col>
             </Row>
             <Row>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="middle_name"
                   {...formItemLayout}
@@ -119,7 +119,7 @@ const Register = () => {
                   <Input size="large" placeholder="Sharifingizni kiriting" />
                 </Form.Item>
               </Col>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="phone"
                   label="Telefon raqam"
@@ -141,7 +141,7 @@ const Register = () => {
               </Col>
             </Row>
             <Row>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="birth_date"
                   {...formItemLayout}
@@ -161,7 +161,7 @@ const Register = () => {
                   />
                 </Form.Item>
               </Col>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="password"
                   label="Parol"
@@ -178,7 +178,7 @@ const Register = () => {
               </Col>
             </Row>
             <Row>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   label="Parol"
                   {...formItemLayout}
@@ -208,11 +208,11 @@ const Register = () => {
                   />
                 </Form.Item>
               </Col>
-              <Col span="12">
+              <Col xs={24} sm={8} md={10} lg={12}>
                 <Form.Item
                   name="check"
                   {...formItemLayout}
-                  style={{ marginTop: "24px" }}
+                  style={{ marginTop: "24px", width: "300px" }}
                 >
                   <Checkbox>Saytdan foydalanish shartlariga roziman</Checkbox>
                 </Form.Item>

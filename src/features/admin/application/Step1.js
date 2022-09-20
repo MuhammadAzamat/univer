@@ -32,7 +32,7 @@ function Step1({ onBackward, form }) {
         <ImageUpload />
       </Form.Item>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             label="Ism"
             rules={[
@@ -47,7 +47,7 @@ function Step1({ onBackward, form }) {
             <Input size="large" placeholder="Ismni kiriting" id="first_name" />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="last_name"></label>
           <Form.Item
             rules={[
@@ -67,7 +67,7 @@ function Step1({ onBackward, form }) {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={[
               {
@@ -89,7 +89,7 @@ function Step1({ onBackward, form }) {
       </Row>
       <h1 className="step-1-content-title">Kontakt ma’lumotlar</h1>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="phone"
             {...formItemLayout}
@@ -99,7 +99,7 @@ function Step1({ onBackward, form }) {
             <Input size="large" allowClear placeholder="+998991201122" />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             rules={rules}
             name="extra_phone"
@@ -114,7 +114,7 @@ function Step1({ onBackward, form }) {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="email"
             label="Email"
@@ -133,7 +133,7 @@ function Step1({ onBackward, form }) {
         </Col>
       </Row>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <label htmlFor="is_disabled" className="isDisabled-title">
             Imkoniyati cheklangan
           </label>
@@ -141,7 +141,7 @@ function Step1({ onBackward, form }) {
             <SwitchInput />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="disable_type"
             {...formItemLayout}

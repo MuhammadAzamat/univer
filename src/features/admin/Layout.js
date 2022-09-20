@@ -34,6 +34,7 @@ export default function Layout({ history, children }) {
       <LayoutAnt className="layout-container">
         <Sidebar
           // {...this.props}
+          className="side-bar-menu"
           collapsed={collapsed}
           routes={routes}
           logo={{

@@ -1,7 +1,19 @@
-import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
+import {
+  Button,
+  Form,
+  Select,
+  Input,
+  DatePicker,
+  InputNumber,
+  Space,
+} from "antd";
 import React from "react";
 import { Col, Row } from "antd";
-import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import {
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import ImgUploader from "./ImgUploader";
 import Uploader from "../Uploader";
 
@@ -37,14 +49,14 @@ const Step3 = ({ onBackward, form }) => {
   return (
     <div className="step3_container">
       <Talim rules={rules} />
-
+      {/* <AddEducation /> */}
       <br />
       <Sertifikatlar rules={rules} />
-
+      {/* <AddSertificate /> */}
       <br />
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{
@@ -90,10 +102,10 @@ const Talim = (
             {fields.map(({ key, name, ...restField }) => (
               <Row key={key} gutter={[24, 16]}>
                 {/*Maktab turi  */}
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
-                    label="Ta'lim turi"
+                    label="Tamomlagan muassasangiz"
                     {...formItemLayout}
                     name={[name, "education_type"]}
                   >
@@ -101,7 +113,7 @@ const Talim = (
                       allowClear
                       size="large"
                       style={{ width: "100%" }}
-                      placeholder="Ta'lim turini tanlang!"
+                      placeholder="Tamomlagan muassasangizni tanlang"
                     >
                       <Option value="Maktab">Maktab</Option>
                       <Option value="Litsey">Litsey</Option>
@@ -111,7 +123,7 @@ const Talim = (
                   </Form.Item>
                 </Col>
                 {/* Muassasa  */}
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     label="Muassasa"
@@ -122,28 +134,31 @@ const Talim = (
                       size="large"
                       id="education_name"
                       style={{ width: "100%" }}
-                      placeholder="Maktabingizni kiriting"
+                      placeholder="Muassasa nomini kiriting"
                     />
                   </Form.Item>
                 </Col>
                 {/* Minus button  */}
                 <Col
+                  xs={24}
+                  sm={24}
+                  md={8}
+                  lg={8}
                   style={{
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
                   }}
-                  span={8}
                 >
-                  <div className="minus-btn">
+                  {/* <div className="minus-btn">
                     <MinusCircleOutlined
                       onClick={() => remove(name)}
                       style={{ color: "#B0B7C3" }}
                     />
-                  </div>
+                  </div> */}
                 </Col>
                 {/* Diplom raqam  */}
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     {...formItemLayout}
@@ -158,7 +173,7 @@ const Talim = (
                     />
                   </Form.Item>
                 </Col>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     {...formItemLayout}
@@ -217,7 +232,7 @@ const Sertifikatlar = (
           <>
             {fields.map(({ key, name, ...restField }) => (
               <Row key={key} gutter={[24, 16]}>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     {...formItemLayout}
@@ -239,7 +254,7 @@ const Sertifikatlar = (
                   </Form.Item>
                 </Col>
                 {/* Sertifikat raqami  */}
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     {...formItemLayout}
@@ -260,16 +275,19 @@ const Sertifikatlar = (
                     justifyContent: "end",
                     alignItems: "center",
                   }}
-                  span={8}
+                  xs={24}
+                  sm={24}
+                  md={8}
+                  lg={8}
                 >
-                  <div className="minus-btn">
+                  {/* <div className="minus-btn">
                     <MinusCircleOutlined
                       onClick={() => remove(name)}
                       style={{ color: "#B0B7C3" }}
                     />
-                  </div>
+                  </div> */}
                 </Col>
-                <Col span={8}>
+                <Col xs={24} sm={24} md={8} lg={8}>
                   <Form.Item
                     rules={rules}
                     {...formItemLayout}
@@ -342,5 +360,80 @@ const CertUploader = ({ value = {}, onChange }) => {
         onChange={(info) => onChange(info)}
       />
     </div>
+  );
+};
+
+const AddEducation = ({ rules }) => {
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Talim rules={rules} />
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Ta’lim muassasasini qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
+  );
+};
+const AddSertificate = ({ rules }) => {
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Sertifikatlar rules={rules} />
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Sertifikat qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
   );
 };
