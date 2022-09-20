@@ -15,27 +15,7 @@ export default function Layout({ history, children }) {
   );
   const routes = route;
   const mainRef = useRef(null);
-  const orders_data = useQuery("orders", null);
-
-  const [orders, setorders] = useState([]);
-  useEffect(() => {
-    let cancel = true;
-    if (cancel) {
-      if (orders_data.data && orders_data.data.orders) {
-        setorders(orders_data.data.orders);
-      } else {
-        setorders([]);
-      }
-      cancel = false;
-    }
-  }, [orders_data.data]);
-
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    // mainRef.current.scrollTop = 0;
-  }, [mainRef]);
-
+  
   const getBrandText = (path) => {
     for (let i = 0; i < routes.childRoutes.length; i++) {
       if (
@@ -57,13 +37,12 @@ export default function Layout({ history, children }) {
           collapsed={collapsed}
           routes={routes}
           logo={{
-            innerLink: "/dashboard/index",
+            innerLink: "/admin/index",
             imgSrc: require("../../assets/img/logo.svg"),
             imgAlt: "...",
           }}
-          orders={orders}
         />
-        <div className="main-content" ref={(el) => (mainRef.current = el)}>
+        <div className="main-content" ref={mainRef}>
           {/* <AdminNavbar
             // {...this.props}
             brandText={getBrandText(history.location.pathname)}

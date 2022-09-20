@@ -6,7 +6,7 @@ import SidebarStep from "./sidebarComponents/sidebarStep";
 import SidebarMenu from "./sidebarMenu/sidebarMenu";
 import { Layout as LayoutAnt } from "antd";
 
-const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
+const Sidebar = ({ bgColor, routes, logo, location, collapsed }) => {
   const [collapseOpen, setcollapseOpen] = useState(false);
 
   const { Sider } = LayoutAnt;
