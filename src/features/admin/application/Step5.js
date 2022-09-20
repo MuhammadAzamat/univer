@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import moment from "moment";
 import { Button, Col, Row } from "antd";
 import ApplicationProcess from "../applicationProcess/ApplicationProcess";
-const Step5 = ({ onBackward }) => {
-  const [mode, setMode] = useState(false);
-  // const user = JSON.parse(localStorage.getItem("data")) || null;
+const Step5 = ({ onBackward, mode, setMode, form }) => {
+  const user = JSON.parse(localStorage.getItem("data")) || null;
   const redirect = () => {
     setMode(true);
+    form.setFieldValue('step',0)
   };
   return (
     <section className="section_app-info">
       <div className="wrapper">
-        {/* <div className="app_info">
+        <div className="app_info">
           <h1 className="app_info-title">Abiturient ma'lumoti</h1>
-          <Button className="app_info-btn" shape="round">
+          <Button className="app_info-btn" shape="round" onClick={redirect}>
             Yangi ariza
           </Button>
         </div>
@@ -24,57 +24,57 @@ const Step5 = ({ onBackward }) => {
               <Row>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Ismi</p>
-                  <h3 className="person_info-desc">{user?.first_name}</h3>
+                  <h3 className="person_info-desc">{user?.first_name || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Familiyasi</p>
-                  <h3 className="person_info-desc">{user?.last_name}</h3>
+                  <h3 className="person_info-desc">{user?.last_name || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Sha’rifi</p>
                   <h3 className="person_info-desc">
-                    {user.middle_name ? user.middle_name : "-"}
+                    {user.middle_name ? user.middle_name :  "Ma'lumot kiritilmagan"}
                   </h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Telefon raqami</p>
-                  <h3 className="person_info-desc">{user?.phone}</h3>
+                  <h3 className="person_info-desc">{user?.phone || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Qo’shimcha telefon raqami</p>
-                  <h3 className="person_info-desc">{user?.extra_phone}</h3>
+                  <h3 className="person_info-desc">{user?.extra_phone || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Elektron manzili</p>
-                  <h3 className="person_info-desc">{user?.email}</h3>
+                  <h3 className="person_info-desc">{user?.email || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
               </Row>
               <Row className="person_info-row">
                 <Col className="person_info-col" span={8}>
                   <p className="person_info-title">Nogironlik holati</p>
-                  <h3 className="person_info-desc">Yo’q</h3>
+                  <h3 className="person_info-desc">{user?.disabled_type || "Ma'lumot kiritilmagan"}</h3>
                 </Col>
-                <Col className="person_info-col" span={8}>
+                {/* <Col className="person_info-col" span={8}>
                   <p className="person_info-title">
                     Nogironlik bo'yicha eslatma
                   </p>
                   <h3 className="person_info-desc">-</h3>
-                </Col>
+                </Col> */}
               </Row>
             </Col>
-            <Col xs={24} sm={24} md={6} lg={6}>
+            {/* <Col xs={24} sm={24} md={6} lg={6}>
               <p className="person_info-title">Fotasurat</p>
               <img
                 style={{ width: "150px" }}
                 src="/person-photo.png"
                 alt="person photo"
               />
-            </Col>
+            </Col> */}
           </Row>
         </div>
-        <div className="person_info">
+        {/* <div className="person_info">
           <h2>Passport ma’lumotlari</h2>
           <Row>
             <Col className="person_info-block" xs={24} sm={24} md={18} lg={18}>
@@ -284,18 +284,18 @@ const Step5 = ({ onBackward }) => {
             ? "Sizning arizangiz ko'rib chiqish uchun yuborishga tayyor!"
             : "Sizning arizangiz ko'rib chiqish uchun yuborildi!"}
         </h2> */}
-        <ApplicationProcess />
+        
       </div>
-      {!mode && (
-        <div className="app_info-section-btn">
+      <div className="app_info-section-btn">
+
           <Button className="btn btn-left" shape="" onClick={onBackward}>
             Orqaga
           </Button>
-          <Button className="btn btn-right" onClick={redirect}>
+          <Button className="btn btn-right" htmlType="submit">
             Ariza yuborish
           </Button>
         </div>
-      )}
+      
     </section>
   );
 };

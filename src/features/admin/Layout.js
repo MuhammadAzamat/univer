@@ -10,12 +10,13 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function Layout({ history, children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [token, setToken] = useState(
-    localStorage.getItem("Authorization") || null
-  );
   const routes = route;
   const mainRef = useRef(null);
-  
+  const token = localStorage.getItem("Authorization") || null;
+  if (token == null) {
+    window.location.pathname = "/auth/login";
+  }
+
   const getBrandText = (path) => {
     for (let i = 0; i < routes.childRoutes.length; i++) {
       if (
@@ -30,29 +31,27 @@ export default function Layout({ history, children }) {
     return "Brand";
   };
   return (
-    (token && (
-      <LayoutAnt className="layout-container">
-        <Sidebar
-          // {...this.props}
-          className="side-bar-menu"
-          collapsed={collapsed}
-          routes={routes}
-          logo={{
-            innerLink: "/admin/index",
-            imgSrc: require("../../assets/img/logo.svg"),
-            imgAlt: "...",
-          }}
-        />
-        <div className="main-content" ref={mainRef}>
-          {/* <AdminNavbar
+    <LayoutAnt className="layout-container">
+      <Sidebar
+        // {...this.props}
+        className="side-bar-menu"
+        collapsed={collapsed}
+        routes={routes}
+        logo={{
+          innerLink: "/admin/index",
+          imgSrc: require("../../assets/img/logo.svg"),
+          imgAlt: "...",
+        }}
+      />
+      <div className="main-content" ref={mainRef}>
+        {/* <AdminNavbar
             // {...this.props}
             brandText={getBrandText(history.location.pathname)}
           /> */}
-          <Header collapsed={collapsed} setCollapsed={null} />
-          {children}
-        </div>
-      </LayoutAnt>
-    )) || <Redirect from="/" to={"/admin/index"} />
+        <Header collapsed={collapsed} setCollapsed={null} />
+        {children}
+      </div>
+    </LayoutAnt>
   );
 }
 Layout.propTypes = {};

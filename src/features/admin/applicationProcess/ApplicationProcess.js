@@ -1,6 +1,6 @@
 import { MailOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-const ApplicationProcess = () => {
+const ApplicationProcess = ({form}) => {
   return (
     <div className="processing_container">
       <div className="mail-box">
@@ -12,7 +12,7 @@ const ApplicationProcess = () => {
         shaxsiy sahifaning “Bildirishnoma ” bo’limiga va elektron manzilingizga
         jo’natiladi.
       </p>
-      <Button type="primary">O’zgartirish uchun qaytib olish</Button>
+      <Button type="primary" onClick={()=>form.setFieldValue('step',0)}>O’zgartirish uchun qaytib olish</Button>
     </div>
   );
 };

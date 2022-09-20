@@ -6,18 +6,20 @@ import Step3 from "./application/Step3";
 import Step4 from "./application/Step4";
 import Step5 from "./application/Step5";
 import StepNavbar from "./stepNavbar";
-import { updateStep1, updateStep2 } from "../../api/user";
+import { updateStep1, updateStep2, updateStep3 } from "../../api/user";
 import { useState } from "react";
+import ApplicationProcess from "./applicationProcess/ApplicationProcess";
 export default function Dashboard() {
   const [form] = Form.useForm();
+  const [mode, setMode] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   const [image, setimage] = useState(null);
   const [passportPhoto, setPassportPhoto] = useState([]);
+  const [diplomaPhoto, setDiplomaPhoto] = useState([]);
 
   const stepValue = Form.useWatch("step", form);
 
   const uploadAvatar = (image) => {
-    const user = JSON.parse(localStorage.getItem("user"));
     var formdata = new FormData();
     formdata.append("tag", "avatar");
     formdata.append("files", image);
@@ -36,7 +38,6 @@ export default function Dashboard() {
       .catch((error) => console.log("error", error));
   };
   const uploadPassport = (images) => {
-    const user = JSON.parse(localStorage.getItem("user"));
     var formdata = new FormData();
     formdata.append("tag", "passporT_photo");
     formdata.append("files", images[0]?.file);
@@ -55,6 +56,29 @@ export default function Dashboard() {
       .then((result) => result)
       .catch((error) => console.log("error", error));
   };
+
+  const uploadDiploma = (images) => {
+    var formdata = new FormData();
+    formdata.append("tag", "diploma_attestat");
+    images.fileList.map((file) => {
+      formdata.append("files", file);
+    });
+
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    return fetch(
+      `https://iiiu.spprt.uz/api/v1/${user.id}/medias`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+  };
+
   const submitStep1 = async (data) => {
     await uploadAvatar(image)
       .then((resIMg) => (data.personal_photo = resIMg.files[0]))
@@ -73,7 +97,21 @@ export default function Dashboard() {
       .then(() => updateStep2(user.id, data))
       .catch((error) => {
         const { response } = error;
-        form.setFieldValue("step", 1);
+        form.setFieldValue("step", 2);
+        message.error(response?.data?.message);
+      });
+  };
+
+  const submitStep3 = async (data) => {
+    await uploadDiploma(diplomaPhoto)
+      .then(
+        (resIMg) =>
+          (data.diploma_file = [...resIMg.filter((item, key) => key % 2 == 0)])
+      )
+      .then(() => updateStep3(user.id, data))
+      .catch((error) => {
+        const { response } = error;
+        form.setFieldValue("step", 3);
         message.error(response?.data?.message);
       });
   };
@@ -95,6 +133,10 @@ export default function Dashboard() {
       }
       if (values.passport_file_2) {
         setPassportPhoto((state) => [...state, values.passport_file_2]);
+      }
+
+      if (values.diploma_file) {
+        setDiplomaPhoto(values.diploma_file.fileList);
       }
 
       handleForward();
@@ -129,23 +171,27 @@ export default function Dashboard() {
         passport_file: data.passport_file,
       };
       submitStep2(step2);
+
+      const step3 = {
+        certificate_type: data.certificate_type,
+        certificate_number: data.certificate_number,
+        certificate_score: data.certificate_score,
+        certificate_file: data.certificate_file,
+        education_type: data.education_type,
+        education_name: data.education_name,
+        diploma_number: data.diploma_number,
+        graduation_year: data.graduation_year,
+        diploma_file: data.diploma_file,
+      };
+
+      handleForward();  
+
+      // submitStep3(step3);
     }
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-
-    const step3 = {
-      certificate_type: values.certificate_type,
-      certificate_number: values.certificate_number,
-      certificate_score: values.certificate_score,
-      certificate_file: values.certificate_file,
-      education_type: values.education_type,
-      education_name: values.education_name,
-      diploma_number: values.diploma_number,
-      graduation_year: values.graduation_year,
-      diploma_file: values.diploma_file,
-    };
 
     const step4 = {
       direction: values.direction,
@@ -156,6 +202,7 @@ export default function Dashboard() {
 
   const handleForward = () => {
     form.setFieldValue("step", stepValue + 1);
+    console.log("step", stepValue);
   };
 
   const handleBackward = () => {
@@ -172,7 +219,6 @@ export default function Dashboard() {
   // };s
 
   const data = JSON.parse(localStorage.getItem("data"));
-  console.log("data", data);
   return (
     <div className="admin-dashboard">
       <div className="dashboard-container">
@@ -180,7 +226,7 @@ export default function Dashboard() {
           form={form}
           onFinish={onFinish}
           initialValues={{
-            step: 1,
+            step: 0,
             certs: [{}],
             edus: [{}],
             // ...data,
@@ -191,6 +237,8 @@ export default function Dashboard() {
             <StepNavbar value={stepValue} />
           </Form.Item>
           <RenderSwitch
+            mode={mode}
+            setMode={setMode}
             value={stepValue}
             form={form}
             onForward={() => {
@@ -206,7 +254,14 @@ export default function Dashboard() {
   );
 }
 
-const RenderSwitch = ({ value, onForward, onBackward, form }) => {
+const RenderSwitch = ({
+  value,
+  onForward,
+  onBackward,
+  form,
+  mode,
+  setMode,
+}) => {
   switch (value) {
     case 1:
       return <Step1 onBackward={onBackward} form={form} />;
@@ -217,9 +272,11 @@ const RenderSwitch = ({ value, onForward, onBackward, form }) => {
     case 4:
       return <Step4 onBackward={onBackward} form={form} />;
     case 5:
-      return <Step5 onBackward={onBackward} form={form} />;
+      return <Step5 onBackward={onBackward} form={form} mode={mode} setMode={setMode} />;
+    case 6:
+      return <ApplicationProcess form={form} />;
     default:
-      return <Step0 onForward={onForward} />;
+      return <Step0 onForward={onForward} form={form} />;
   }
 };
 
