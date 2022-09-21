@@ -11,10 +11,18 @@ const { Option } = Select;
 
 export default function Header({ collapsed, setCollapsed }) {
   const onSearch = (value) => console.log(value);
-  // const OpenSideBar = () => {
-  //   const sideBar = document.querySelector("aside");
-  //   sideBar.style.display = "block";
-  // };
+  const OpenSideBar = () => {
+    const sideBar = document.querySelector("aside");
+    const sideBarLayout = document.querySelector(".side-bar-layout");
+    sideBar.style.display = "block";
+    sideBarLayout.style.display = "block";
+  };
+  const closeSideBar = () => {
+    const sideBar = document.querySelector("aside");
+    const sideBarLayout = document.querySelector(".side-bar-layout");
+    sideBar.style.display = "none";
+    sideBarLayout.style.display = "none";
+  };
   return (
     <LayoutAnt.Header
       style={{
@@ -23,11 +31,12 @@ export default function Header({ collapsed, setCollapsed }) {
       }}
     >
       <div className="header">
-        {/* <div className="side-bar-burger">
-        <div className="burger">
-          <MenuUnfoldOutlined onClick={OpenSideBar} />
+        <div className="side-bar-burger">
+          <div className="burger">
+            <MenuUnfoldOutlined onClick={OpenSideBar} />
+          </div>
         </div>
-      </div> */}
+        <div onClick={closeSideBar} className="side-bar-layout"></div>
 
         {/* <div className="search">
           <Input
