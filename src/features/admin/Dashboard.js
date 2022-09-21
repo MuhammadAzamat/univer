@@ -184,7 +184,7 @@ export default function Dashboard() {
         diploma_file: data.diploma_file,
       };
 
-      handleForward();  
+      handleForward();
 
       // submitStep3(step3);
     }
@@ -212,11 +212,6 @@ export default function Dashboard() {
       behavior: "smooth",
     });
   };
-
-  // const closeSideBar = () => {
-  //   const sideBar = document.querySelector("aside");
-  //   sideBar.style.display = "none";
-  // };s
 
   const data = JSON.parse(localStorage.getItem("data"));
   return (
@@ -272,7 +267,14 @@ const RenderSwitch = ({
     case 4:
       return <Step4 onBackward={onBackward} form={form} />;
     case 5:
-      return <Step5 onBackward={onBackward} form={form} mode={mode} setMode={setMode} />;
+      return (
+        <Step5
+          onBackward={onBackward}
+          form={form}
+          mode={mode}
+          setMode={setMode}
+        />
+      );
     case 6:
       return <ApplicationProcess form={form} />;
     default:
