@@ -12,7 +12,7 @@ const Step0 = ({ onForward }) => {
         <p>
           IIU oliygohiga kirish uchun ariza topshirish portaliga xush kelibsiz. 
         </p>
-        <p>Ariza topshirish uchun"Ariza topshirish" tugmasini bosing.</p>
+        <p>Ariza topshirish uchun "Ariza topshirish" tugmasini bosing.</p>
         <img
           alt="img"
           className="order-placed-img"
