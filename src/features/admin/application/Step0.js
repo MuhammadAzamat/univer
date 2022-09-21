@@ -10,9 +10,9 @@ const Step0 = ({ onForward }) => {
           Assalomu alaykum {user?.first_name} {user?.last_name}
         </h2>
         <p>
-          IIT ning o’qishga imtixon topshirish uchun tizimiga hush kelibsiz.
+          IIU oliygohiga kirish uchun ariza topshirish portaliga xush kelibsiz. 
         </p>
-        <p> Imtihonga kirishdan oldin ariza topshirishingiz kerak.</p>
+        <p>Ariza topshirish uchun"Ariza topshirish" tugmasini bosing.</p>
         <img
           alt="img"
           className="order-placed-img"
