@@ -1,11 +1,28 @@
-import { Button, Form, Select, Input, DatePicker, InputNumber } from "antd";
+import {
+  Button,
+  Form,
+  Select,
+  Input,
+  DatePicker,
+  InputNumber,
+  Space,
+} from "antd";
 import React from "react";
 import { Col, Row } from "antd";
-import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import {
+  MinusCircleOutlined,
+  PlusCircleOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import ImgUploader from "./ImgUploader";
 import Uploader from "../Uploader";
 
 const { Option } = Select;
+const formItemLayout = {
+  labelCol: {
+    span: 24,
+  },
+};
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
@@ -17,60 +34,29 @@ const handleChange = (value) => {
 //   span: 6,
 //   offset: 1,
 // });
-const Step3 = ({ onBackward }) => {
+const Step3 = ({ onBackward, form }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
 
   const rules = [
     {
-      required: true,
-      message: "Maydonni to'ldiring!"
+      // required: true,
+      message: "Maydonni to'ldiring!",
     },
-  ]
+  ];
 
   return (
     <div className="step3_container">
       <Talim rules={rules} />
-      <br />
-      <Row gutter={[24, 16]}>
-        <Col>
-          <div className="add-education">
-            <span>
-              <PlusCircleOutlined style={{ color: "#377DFF" }} />
-            </span>
-            <p>Ta’lim muassasasini qo’shish</p>
-          </div>
-<<<<<<< HEAD
-        </Col>
-      </Row>
+      {/* <AddEducation /> */}
       <br />
       <Sertifikatlar rules={rules} />
-
-      <br />
-      <Row gutter={[24, 16]}>
-        <Col>
-=======
-        </div>
-        <br />
-        <Sertifikatlar />
-
-        <br />
-        <div style={{ width: "100%" }}>
->>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
-          <div className="add-sertification">
-            <span>
-              <PlusCircleOutlined style={{ color: "#377DFF" }} />
-            </span>
-            <p>Sertifikat qo’shish</p>
-          </div>
-<<<<<<< HEAD
-        </Col>
-      </Row>
+      {/* <AddSertificate /> */}
       <br />
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={14} lg={14}></Col>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{
@@ -88,226 +74,266 @@ const Step3 = ({ onBackward }) => {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={() => form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>
           </div>
         </Col>
       </Row>
-=======
-        </div>
-        <br />
-        <div className="prev-next-btns">
-          <Form.Item
-            wrapperCol={{
-              span: 12,
-              offset: 6,
-            }}
-          >
-            <Button className="step3_btns">Orqaga</Button>
-            <Button className="step3_btns" type="primary" htmlType="submit">
-              Oldinga
-            </Button>
-          </Form.Item>
-        </div>
-      </Form>
->>>>>>> df80d761a8b1cc928b6629c1e18f5c7f37cba323
     </div>
   );
 };
 
 export default Step3;
 
-const Talim = ({ rules }) => {
+const Talim = (
+  {
+    /* rules */
+  }
+) => {
+  const rules = null;
   return (
     <>
       <h3>Ta'lim</h3>
-      <Row gutter={[24, 16]}>
-        {/*Maktab turi  */}
-        <Col span={8}>
-          <label htmlFor="education_type">Ta'lim turi</label>
-          <Form.Item
-            name="education_type"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
-            <Select
-              id="education_type"
-              style={{ width: "100%" }}
-              placeholder="Ta'lim turini tanlang!"
-              allowClear
-            >
-              <Option value="Kundizgi">Kundizgi</Option>
-              <Option value="Kechki">Kechki</Option>
-            </Select>
-          </Form.Item>
-        </Col>
-        {/* Muassasa  */}
-        <Col span={8}>
-          <label htmlFor="education_name">Muassasa</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="education_name"
-          >
-            <Input
-              id="education_name"
-              style={{ width: "100%" }}
-              placeholder="Maktabingizni kiriting"
-            />
-          </Form.Item>
-        </Col>
-        {/* Minus button  */}
-        <Col
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-          }}
-          span={8}
-        >
-          <div className="minus-btn">
-            <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
-          </div>
-        </Col>
-        {/* Diplom raqam  */}
-        <Col span={8}>
-          <label htmlFor="diploma_number">Diplom/Attestatsiya raqami</label>
-          <Form.Item
-            name="diploma_number"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
-            <InputNumber
-              style={{ width: "100%" }}
-              id="diploma_number"
-              placeholder="Diplom/attestatsiya raqamini kiriting"
-            />
-          </Form.Item>
-        </Col>
+      <Form.List name="edus">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Row key={key} gutter={[24, 16]}>
+                {/*Maktab turi  */}
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    label="Tamomlagan muassasangiz"
+                    {...formItemLayout}
+                    name={[name, "education_type"]}
+                  >
+                    <Select
+                      allowClear
+                      size="large"
+                      style={{ width: "100%" }}
+                      placeholder="Tamomlagan muassasangizni tanlang"
+                    >
+                      <Option value="Maktab">Maktab</Option>
+                      <Option value="Litsey">Litsey</Option>
+                      <Option value="Kollej">Kollej</Option>
+                      <Option value="Texnikum">Texnikum</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                {/* Muassasa  */}
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    label="Muassasa"
+                    {...formItemLayout}
+                    name={[name, "education_name"]}
+                  >
+                    <Input
+                      size="large"
+                      id="education_name"
+                      style={{ width: "100%" }}
+                      placeholder="Muassasa nomini kiriting"
+                    />
+                  </Form.Item>
+                </Col>
+                {/* Minus button  */}
+                <Col
+                  xs={24}
+                  sm={24}
+                  md={8}
+                  lg={8}
+                  style={{
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                  }}
+                >
+                  {/* <div className="minus-btn">
+                    <MinusCircleOutlined
+                      onClick={() => remove(name)}
+                      style={{ color: "#B0B7C3" }}
+                    />
+                  </div> */}
+                </Col>
+                {/* Diplom raqam  */}
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    name={[name, "diploma_number"]}
+                    label="Diplom/Attestatsiya raqami"
+                  >
+                    <Input
+                      size="large"
+                      id="diploma_number"
+                      style={{ width: "100%" }}
+                      placeholder="Diplom/attestatsiya raqamini kiriting"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    label="Tugatgan yil"
+                    name={[name, "graduation_year"]}
+                  >
+                    <DatePicker
+                      size="large"
+                      format="DD.MM.YYYY"
+                      placeholder="DD.MM.YYYY"
+                      style={{ width: "100%" }}
+                    />
+                  </Form.Item>
+                </Col>
+                {/*Diplom nusxasi  */}
+                {/* <Col span={24}>
+                  <h3>Diplom/Attestat nusxasi</h3>
+                </Col>
+                <Col span={24}>
+                  <Form.Item rules={rules} name={[name, "diploma_file"]}>
+                    <DiplomUploader />
+                  </Form.Item>
+                </Col> */}
+              </Row>
+            ))}
+            <br />
 
-        {/* Tugatgan vaqti */}
-        <Col span={8}>
-          <label htmlFor="graduation_year">Tugatgan yil</label>
-          <Form.Item
-            rules={rules}
-            name="graduation_year"
-          >
-            <DatePicker
-              id="graduation_year"
-              style={{ margin: "5px 0", width: "100%" }}
-              placeholder="kk/oo/yyyy"
-            />
-          </Form.Item>
-        </Col>
-        {/*Diplom nusxasi  */}
-        <Col span={24}>
-          <h3>Diplom/Attestat nusxasi</h3>
-        </Col>
-        <Col span={24}>
-          <Form.Item
-            rules={rules}
-            name="diploma_file"
-          >
-            <DiplomUploader />
-          </Form.Item>
-        </Col>
-      </Row>
+            <hr />
+            <Row gutter={[24, 16]}>
+              <Col>
+                <div className="add-education" onClick={() => add()}>
+                  <PlusCircleOutlined style={{ color: "#377DFF" }} />
+                  <p>Ta’lim muassasasini qo’shish</p>
+                </div>
+              </Col>
+            </Row>
+          </>
+        )}
+      </Form.List>
       <br />
-      <hr />
     </>
   );
 };
 
-const Sertifikatlar = ({ rules }) => {
+const Sertifikatlar = (
+  {
+    /* rules */
+  }
+) => {
+  const rules = null;
   return (
     <>
       <h3>Sertifikatlar</h3>
-      <Row gutter={[24, 16]}>
-        {/*Sertifikat turi  */}
-        <Col span={8}>
-          <label htmlFor="certificate_type">Sertifikat turi</label>
-          <Form.Item
-            name="certificate_type"
-            style={{ margin: "5px 0" }}
-            rules={rules}
-          >
-            <Select
-              id="certificate_type"
-              style={{ width: "100%" }}
-              placeholder="Sertifikat turini tanlang!"
-              allowClear
-            >
-              <Option value="Sertifikat1">Sertifikat1</Option>
-              <Option value="Sertifikat2">Sertifika2</Option>
-            </Select>
-          </Form.Item>
-        </Col>
-        {/* Sertifikat raqami  */}
-        <Col span={8}>
-          <label htmlFor="certificate_number">Sertifikat raqami</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="certificate_number"
-          >
-            <Input
-              id="certificate_number"
-              style={{ width: "100%" }}
-              placeholder="Sertifikat raqami kiriting"
-            />
-          </Form.Item>
-        </Col>
-        {/* Minus button  */}
-        <Col
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-          }}
-          span={8}
-        >
-          <div className="minus-btn">
-            <MinusCircleOutlined style={{ color: "#B0B7C3" }} />
-          </div>
-        </Col>
-        {/* To’plangan ball  */}
-        <Col span={8}>
-          <label htmlFor="certificate_score">To’plangan ball</label>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="certificate_score"
-          >
-            <InputNumber
-              style={{ width: "100%" }}
-              id="certificate_score"
-              placeholder="To’plangan ball kiriting"
-            />
-          </Form.Item>
-        </Col>
+      <Form.List name="certs">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Row key={key} gutter={[24, 16]}>
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    label="Sertifikat turi"
+                    name={[name, "certificate_type"]}
+                  >
+                    <Select
+                      allowClear
+                      size="large"
+                      style={{ width: "100%" }}
+                      placeholder="Sertifikat turini tanlang!"
+                    >
+                      {["IELTS", "CEFR", "TOEFL", "DTM"].map((item, key) => (
+                        <Option value={item} key={key}>
+                          {item}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                {/* Sertifikat raqami  */}
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    label="Sertifikat raqami"
+                    name={[name, "certificate_number"]}
+                  >
+                    <Input
+                      size="large"
+                      style={{ width: "100%" }}
+                      placeholder="Sertifikat raqami kiriting"
+                    />
+                  </Form.Item>
+                </Col>
+                {/* Minus button  */}
+                <Col
+                  style={{
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                  }}
+                  xs={24}
+                  sm={24}
+                  md={8}
+                  lg={8}
+                >
+                  {/* <div className="minus-btn">
+                    <MinusCircleOutlined
+                      onClick={() => remove(name)}
+                      style={{ color: "#B0B7C3" }}
+                    />
+                  </div> */}
+                </Col>
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Form.Item
+                    rules={rules}
+                    {...formItemLayout}
+                    label="To’plangan ball"
+                    name={[name, "certificate_score"]}
+                  >
+                    <InputNumber
+                      size="large"
+                      style={{ width: "100%" }}
+                      placeholder="To’plangan ball kiriting"
+                    />
+                  </Form.Item>
+                </Col>
 
-        {/*Sertifikatlar nusxasi  */}
-        <Col span={24}>
-          <h3>Sertifikatlar nusxasi</h3>
-        </Col>
-        <Col span={24}>
-          <Form.Item
-            style={{ margin: "5px 0" }}
-            rules={rules}
-            name="certificate_file"
-          >
-            <CertUploader />
-          </Form.Item>
-        </Col>
-      </Row>
+                {/*Sertifikatlar nusxasi  */}
+                <Col span={24}>
+                  <h3>Sertifikatlar nusxasi</h3>
+                </Col>
+                <Col span={24}>
+                  <Form.Item
+                    style={{ margin: "5px 0" }}
+                    rules={rules}
+                    name={[name, "certificate_file"]}
+                  >
+                    <CertUploader />
+                  </Form.Item>
+                </Col>
+              </Row>
+            ))}
+            <br />
+            <hr />
+            <Row gutter={[24, 16]}>
+              <Col>
+                <div className="add-sertification" onClick={() => add()}>
+                  <PlusCircleOutlined style={{ color: "#377DFF" }} />
+                  <p>Sertifikat qo’shish</p>
+                </div>
+              </Col>
+            </Row>
+          </>
+        )}
+      </Form.List>
       <br />
-      <hr />
     </>
   );
 };
-
 
 const DiplomUploader = ({ value = {}, onChange }) => {
   return (
@@ -317,10 +343,11 @@ const DiplomUploader = ({ value = {}, onChange }) => {
         title={"Diplom/Attestat yuklang"}
         value={value}
         beforeUpload={(file) => false}
-        onChange={(info) => onChange(info)} />
+        onChange={(info) => onChange(info)}
+      />
     </div>
-  )
-}
+  );
+};
 
 const CertUploader = ({ value = {}, onChange }) => {
   return (
@@ -330,7 +357,83 @@ const CertUploader = ({ value = {}, onChange }) => {
         title={"Sertifikatni yuklang"}
         value={value}
         beforeUpload={(file) => false}
-        onChange={(info) => onChange(info)} />
+        onChange={(info) => onChange(info)}
+      />
     </div>
-  )
-}
+  );
+};
+
+const AddEducation = ({ rules }) => {
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Talim rules={rules} />
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Ta’lim muassasasini qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
+  );
+};
+const AddSertificate = ({ rules }) => {
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
+  };
+  return (
+    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
+      <Form.List name="users">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space
+                key={key}
+                style={{
+                  display: "flex",
+                  marginBottom: 8,
+                }}
+                align="baseline"
+              >
+                <Sertifikatlar rules={rules} />
+              </Space>
+            ))}
+            <Form.Item style={{ width: "250px" }}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
+                Sertifikat qo’shish
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
+  );
+};

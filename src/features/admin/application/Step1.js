@@ -1,112 +1,158 @@
-import { Button, Col, Form, Input, Row, Select, Switch, Upload } from "antd";
-import StepNavbar from "../stepNavbar";
+/* eslint-disable jsx-a11y/alt-text */
 import Uploader from "../Uploader";
+import { Button, Col, Form, Input, Row, Select, Switch, Upload } from "antd";
+const { Option } = Select;
 
-/***
- * {
-  "personal_photo": "string",
-  "first_name": "string",
-  "last_name": "string",
-  "middle_name": "string",
-  "phone": "string",
-  "extra_phone": "string",
-  "email": "string",
-  "is_disabled": true,
-  "disabled_type": "string"
-}
- * ***/
-
-function Step1({ onBackward }) {
-
-  const { Option } = Select;
-
-  const onFinish = (values) => {
-    console.log('Success:', values);
-
-  };
-
+function Step1({ onBackward, form }) {
+  const isDisabledValue = Form.useWatch("is_disabled", form);
   const rules = [
     {
       // required: true,
-      message: 'Iltimos maydonni to\'ldiring',
-    }
-  ]
+      message: "Iltimos maydonni to'ldiring",
+    },
+  ];
+  const formItemLayout = {
+    labelCol: {
+      span: 24,
+    },
+  };
 
   return (
     <div className="step-1-content">
       <h1 className="step-1-content-title">Umumiy ma’lumotlar</h1>
       <Form.Item
-        name="image">
+        rules={[
+          {
+            required: true,
+            message: "Rasmni yuklang",
+          },
+        ]}
+        name="image"
+      >
         <ImageUpload />
       </Form.Item>
-
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
-          <label htmlFor="first_name">Ismi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
+            label="Ism"
+            rules={[
+              {
+                required: true,
+                message: "Majburiy maydon",
+              },
+            ]}
             name="first_name"
-            rules={rules}>
-            <Input id="first_name" />
+            {...formItemLayout}
+          >
+            <Input size="large" placeholder="Ismni kiriting" id="first_name" />
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <label htmlFor="last_name">Familiyasi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="last_name"></label>
           <Form.Item
+            rules={[
+              {
+                required: true,
+                message: "Majburiy maydon",
+              },
+            ]}
             name="last_name"
-            rules={rules}>
-            <Input id="last_name" />
+            label="Familiya"
+            {...formItemLayout}
+          >
+            <Input
+              size="large"
+              id="last_name"
+              placeholder="Familiyani kiriting"
+            />
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <label htmlFor="middle_name">Otasining ismi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
+            rules={[
+              {
+                required: true,
+                message: "Majburoy maydon",
+              },
+            ]}
             name="middle_name"
-            rules={rules}>
-            <Input id="middle_name" />
+            {...formItemLayout}
+            label="Otasining ismi"
+          >
+            <Input
+              size="large"
+              id="middle_name"
+              placeholder="Otasining ismini kiriting"
+            />
           </Form.Item>
         </Col>
       </Row>
-
       <h1 className="step-1-content-title">Kontakt ma’lumotlar</h1>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
-          <label htmlFor="phone">Telefon raqami*</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="phone"
-            rules={rules}>
-            <Input id="phone" />
+            {...formItemLayout}
+            label="Telefon raqami"
+            rules={[{ required: true, message: "Telefon raqam majburiy" }]}
+          >
+            <Input size="large" allowClear placeholder="+998991201122" />
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <label htmlFor="extra_phone">Qo’shimcha telefon raqami</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
+            rules={rules}
             name="extra_phone"
-            rules={rules}>
-            <Input id="extra_phone" />
+            {...formItemLayout}
+            label="Qo’shimcha telefon raqami"
+          >
+            <Input
+              allowClear
+              size="large"
+              id="extra_phone"
+              placeholder="+998991201122"
+            />
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <label htmlFor="email">Email</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="email"
-            rules={rules}>
-            <Input id="email" />
+            label="Email"
+            {...formItemLayout}
+            rules={[
+              { type: "email", required: true, message: "Email haqiqiy emas!" },
+            ]}
+          >
+            <Input
+              id="email"
+              size="large"
+              type="email"
+              placeholder="user@gmail.com"
+            />
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
-          <label htmlFor="is_disabled" className="isDisabled-title">Nogironlik holati</label>
-          <Form.Item
-            name="is_disabled">
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <label htmlFor="is_disabled" className="isDisabled-title">
+            Imkoniyati cheklangan
+          </label>
+          <Form.Item name="is_disabled">
             <SwitchInput />
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <label htmlFor="disable_type">Nogironlik turi</label>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
-            name="disable_type">
-            <Select className="select-before">
+            name="disable_type"
+            {...formItemLayout}
+            label="Imkoniyati cheklanganlik turi"
+          >
+            <Select
+              size="large"
+              placeholder="Tanlang..."
+              className="select-before"
+              disabled={!isDisabledValue}
+            >
               <Option value=""></Option>
               <Option value="1">Birinchi guruh nogironi</Option>
               <Option value="2">Ikkinchi guruh nogironi</Option>
@@ -117,8 +163,7 @@ function Step1({ onBackward }) {
       </Row>
 
       <Row>
-        <Col span={14}></Col>
-        <Col span={10}>
+        <Col span={24}>
           <div className="nav-btns">
             <Form.Item
               wrapperCol={{
@@ -136,7 +181,7 @@ function Step1({ onBackward }) {
                 span: 8,
               }}
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" onClick={() => form.submit()}>
                 Oldinga
               </Button>
             </Form.Item>
@@ -148,7 +193,26 @@ function Step1({ onBackward }) {
 }
 
 export default Step1;
+const uploadAvatar = (image) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  var formdata = new FormData();
+  formdata.append("tag", "avatar");
+  formdata.append("files", image);
+  var requestOptions = {
+    method: "POST",
+    body: formdata,
+    redirect: "follow",
+  };
 
+  return (
+    fetch(`https://iiiu.spprt.uz/api/v1/${user.id}/medias`, requestOptions)
+      // .then((response) => response.text())
+      .then((result) => {
+        return result;
+      })
+      .catch((error) => console.log("error", error))
+  );
+};
 const ImageUpload = ({ value = {}, onChange }) => {
   return (
     <div className="step-1-image-upload">
@@ -157,31 +221,39 @@ const ImageUpload = ({ value = {}, onChange }) => {
         title={"Fotosuratni yuklang"}
         value={value}
         beforeUpload={(file) => false}
-        onChange={(info) => onChange(info)} />
+        onChange={(info) => onChange(info)}
+      />
       <div className="step-1-image-upload-right">
-        <h2>Fotasurat ni yuklang</h2>
-        <h3>You can upload  .JPEG, .JPG, or .PNG photes not over 1 MB.</h3>
+        <h2>Fotosuratni yuklang</h2>
+        <p>
+          Ushbu turdagi fayl turlarini yuklashingiz mumkin va fayl hajmi 1 mb
+          .JPEG, .JPG, or .PNG
+        </p>
         <Upload
           showUploadList={false}
           beforeUpload={(file) => false}
-          onChange={(info) => onChange(info)}>
-          <Button
-            className="btn-upload"
-            icon={<img src={require("../../../assets/img/Icon-left.png")} />}>
-            Upload photo
+          onChange={(info) => onChange(info)}
+        >
+          <Button size="large" className="btn-upload">
+            Fotosuratni yuklash
           </Button>
         </Upload>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
 const SwitchInput = ({ value, onChange }) => (
   <div className="disabled-field">
-    <label htmlFor="is_disabled" ><h3>Nogironli holati bo’lsa qaysi turda ekanligini ko’rsating</h3></label>
-    <Switch id="is_disabled" checked={value} onChange={(checked) => {
-      onChange(checked)
-    }} />
+    <label htmlFor="is_disabled">
+      <h3>Imkoniyati cheklangan bo’lsa qaysi turda ekanligini ko’rsating</h3>
+    </label>
+    <Switch
+      id="is_disabled"
+      checked={value}
+      onChange={(checked) => {
+        onChange(checked);
+      }}
+    />
   </div>
-)
+);

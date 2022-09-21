@@ -105,3 +105,17 @@
     }
   }
 }
+.all-info {
+  text-align: center;
+  p {
+  }
+}
+
+@media (max-width: 391px) {
+  .section_app-info {
+    padding: 0;
+  }
+  .section_app-info .wrapper {
+    margin: 0;
+  }
+}

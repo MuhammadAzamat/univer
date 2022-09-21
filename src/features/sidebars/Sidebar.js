@@ -4,9 +4,9 @@ import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import SidebarStep from "./sidebarComponents/sidebarStep";
 import SidebarMenu from "./sidebarMenu/sidebarMenu";
-import { Layout as LayoutAnt} from "antd";
+import { Layout as LayoutAnt } from "antd";
 
-const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
+const Sidebar = ({ bgColor, routes, logo, location, collapsed }) => {
   const [collapseOpen, setcollapseOpen] = useState(false);
 
   const { Sider } = LayoutAnt;
@@ -26,10 +26,7 @@ const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
 
   const createLinks = (routes, path) => {
     return routes.childRoutes.map((prop, key) => {
-      if (prop.path !== "" && !prop.childRoutes)
-        return (
-          <>link</>
-        );
+      if (prop.path !== "" && !prop.childRoutes) return <>link</>;
     });
   };
 
@@ -47,10 +44,15 @@ const Sidebar = ({ bgColor, routes, logo, location, orders, collapsed }) => {
   }
   return (
     <>
-      <Sider theme="light" trigger={null} collapsible collapsed={collapsed}
-       width={253}>
-        <div className="logo" >
-          <img src={require("../../assets/img/logo.png")} />
+      <Sider
+        theme="light"
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        width={253}
+      >
+        <div className="logo">
+          <img width={140} src={require("../../assets/img/univerlogo.png")} />
         </div>
         <SidebarStep />
         <SidebarMenu />

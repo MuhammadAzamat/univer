@@ -56,7 +56,7 @@ function Root() {
   const children = renderRouteConfigV3(routeConfig, "/");
   return (
     <Provider store={store}>
-      <BrowserRouter forceRefresh={true}>
+      <BrowserRouter>
         <ConnectedRouter history={history}>{children}</ConnectedRouter>
       </BrowserRouter>
     </Provider>

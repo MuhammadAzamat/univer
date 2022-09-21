@@ -1,43 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useQuery } from "react-query";
-import { Redirect } from "react-router-dom";
-import { Header } from "../headers";
-import { AdminNavbar } from "../navbars";
-import { Sidebar } from "../sidebars";
 import route from "./route";
-
-import { Layout as LayoutAnt, Menu } from "antd";
+import { Header } from "../headers";
+import { Sidebar } from "../sidebars";
+import { useQuery } from "react-query";
+import { Layout as LayoutAnt } from "antd";
+import { Redirect } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 
 // import PropTypes from 'prop-types';
 
 export default function Layout({ history, children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("jwt") || null);
-  const mainRef = useRef(null);
-
   const routes = route;
-  // routes.push(orerroute.childRoutes.map(item => (orerroute.path + "/" + item.path)))
-
-  const orders_data = useQuery("orders", null);
-
-  const [orders, setorders] = useState([]);
-  useEffect(() => {
-    let cancel = true;
-    if (cancel) {
-      if (orders_data.data && orders_data.data.orders) {
-        setorders(orders_data.data.orders);
-      } else {
-        setorders([]);
-      }
-      cancel = false;
-    }
-  }, [orders_data.data]);
-
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    // mainRef.current.scrollTop = 0;
-  }, [mainRef]);
+  const mainRef = useRef(null);
+  const token = localStorage.getItem("Authorization") || null;
+  if (token == null) {
+    window.location.pathname = "/auth/login";
+  }
 
   const getBrandText = (path) => {
     for (let i = 0; i < routes.childRoutes.length; i++) {
@@ -53,29 +31,27 @@ export default function Layout({ history, children }) {
     return "Brand";
   };
   return (
-    (true && (
-      <LayoutAnt className="layout-container">
-        <Sidebar
-          // {...this.props}
-          collapsed={collapsed}
-          routes={routes}
-          logo={{
-            innerLink: "/dashboard/index",
-            imgSrc: require("../../assets/img/logo.svg"),
-            imgAlt: "...",
-          }}
-          orders={orders}
-        />
-        <div className="main-content" ref={(el) => (mainRef.current = el)}>
-          {/* <AdminNavbar
+    <LayoutAnt className="layout-container">
+      <Sidebar
+        // {...this.props}
+        className="side-bar-menu"
+        collapsed={collapsed}
+        routes={routes}
+        logo={{
+          innerLink: "/admin/index",
+          imgSrc: require("../../assets/img/logo.svg"),
+          imgAlt: "...",
+        }}
+      />
+      <div className="main-content" ref={mainRef}>
+        {/* <AdminNavbar
             // {...this.props}
             brandText={getBrandText(history.location.pathname)}
           /> */}
-          <Header collapsed={collapsed} setCollapsed={null} />
-          {children}
-        </div>
-      </LayoutAnt>
-    )) || <Redirect from="/" to={"/auth/login"} />
+        <Header collapsed={collapsed} setCollapsed={null} />
+        {children}
+      </div>
+    </LayoutAnt>
   );
 }
 Layout.propTypes = {};

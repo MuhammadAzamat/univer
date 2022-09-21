@@ -1,7 +1,5 @@
 @import "../../styles/mixins";
 
-.headers-header {
-}
 .search {
   margin-left: 10px;
   width: 265px;
@@ -10,8 +8,17 @@
 }
 
 .header {
+  background-color: white;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+language-bar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .bg {

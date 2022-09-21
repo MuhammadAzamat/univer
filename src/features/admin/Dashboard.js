@@ -1,6 +1,4 @@
-import { Form } from "antd";
-import { useForm } from "antd/lib/form/Form";
-import React, { useState } from "react";
+import { Form, message } from "antd";
 import Step0 from "./application/Step0";
 import Step1 from "./application/Step1";
 import Step2 from "./application/Step2";
@@ -8,88 +6,219 @@ import Step3 from "./application/Step3";
 import Step4 from "./application/Step4";
 import Step5 from "./application/Step5";
 import StepNavbar from "./stepNavbar";
-// import PropTypes from 'prop-types';
-
+import { updateStep1, updateStep2, updateStep3 } from "../../api/user";
+import { useState } from "react";
+import ApplicationProcess from "./applicationProcess/ApplicationProcess";
 export default function Dashboard() {
-  const [status, setstatus] = useState(0);
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
+  const [mode, setMode] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [image, setimage] = useState(null);
+  const [passportPhoto, setPassportPhoto] = useState([]);
+  const [diplomaPhoto, setDiplomaPhoto] = useState([]);
+
+  const stepValue = Form.useWatch("step", form);
+
+  const uploadAvatar = (image) => {
+    var formdata = new FormData();
+    formdata.append("tag", "avatar");
+    formdata.append("files", image);
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    return fetch(
+      `https://iiiu.spprt.uz/api/v1/${user.id}/medias`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+  };
+  const uploadPassport = (images) => {
+    var formdata = new FormData();
+    formdata.append("tag", "passporT_photo");
+    formdata.append("files", images[0]?.file);
+    formdata.append("files", images[1]?.file);
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    return fetch(
+      `https://iiiu.spprt.uz/api/v1/${user.id}/medias`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+  };
+
+  const uploadDiploma = (images) => {
+    var formdata = new FormData();
+    formdata.append("tag", "diploma_attestat");
+    images.fileList.map((file) => {
+      formdata.append("files", file);
+    });
+
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    return fetch(
+      `https://iiiu.spprt.uz/api/v1/${user.id}/medias`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+  };
+
+  const submitStep1 = async (data) => {
+    await uploadAvatar(image)
+      .then((resIMg) => (data.personal_photo = resIMg.files[0]))
+      .then(() => updateStep1(user.id, data))
+      .catch((error) => {
+        const { response } = error;
+        form.setFieldValue("step", 1);
+        message.error(response?.data?.message);
+      });
+  };
+  const submitStep2 = async (data) => {
+    await uploadPassport(passportPhoto)
+      .then(
+        (resIMg) => (data.passport_file = [resIMg.files[0], resIMg.files[2]])
+      )
+      .then(() => updateStep2(user.id, data))
+      .catch((error) => {
+        const { response } = error;
+        form.setFieldValue("step", 2);
+        message.error(response?.data?.message);
+      });
+  };
+
+  const submitStep3 = async (data) => {
+    await uploadDiploma(diplomaPhoto)
+      .then(
+        (resIMg) =>
+          (data.diploma_file = [...resIMg.filter((item, key) => key % 2 == 0)])
+      )
+      .then(() => updateStep3(user.id, data))
+      .catch((error) => {
+        const { response } = error;
+        form.setFieldValue("step", 3);
+        message.error(response?.data?.message);
+      });
+  };
+
   const onFinish = (values) => {
-    console.log('Success:', values);
-    if (form.getFieldValue('step') < 5) {
-      handleForward()
+    if (stepValue < 5) {
+      localStorage.setItem(
+        "data",
+        JSON.stringify({
+          ...JSON.parse(localStorage.getItem("data")),
+          ...values,
+        })
+      );
+      if (values.image) {
+        setimage(values?.image?.file);
+      }
+      if (values.passport_file_1) {
+        setPassportPhoto((state) => [...state, values.passport_file_1]);
+      }
+      if (values.passport_file_2) {
+        setPassportPhoto((state) => [...state, values.passport_file_2]);
+      }
+
+      if (values.diploma_file) {
+        setDiplomaPhoto(values.diploma_file.fileList);
+      }
+
+      handleForward();
+    } else {
+      const data = JSON.parse(localStorage.getItem("data"));
+      const step1 = {
+        personal_photo: data.personal_photo,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        middle_name: data.middle_name,
+        phone: data.phone,
+        extra_phone: data.extra_phone,
+        email: data.email,
+        is_disabled: data.is_disabled || false,
+        disabled_type: data.disabled_type || "",
+      };
+      submitStep1(step1);
+      const step2 = {
+        passport_type: data.passport_type || false,
+        passport_series: data.passport_series || null,
+        identification_number: data.identification_number,
+        passport_issue_date: data.passport_issue_date,
+        passport_expire_date: data.passport_expire_date,
+        issued_by: data.issued_by,
+        birth_date: data.birth_date,
+        gender: data.gender || 0,
+        nation: data.nation,
+        country: data.country,
+        region: data.region,
+        district: data.district,
+        address: data.address,
+        passport_file: data.passport_file,
+      };
+      submitStep2(step2);
+
+      const step3 = {
+        certificate_type: data.certificate_type,
+        certificate_number: data.certificate_number,
+        certificate_score: data.certificate_score,
+        certificate_file: data.certificate_file,
+        education_type: data.education_type,
+        education_name: data.education_name,
+        diploma_number: data.diploma_number,
+        graduation_year: data.graduation_year,
+        diploma_file: data.diploma_file,
+      };
+
+      handleForward();  
+
+      // submitStep3(step3);
     }
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
-
-    const step1 = {
-      "personal_photo": values.personal_photo,
-      "first_name": values.first_name,
-      "last_name": values.last_name,
-      "middle_name": values.middle_name,
-      "phone": values.phone,
-      "extra_phone": values.extra_phone,
-      "email": values.email,
-      "is_disabled": values.personal_photo || false,
-      "disabled_type": values.disabled_type || ""
-    }
-
-    const step2 = {
-      "passport_type": values.personal_photo,
-      "passport_series": values.passport_series,
-      "identification_number": values.identification_number,
-      "passport_issue_date": values.passport_issue_date,
-      "passport_expire_date": values.passport_expire_date,
-      "issued_by": values.issued_by,
-      "birth_date": values.birth_date,
-      "gender": values.gender,
-      "nation": values.nation,
-      "country": values.country,
-      "region": values.region,
-      "district": values.district,
-      "address": values.address,
-      "passport_file": values.passport_file
-    }
-
-    const step3 = {
-      "certificate_type": values.certificate_type,
-      "certificate_number": values.certificate_number,
-      "certificate_score": values.certificate_score,
-      "certificate_file": values.certificate_file,
-      "education_type": values.education_type,
-      "education_name": values.education_name,
-      "diploma_number": values.diploma_number,
-      "graduation_year": values.graduation_year,
-      "diploma_file": values.diploma_file
-    }
 
     const step4 = {
-      "direction": values.direction,
-      "education_type": values.education_type,
-      "education_language": values.education_language,
-    }
-
-    console.log("step1", step1);
-    console.log("step2", step2);
-    console.log("step3", step3);
-    console.log("step4", step4);
-  }
-
+      direction: values.direction,
+      education_type: values.education_type,
+      education_language: values.education_language,
+    };
+  };
 
   const handleForward = () => {
-    form.setFieldValue("step", form.getFieldValue('step') + 1)
-
-  }
+    form.setFieldValue("step", stepValue + 1);
+    console.log("step", stepValue);
+  };
 
   const handleBackward = () => {
-    form.setFieldValue("step", form.getFieldValue('step') - 1)
+    form.setFieldValue("step", stepValue - 1);
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
-  }
+  };
 
+  // const closeSideBar = () => {
+  //   const sideBar = document.querySelector("aside");
+  //   sideBar.style.display = "none";
+  // };s
+
+  const data = JSON.parse(localStorage.getItem("data"));
   return (
     <div className="admin-dashboard">
       <div className="dashboard-container">
@@ -97,40 +226,57 @@ export default function Dashboard() {
           form={form}
           onFinish={onFinish}
           initialValues={{
-            step: 0
-          }}>
+            step: 0,
+            certs: [{}],
+            edus: [{}],
+            // ...data,
+          }}
+        >
           <Form.Item name="step" style={{ padding: 0, margin: 0 }}>
-            <StepNavbar />
+            {/* {JSON.stringify(form.getFieldsValue())} */}
+            <StepNavbar value={stepValue} />
           </Form.Item>
-          <Form.Item name="step" style={{ padding: 0, margin: 0 }}>
-            <RenderSwitch
-              onForward={() => {
-                handleForward()
-              }}
-              onBackward={() => {
-                handleBackward()
-              }} />
-          </Form.Item>
+          <RenderSwitch
+            mode={mode}
+            setMode={setMode}
+            value={stepValue}
+            form={form}
+            onForward={() => {
+              handleForward();
+            }}
+            onBackward={() => {
+              handleBackward();
+            }}
+          />
         </Form>
       </div>
     </div>
   );
 }
 
-const RenderSwitch = ({ value, onForward, onBackward }) => {
+const RenderSwitch = ({
+  value,
+  onForward,
+  onBackward,
+  form,
+  mode,
+  setMode,
+}) => {
   switch (value) {
     case 1:
-      return <Step1 onBackward={onBackward} />;
+      return <Step1 onBackward={onBackward} form={form} />;
     case 2:
-      return <Step2 onBackward={onBackward} />;
+      return <Step2 onBackward={onBackward} form={form} />;
     case 3:
-      return <Step3 onBackward={onBackward} />;
+      return <Step3 onBackward={onBackward} form={form} />;
     case 4:
-      return <Step4 onBackward={onBackward} />;
+      return <Step4 onBackward={onBackward} form={form} />;
     case 5:
-      return <Step5 onBackward={onBackward} />;
+      return <Step5 onBackward={onBackward} form={form} mode={mode} setMode={setMode} />;
+    case 6:
+      return <ApplicationProcess form={form} />;
     default:
-      return <Step0 onForward={onForward} />;
+      return <Step0 onForward={onForward} form={form} />;
   }
 };
 
